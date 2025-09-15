@@ -1,6 +1,7 @@
 # Barterly Frontend
 
 ## Folder Structure
+```
 ├── frontend/
 │   ├── public/
 │   │   └── icon.svg
@@ -24,3 +25,4 @@
 │   ├── App.jsx
 │   ├── styles.css
 │   └── main.jsx
+```
