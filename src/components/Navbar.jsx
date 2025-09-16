@@ -4,15 +4,24 @@ const Navbar = () => {
   return (
     <>
       <div className="flex justify-between items-center h-12">
-        <div className="font-bold flex items-center text-lg">
-          <img src="/bartley_outline.svg" className="mr-1 h-6 w-auto" />
-          Barterly
-        </div>
+        <NavLink to="">
+          <div className="font-bold flex items-center text-lg">
+            <img src="/bartley_outline.svg" className="mr-1 h-6 w-auto" />
+            Barterly
+          </div>
+        </NavLink>
         <div className="flex gap-5 text-lg">
-          <p className="hover-underline-animation">Explore</p>
-          <p className="hover-underline-animation">Categories</p>
-          <p className="hover-underline-animation">How It Works</p>
+          <NavLink to="">
+            <p className="hover-underline-animation">Explore</p>
+          </NavLink>
+          <NavLink to="">
+            <p className="hover-underline-animation">Categories</p>
+          </NavLink>
+          <NavLink to="">
+            <p className="hover-underline-animation">How It Works</p>
+          </NavLink>
         </div>
+
         <div className="flex gap-5">
           <button className="px-4 h-10 rounded-md bg-sky-500/75 text-white transition-colors duration-300 hover:bg-sky-700 shadow-sm">
             Sign Up
