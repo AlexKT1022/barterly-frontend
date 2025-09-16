@@ -1,19 +1,21 @@
 const Homepage = () => {
   return (
     <>
-      <div className="flex flex-col justify-center items-center">
-        <h1 className="font-bold">Trade goods and services directly</h1>
-        <h2 className="text-center">
+      <div className="flex flex-col justify-center items-center mx-auto">
+        <h1 className="font-bold w-lg text-center">
+          Trade goods and services directly
+        </h1>
+        <h2 className="text-center w-xl mb-5">
           Barterly is a platform for swapping items and skills without the use
           of money. Start trading today!
         </h2>
-        <button className="px-4 h-10 rounded-md bg-sky-500/75 text-white transition-colors duration-300 hover:bg-sky-700 shadow-sm">
+        <button className="px-4 h-10 rounded-md bg-sky-500/75 text-white transition-colors duration-300 hover:bg-sky-700 shadow-sm mb-5">
           Get Started
         </button>
-        <div>
+        <div className="mb-10">
           <form>
             <input
-              className="w-lg h-10 rounded-md border-1 border-zinc-400"
+              className="w-lg h-10 rounded-md border-1 border-zinc-400 mr-5"
               placeholder="Search for items or services..."
               id="home-search"
             ></input>

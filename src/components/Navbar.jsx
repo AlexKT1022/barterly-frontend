@@ -5,7 +5,7 @@ const Navbar = () => {
     <>
       <div className="flex justify-between items-center h-12">
         <div className="font-bold flex items-center text-lg">
-          <img src="/bartley_outline.svg" className="mr-6 h-6 w-auto" />
+          <img src="/bartley_outline.svg" className="mr-1 h-6 w-auto" />
           Barterly
         </div>
         <div className="flex gap-5 text-lg">

@@ -6,12 +6,12 @@ const RootLayout = () => {
     <>
       <div className="min-h-screen">
         <header>
-          <div className="container px-4">
+          <div className="max-w-7xl mx-auto px-4">
             <Navbar />
           </div>
         </header>
 
-        <main className="container px-4 py-8">
+        <main className="px-4 py-8">
           <Outlet />
         </main>
       </div>

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 * {
-  margin: 0;
+  /* margin: 0; */
   box-sizing: border-box;
 }
 
@@ -52,5 +52,4 @@ h2 {
 
 #home-search {
   padding-left: 10px;
-  
 }
