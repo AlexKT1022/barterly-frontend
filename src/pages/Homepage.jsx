@@ -3,7 +3,7 @@ import { Link } from "react-router";
 const Homepage = () => {
   return (
     <>
-      <div className="flex flex-col justify-center items-center mx-auto">
+      <div className="flex flex-col justify-center items-center mx-auto h-200">
         <h1 className="font-bold w-lg text-center text-base/15 mb-5">
           Trade goods and services directly
         </h1>
@@ -12,7 +12,7 @@ const Homepage = () => {
           of money. Start trading today!
         </h2>
         <Link to="">
-          <button className="px-4 h-10 rounded-md bg-sky-500/75 text-white transition-colors duration-300 hover:bg-sky-700 shadow-sm mb-5">
+          <button className="px-4 h-10 rounded-md bg-zinc-800 text-white transition-colors duration-300 hover:bg-zinc-500 shadow-sm mb-5">
             Get Started
           </button>
         </Link>
@@ -24,7 +24,7 @@ const Homepage = () => {
               id="home-search"
             ></input>
             <Link to="">
-              <button className="px-8 h-10 rounded-md bg-sky-500/75 text-white transition-colors duration-300 hover:bg-sky-700 shadow-sm">
+              <button className="px-8 h-10 rounded-md bg-zinc-800 text-white transition-colors duration-300 hover:bg-zinc-500 shadow-sm">
                 Search
               </button>
             </Link>
