@@ -17,7 +17,7 @@ const ProfileCard = () => {
             since 2025. Fast shipping and excellent customer service.
           </div>
         </div>
-        <button className="bg-black text-white h-10 rounded-lg text-sm relative top-1">
+        <button className="bg-black text-white h-10 rounded-lg text-sm relative top-1 transition-colors duration-300 hover:bg-zinc-500">
           Edit Profile
         </button>
       </div>

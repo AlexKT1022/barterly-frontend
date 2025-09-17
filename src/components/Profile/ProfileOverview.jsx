@@ -58,7 +58,7 @@ const ProfileOverview = () => {
           {active === "reviews" && "Reviews"}
           {active === "settings" && "Settings"}
         </p>
-        <button className="bg-black text-white h-10 rounded-lg text-sm pl-2 pr-2 cursor-pointer">
+        <button className="bg-black text-white h-10 rounded-lg text-sm pl-2 pr-2 cursor-pointer transition-colors duration-300 hover:bg-zinc-500">
           Add New Product
         </button>
       </div>
