@@ -2,7 +2,7 @@ import { useState } from "react";
 import MyProducts from "./OverviewOptions/MyProducts";
 import RecentActivities from "./OverviewOptions/RecentActivities";
 import Reviews from "./OverviewOptions/Reviews";
-import Settings from "./OverviewOptions/Reviews copy";
+import Settings from "./OverviewOptions/Settings";
 
 const ProfileOverview = () => {
   const [active, setActive] = useState("myProducts");
