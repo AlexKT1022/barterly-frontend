@@ -5,7 +5,8 @@ import Homepage from "./pages/Homepage";
 import Profile from "./pages/Profile";
 import Categories from "./pages/Categories";
 import ProductDetails from "./pages/ProductDetails";
-
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
 
 const routes = [
   {
@@ -21,13 +22,18 @@ const routes = [
         Component: Profile,
       },
       {
-        path: 'categories',
+        path: "categories",
         Component: Categories,
       },
       {
         path: "product/:id",
         Component: ProductDetails,
       },
+      {
+        path: "login",
+        Component: Login,
+      },
+      { path: "register", Component: Register },
     ],
   },
 ];
