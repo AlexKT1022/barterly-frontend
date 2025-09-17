@@ -15,11 +15,12 @@ const Navbar = () => {
         </div>
         <div className="flex gap-5">
         </div>
+
         <div className="flex gap-5">
-          <button className="px-4 h-10 rounded-md bg-sky-500/75 text-white transition-colors duration-300 hover:bg-sky-700 shadow-sm">
+          <button className="px-4 h-10 rounded-md bg-zinc-800 text-white transition-colors duration-300 hover:bg-zinc-500 shadow-sm">
             Sign Up
           </button>
-          <button className="px-4 h-10 rounded-md border-2 border-zinc-400 transition-colors duration-300 hover:bg-sky-700 hover:text-white hover:border-transparent shadow-sm">
+          <button className="px-4 h-10 rounded-md border-1 border-zinc-500 transition-colors duration-300 hover:bg-zinc-500 hover:text-white hover:border-transparent shadow-sm">
             Login
           </button>
         </div>
