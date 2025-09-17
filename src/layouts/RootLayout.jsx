@@ -12,7 +12,7 @@ const RootLayout = () => {
           </div>
         </header>
 
-        <main className="flex-1 px-4">
+        <main className="max-w-7xl mx-auto flex-1 px-4">
           <Outlet />
         </main>
         <Footer />
