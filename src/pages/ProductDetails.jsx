@@ -2,18 +2,27 @@
 import React from 'react';
 import { useParams, Link } from 'react-router';
 
+import ProductGallery from '../components/Products/ProductGallery';
+import ProductInformation from '../components/Products/ProductInformation';
+import SimilarProducts from '../components/Products/SimilarProducts';
+import ProductOverview from '../components/Products/ProductOverview';
+
 const products = [
     {
         id: 1,
         title: 'iPhone 13 Pro Max',
-        name: 'iPhone 13 Pro Max',
+        price: 899,
+        originalPrice: 1099,
         category: 'Electronics',
         status: 'Available',
         condition: 'Like New',
         storage: '256GB',
+        color: "Blue",
+        network: "Unlocked",
         batteryHealth: '94%',
+        warranty: "None",
         description:
-            'Excellent condition iPhone 13 Pro Max with 256GB storage. Includes original box, charger, and unused EarPods.',
+            'Excellent condition iPhone 13 Pro Max with 256GB storage. Includes original box, charger, and unused EarPods. Battery health at 94%. No scratches or dents. Perfect for someone looking for a premium phone at a great price.',
         features: [
             '6.7-inch Super Retina XDR display',
             'A15 Bionic chip with 6-core CPU',
@@ -22,6 +31,10 @@ const products = [
             'Face ID for secure authentication',
             '5G connectivity',
         ],
+        views: 234,
+        watchers: 12,
+        posted: '3 days ago',
+        updated: '1 day ago',
         seller: {
             name: 'Sarah Johnson',
             rating: 4.9,
@@ -32,8 +45,15 @@ const products = [
         },
         images: [
             'https://m.media-amazon.com/images/I/51UuPZLMaCL._AC_SX679_.jpg',
+            'https://m.media-amazon.com/images/I/61dX5FZ6WNL._AC_SX679_.jpg',
+            'https://m.media-amazon.com/images/I/81RHHN4grXL._AC_SX679_.jpg'
         ],
-    },
+        similarProducts: [
+            { id: 2, name: 'iPhone 13', price: 699, image: 'https://m.media-amazon.com/images/I/61-r9zOKBCL._AC_SX679_.jpg' },
+            { id: 3, name: 'iPhone 12 Pro', price: 649, image: 'https://m.media-amazon.com/images/I/71ZOtNdaZCL._AC_SX679_.jpg' },
+            { id: 4, name: 'Samsung Galaxy S23', price: 749, image: 'https://m.media-amazon.com/images/I/71Sa3dqTqzL._AC_SX679_.jpg' }
+        ]
+    }
 ];
 
 const ProductDetails = () => {
@@ -42,57 +62,30 @@ const ProductDetails = () => {
 
     if (!product) {
         return (
-            <div className="text-center">
+            <div className="text-center p-8">
                 <h2 className="text-2xl font-semibold mb-4">Product not found</h2>
-                <Link to="/" className="text-blue-600 hover:underline">
-                    Go back to homepage
-                </Link>
+                <Link to="/" className="text-blue-600 hover:underline">Go back to homepage</Link>
             </div>
         );
     }
 
     return (
-        <div className="product-page flex flex-col md:flex-row p-6 gap-8">
-            <div className="image-gallery flex flex-col gap-4 md:w-1/3">
-                {product.images.map((src, index) => (
-                    <img
-                        key={index}
-                        src={src}
-                        alt={`Product view ${index + 1}`}
-                        className="flex items-center justify-center w-[400px] h-[500px] bg-gray-200"
-                    />
-                ))}
+        <div className="space-y-10 mt-10">
+            <Link
+                to={`/categories`}
+                className="bg-gray-200 text-blacktransition-colors duration-300 hover:bg-zinc-300 px-6 py-2 rounded shadow-sm"
+            >
+                ← Back to Products
+            </Link>
+            <div className="flex flex-col xl:flex-row p-6 gap-10 mt-10">
+                <ProductGallery images={product.images} />
+                <div className="flex flex-col gap-6 w-full xl:w-2/3">
+                    <ProductInformation product={product} />
+                </div>
+                <SimilarProducts similar={product.similarProducts} />
             </div>
-
-            <div className="product-info md:w-2/3">
-                <h1 className="text-3xl font-bold mb-2">{product.title}</h1>
-                <p className="mb-4 text-gray-700">{product.description}</p>
-
-                <h3 className="text-xl font-semibold mb-2">Key Features</h3>
-                <ul className="list-disc list-inside mb-6">
-                    {product.features.map((feature, idx) => (
-                        <li key={idx}>{feature}</li>
-                    ))}
-                </ul>
-
-                <div className="meta space-y-1 mb-6">
-                    <p><strong>Condition:</strong> {product.condition}</p>
-                    <p><strong>Battery Health:</strong> {product.batteryHealth}</p>
-                    <p><strong>Storage:</strong> {product.storage}</p>
-                    <p><strong>Status:</strong> {product.status}</p>
-                    <p><strong>Category:</strong> {product.category}</p>
-                </div>
-
-                <div className="seller-info border-t pt-4">
-                    <h3 className="text-xl font-semibold mb-2">Seller Information</h3>
-                    <p><strong>Name:</strong> {product.seller.name}</p>
-                    <p>
-                        <strong>Rating:</strong> {product.seller.rating} ⭐ ({product.seller.reviews} reviews)
-                    </p>
-                    <p><strong>Location:</strong> {product.seller.location}</p>
-                    <p><strong>Response Time:</strong> {product.seller.responseTime}</p>
-                    <p><strong>Member Since:</strong> {product.seller.memberSince}</p>
-                </div>
+            <div className="px-6">
+                <ProductOverview product={product} />
             </div>
         </div>
     );
