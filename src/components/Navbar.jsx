@@ -4,25 +4,16 @@ const Navbar = () => {
   return (
     <>
       <div className="flex justify-between items-center h-12">
-        <NavLink to="">
-          <div className="font-bold flex items-center text-lg">
-            <img
-              src="/bartley_outline.svg"
-              className="mr-1 h-6 w-auto hover-underline-animation"
-            />
-            Barterly
-          </div>
-        </NavLink>
+        <div className="font-bold flex items-center text-lg">
+          <img src="/bartley_outline.svg" className="mr-1 h-6 w-auto" />
+          <NavLink to="/"> Barterly </NavLink>
+        </div>
         <div className="flex gap-5 text-lg">
-          <NavLink to="">
-            <p className="hover-underline-animation">Explore</p>
-          </NavLink>
-          <NavLink to="">
-            <p className="hover-underline-animation">Categories</p>
-          </NavLink>
-          <NavLink to="">
-            <p className="hover-underline-animation">How It Works</p>
-          </NavLink>
+          <NavLink to="/explore" className="hover-underline-animation">Explore</NavLink>
+          <NavLink to="/categories" className="hover-underline-animation">Categories</NavLink>
+          <NavLink to="/how-it-works" className="hover-underline-animation">How It Works</NavLink>
+        </div>
+        <div className="flex gap-5">
         </div>
 
         <div className="flex gap-5">
