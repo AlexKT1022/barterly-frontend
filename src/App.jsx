@@ -10,6 +10,7 @@ import Register from './pages/auth/Register';
 import NotFoundPage from './pages/NotFoundPage';
 import postsLoader from './loaders/postsLoader';
 import postLoader from './loaders/postLoader';
+import HowItWorks from './pages/HowItWorks';
 
 const routes = [
   {
@@ -45,6 +46,10 @@ const routes = [
       {
         path: '*',
         Component: NotFoundPage,
+      },
+      {
+        path: '/how-it-works',
+        Component: HowItWorks
       },
     ],
   },
