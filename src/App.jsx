@@ -11,6 +11,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import postsLoader from './loaders/postsLoader';
 import postLoader from './loaders/postLoader';
 import HowItWorks from './pages/HowItWorks';
+import profileLoader from './loaders/profileLoader';
 
 const routes = [
   {
@@ -24,6 +25,7 @@ const routes = [
       {
         path: 'profile',
         Component: Profile,
+        loader: profileLoader,
       },
       {
         path: 'categories',
@@ -33,7 +35,7 @@ const routes = [
       {
         path: 'product/:id',
         Component: ProductDetails,
-        loader: postLoader
+        loader: postLoader,
       },
       {
         path: 'login',
@@ -49,7 +51,7 @@ const routes = [
       },
       {
         path: '/how-it-works',
-        Component: HowItWorks
+        Component: HowItWorks,
       },
     ],
   },
