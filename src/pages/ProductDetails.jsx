@@ -1,6 +1,6 @@
 // src/pages/ProductDetails.js
 import React from 'react';
-import { useParams, Link } from 'react-router';
+import { useParams, Link, useLoaderData } from 'react-router';
 
 import ProductGallery from '../components/Products/ProductGallery';
 import ProductInformation from '../components/Products/ProductInformation';
@@ -74,6 +74,8 @@ const products = [
 const ProductDetails = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === Number(id));
+
+  console.log(useLoaderData());
 
   if (!product) {
     return (
