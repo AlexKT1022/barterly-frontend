@@ -20,6 +20,9 @@ const Navbar = () => {
           <NavLink to="/how-it-works" className="hover-underline-animation">
             How It Works
           </NavLink>
+          <NavLink to="/about" className="hover-underline-animation">
+            About
+          </NavLink>
         </div>
         <div className="flex gap-5"></div>
 
@@ -41,6 +44,7 @@ const Navbar = () => {
                   Login
                 </button>
               </NavLink>
+              
             </>
           )}
         </div>
