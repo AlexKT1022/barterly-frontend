@@ -1,6 +1,7 @@
 # Barterly Frontend
 
 ## Folder Structure
+
 ```
 ├── frontend/
 │   ├── public/

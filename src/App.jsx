@@ -1,16 +1,19 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter } from 'react-router';
 
-import RootLayout from "./layouts/RootLayout";
-import Homepage from "./pages/Homepage";
-import Profile from "./pages/Profile";
-import Categories from "./pages/Categories";
-import ProductDetails from "./pages/ProductDetails";
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
+import RootLayout from './layouts/RootLayout';
+import Homepage from './pages/Homepage';
+import Profile from './pages/Profile';
+import Categories from './pages/Categories';
+import ProductDetails from './pages/ProductDetails';
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
+import NotFoundPage from './pages/NotFoundPage';
+import postsLoader from './loaders/postsLoader';
+import postLoader from './loaders/postLoader';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     Component: RootLayout,
     children: [
       {
@@ -18,22 +21,31 @@ const routes = [
         Component: Homepage,
       },
       {
-        path: "profile",
+        path: 'profile',
         Component: Profile,
       },
       {
-        path: "categories",
+        path: 'categories',
         Component: Categories,
+        loader: postsLoader,
       },
       {
-        path: "product/:id",
+        path: 'product/:id',
         Component: ProductDetails,
+        loader: postLoader
       },
       {
-        path: "login",
+        path: 'login',
         Component: Login,
       },
-      { path: "register", Component: Register },
+      {
+        path: 'register',
+        Component: Register,
+      },
+      {
+        path: '*',
+        Component: NotFoundPage,
+      },
     ],
   },
 ];
