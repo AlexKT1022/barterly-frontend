@@ -81,8 +81,8 @@ const ProductDetails = () => {
     return (
       <div className='text-center p-8'>
         <h2 className='text-2xl font-semibold mb-4'>Product not found</h2>
-        <Link to='/' className='text-blue-600 hover:underline'>
-          Go back to homepage
+        <Link to='/categories' className='text-blue-600 hover:underline'>
+          Go back to Categories
         </Link>
       </div>
     );
