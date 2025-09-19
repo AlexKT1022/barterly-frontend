@@ -35,16 +35,15 @@ const Navbar = () => {
           ) : (
             <>
               <NavLink to="/register">
-                <button className="px-4 h-10 rounded-md bg-zinc-800 text-white transition-colors duration-300 hover:bg-zinc-500 shadow-sm">
+                <button className="px-4 h-10 rounded-md bg-zinc-800 text-white transition-colors duration-300 hover:bg-zinc-500">
                   Sign Up
                 </button>
               </NavLink>
               <NavLink to="/login">
-                <button className="px-4 h-10 rounded-md border-1 border-zinc-500 transition-colors duration-300 hover:bg-zinc-500 hover:text-white hover:border-transparent shadow-sm">
+                <button className="px-4 h-10 rounded-md border-1 border-zinc-500 transition-colors duration-300 hover:bg-zinc-500 hover:text-white hover:border-transparent">
                   Login
                 </button>
               </NavLink>
-              
             </>
           )}
         </div>
