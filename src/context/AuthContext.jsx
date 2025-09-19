@@ -11,7 +11,6 @@ export const AuthProvider = ({ children }) => {
 
   const saveToken = (token) => {
     setToken(token);
-
     sessionStorage.setItem("token", token);
   };
 

@@ -2,6 +2,8 @@ import ProfileCard from "../components/Profile/ProfileCard";
 import ProfileStats from "../components/Profile/ProfileStats";
 import ProfileOverview from "../components/Profile/ProfileOverview";
 
+
+
 const Profile = () => {
   return (
     <>
