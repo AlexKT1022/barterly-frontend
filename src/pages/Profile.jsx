@@ -2,19 +2,21 @@ import ProfileCard from "../components/Profile/ProfileCard";
 import ProfileStats from "../components/Profile/ProfileStats";
 import ProfileOverview from "../components/Profile/ProfileOverview";
 
-
+import { useLoaderData } from "react-router";
 
 const Profile = () => {
+  const profileData = useLoaderData() || [];
+  console.log(profileData);
   return (
     <>
       {/* Profile */}
       <ProfileCard />
 
       {/* Stats */}
-      <ProfileStats />
+      <ProfileStats profileStats={profileData.userPosts} />
 
       {/* Overview*/}
-      <ProfileOverview />
+      <ProfileOverview profileData={profileData}/>
     </>
   );
 };

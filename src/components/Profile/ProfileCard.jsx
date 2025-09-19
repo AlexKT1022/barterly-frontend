@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router";
 
 const ProfileCard = () => {
   const profileData = useLoaderData() || [];
-  console.log(profileData);
+
   return (
     <>
       <div className="user-profile mx-auto mt-5 h-42 border rounded-lg border-zinc-300 grid grid-cols-[100px_minmax(900px,_1fr)_100px] gap-5 p-5">
@@ -16,11 +16,11 @@ const ProfileCard = () => {
 
         <div className="user-details flex flex-col justify-center">
           <p className="text-lg font-semibold">{profileData.username}</p>
-          <p className="text-zinc-600 mb-3">
-            Member Since: &nbsp;
-            <span className="italic">{profileData.created_at.slice(0, 4)}</span>
+          <p className="text-zinc-600 mb-2 italic">
+            Member Since {profileData.created_at.slice(0, 4)}
           </p>
           <div className="flex text-xs items-center mb-2">
+            <p>{profileData.location}</p>
             {/* <p className="bg-black text-white rounded-full pl-2 pr-2 pt-1 pb-1">
               Verified Seller
             </p> */}
