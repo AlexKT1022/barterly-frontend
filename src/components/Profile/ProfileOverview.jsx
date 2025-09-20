@@ -7,6 +7,7 @@ import Settings from "./OverviewOptions/Settings";
 const ProfileOverview = ({ profileData }) => {
   const [active, setActive] = useState("myProducts");
   const data = profileData;
+
   return (
     <>
       <div className="bg-zinc-200 w-full h-8 rounded-full mt-5 flex justify-between pt-1 pb-1 pl-1 pr-1">
@@ -71,7 +72,7 @@ const ProfileOverview = ({ profileData }) => {
         )}
       </div>
       <div>{active === "reviews" && <Reviews />}</div>
-      <div>{active === "settings" && <Settings />}</div>
+      <div>{active === "settings" && <Settings meData={data} />}</div>
     </>
   );
 };
