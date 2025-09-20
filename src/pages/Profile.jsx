@@ -6,7 +6,7 @@ import { useLoaderData } from "react-router";
 
 const Profile = () => {
   const profileData = useLoaderData() || [];
-  console.log(profileData);
+  // console.log(profileData.userActivities);
   return (
     <>
       {/* Profile */}
@@ -16,7 +16,7 @@ const Profile = () => {
       <ProfileStats profileStats={profileData.userPosts} />
 
       {/* Overview*/}
-      <ProfileOverview profileData={profileData}/>
+      <ProfileOverview profileData={profileData} />
     </>
   );
 };

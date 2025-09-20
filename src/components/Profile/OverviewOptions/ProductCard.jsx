@@ -4,7 +4,7 @@ const ProductCard = ({ post }) => {
     pending: "bg-yellow-100 text-yellow-600",
     closed: "bg-red-100 text-red-600",
   };
-  console.log(post.items[0]?.imageUrl);
+
   return (
     <div className="flex flex-col rounded-lg border border-zinc-300 w-80 h-80 p-5 hover:shadow-md transition-shadow">
       <img

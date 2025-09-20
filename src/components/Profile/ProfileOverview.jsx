@@ -65,7 +65,11 @@ const ProfileOverview = ({ profileData }) => {
       <div>
         {active === "myProducts" && <MyProducts products={data.userPosts} />}
       </div>
-      <div>{active === "recentActivities" && <RecentActivities />}</div>
+      <div>
+        {active === "recentActivities" && (
+          <RecentActivities activities={data.userActivities} />
+        )}
+      </div>
       <div>{active === "reviews" && <Reviews />}</div>
       <div>{active === "settings" && <Settings />}</div>
     </>

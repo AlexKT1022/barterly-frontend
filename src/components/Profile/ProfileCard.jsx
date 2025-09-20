@@ -16,9 +16,7 @@ const ProfileCard = () => {
 
         <div className="user-details flex flex-col justify-center">
           <p className="text-lg font-semibold">{profileData.username}</p>
-          <p className="text-zinc-600 mb-2 italic">
-            Member Since {profileData.created_at.slice(0, 4)}
-          </p>
+
           <div className="flex text-xs items-center mb-2">
             <p>{profileData.location}</p>
             {/* <p className="bg-black text-white rounded-full pl-2 pr-2 pt-1 pb-1">
@@ -26,6 +24,9 @@ const ProfileCard = () => {
             </p> */}
             {/* <p>⭐ 4.7 (127 reviews)</p> */}
           </div>
+          <p className="text-zinc-600 mb-2 italic">
+            Member Since {profileData.created_at.slice(0, 4)}
+          </p>
           {/* <div>
             Experienced seller with a passion for tech and collectibles. Member
             since 2025. Fast shipping and excellent customer service.

@@ -1,5 +1,6 @@
 const ProfileStats = ({ profileStats }) => {
   const itemsListed = profileStats.total;
+  console.log(profileStats);
   return (
     <>
       <div className="flex mt-5 gap-5 justify-center">
