@@ -1,4 +1,8 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-xs: 30rem; /* Creates a new `xs` breakpoint at 480px */
+}
 
 * {
   /* margin: 0; */
@@ -19,7 +23,7 @@
 }
 
 .hover-underline-animation::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
