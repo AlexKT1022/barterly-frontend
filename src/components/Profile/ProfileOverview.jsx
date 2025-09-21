@@ -1,71 +1,78 @@
-import { useState } from 'react';
-import MyProducts from './OverviewOptions/MyProducts';
-import RecentActivities from './OverviewOptions/RecentActivities';
-import Reviews from './OverviewOptions/Reviews';
-import Settings from './OverviewOptions/Settings';
+import { useState } from "react";
+import MyProducts from "./OverviewOptions/MyProducts";
+import RecentActivities from "./OverviewOptions/RecentActivities";
+import Reviews from "./OverviewOptions/Reviews";
+import Settings from "./OverviewOptions/Settings";
 
-const ProfileOverview = () => {
-  const [active, setActive] = useState('myProducts');
+const ProfileOverview = ({ profileData }) => {
+  const [active, setActive] = useState("myProducts");
+  const data = profileData;
 
   return (
     <>
-      <div className='bg-zinc-200 w-full h-8 rounded-full mt-5 flex justify-between pt-1 pb-1 pl-1 pr-1'>
+      <div className="bg-zinc-200 w-full h-8 rounded-full mt-5 flex justify-between pt-1 pb-1 pl-1 pr-1">
         <button
-          onClick={() => setActive('myProducts')}
+          onClick={() => setActive("myProducts")}
           className={`text-sm rounded-full w-60 font-semibold cursor-pointer transition-all duration-500 ${
-            active === 'myProducts'
-              ? 'bg-white'
-              : 'bg-transparent hover:bg-zinc-400 hover:text-white'
+            active === "myProducts"
+              ? "bg-white"
+              : "bg-transparent hover:bg-zinc-400 hover:text-white"
           }`}
         >
           My Products
         </button>
         <button
-          onClick={() => setActive('recentActivities')}
+          onClick={() => setActive("recentActivities")}
           className={`text-sm rounded-full w-60 font-semibold cursor-pointer transition-all duration-500 ${
-            active === 'recentActivities'
-              ? 'bg-white'
-              : 'bg-transparent hover:bg-zinc-400 hover:text-white'
+            active === "recentActivities"
+              ? "bg-white"
+              : "bg-transparent hover:bg-zinc-400 hover:text-white"
           }`}
         >
           Recent Activity
         </button>
         <button
-          onClick={() => setActive('reviews')}
+          onClick={() => setActive("reviews")}
           className={`text-sm rounded-full w-60 font-semibold cursor-pointer transition-all duration-500 ${
-            active === 'reviews'
-              ? 'bg-white'
-              : 'bg-transparent hover:bg-zinc-400 hover:text-white'
+            active === "reviews"
+              ? "bg-white"
+              : "bg-transparent hover:bg-zinc-400 hover:text-white"
           }`}
         >
           Reviews
         </button>
         <button
-          onClick={() => setActive('settings')}
+          onClick={() => setActive("settings")}
           className={`text-sm rounded-full w-60 font-semibold cursor-pointer transition-all duration-500 ${
-            active === 'settings'
-              ? 'bg-white'
-              : 'bg-transparent hover:bg-zinc-400 hover:text-white'
+            active === "settings"
+              ? "bg-white"
+              : "bg-transparent hover:bg-zinc-400 hover:text-white"
           }`}
         >
           Settings
         </button>
       </div>
-      <div className='mt-5 flex justify-between items-center'>
-        <p className='font-semibold'>
-          {active === 'myProducts' && 'My Products'}
-          {active === 'recentActivities' && 'Recent Activities'}
-          {active === 'reviews' && 'Reviews'}
-          {active === 'settings' && 'Settings'}
+      <div className="mt-5 flex justify-between items-center">
+        <p className="font-semibold">
+          {active === "myProducts" && "My Products"}
+          {active === "recentActivities" && "Recent Activities"}
+          {active === "reviews" && "Reviews"}
+          {active === "settings" && "Settings"}
         </p>
-        <button className='bg-black text-white h-10 rounded-lg text-sm pl-2 pr-2 cursor-pointer transition-colors duration-300 hover:bg-zinc-500'>
+        <button className="bg-black text-white h-10 rounded-lg text-sm pl-2 pr-2 cursor-pointer transition-colors duration-300 hover:bg-zinc-500">
           Add New Product
         </button>
       </div>
-      <div>{active === 'myProducts' && <MyProducts />}</div>
-      <div>{active === 'recentActivities' && <RecentActivities />}</div>
-      <div>{active === 'reviews' && <Reviews />}</div>
-      <div>{active === 'settings' && <Settings />}</div>
+      <div>
+        {active === "myProducts" && <MyProducts products={data.userPosts} />}
+      </div>
+      <div>
+        {active === "recentActivities" && (
+          <RecentActivities activities={data.userActivities} />
+        )}
+      </div>
+      <div>{active === "reviews" && <Reviews />}</div>
+      <div>{active === "settings" && <Settings meData={data} />}</div>
     </>
   );
 };

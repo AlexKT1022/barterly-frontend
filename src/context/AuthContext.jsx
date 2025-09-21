@@ -11,7 +11,6 @@ export const AuthProvider = ({ children }) => {
 
   const saveToken = (token) => {
     setToken(token);
-
     sessionStorage.setItem("token", token);
   };
 
@@ -22,9 +21,13 @@ export const AuthProvider = ({ children }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
       });
+      if (!res.ok) {
+        const message = await res.text();
+        throw new Error(message || "Username taken.");
+      }
       const data = await res.json();
-
       saveToken(data.token);
+      return data;
     } catch (err) {
       console.error(err);
     }
@@ -37,11 +40,17 @@ export const AuthProvider = ({ children }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
       });
-      const data = await res.json();
 
+      if (!res.ok) {
+        const message = await res.text();
+        throw new Error(message || "Login failed");
+      }
+      const data = await res.json();
       saveToken(data.token);
+      return data;
     } catch (err) {
       console.error(err);
+      throw err;
     }
   };
 
