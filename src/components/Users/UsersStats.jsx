@@ -31,8 +31,6 @@ const UsersStats = ({ stats }) => {
     return count;
   };
 
-  console.log(monthlyPosts(allPosts));
-
   return (
     <>
       <div className="mt-3 flex justify-center gap-5">
