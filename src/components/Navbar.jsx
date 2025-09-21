@@ -11,9 +11,9 @@ const Navbar = () => {
             <img src="/bartley_outline.svg" className="mr-1 h-6 w-auto" />
             <NavLink to="/"> Barterly </NavLink>
           </div>
-          <div className="flex w-full justify-center gap-5 lg:text-lg md:text-md md:auto">
-            <NavLink to="/explore" className="hover-underline-animation">
-              Explore
+          <div className="flex w-full justify-center gap-5 lg:text-lg md:text-md md:auto ">
+            <NavLink to="/users" className="hover-underline-animation">
+              Community
             </NavLink>
             <NavLink to="/categories" className="hover-underline-animation">
               Categories

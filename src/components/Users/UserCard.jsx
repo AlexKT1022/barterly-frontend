@@ -17,7 +17,7 @@ const UserCard = ({ user, posts }) => {
 
   return (
     <>
-      <div className="w-84 h-75 border border-zinc-300 rounded-lg p-5">
+      <div className="w-84 h-75 border border-zinc-300 rounded-lg p-5 hover:shadow-xl transition-all duration-300">
         <div className="flex">
           <img
             src={user.profile_image_url}
