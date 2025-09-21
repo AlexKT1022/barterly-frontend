@@ -27,7 +27,7 @@ const Navbar = () => {
           </div>
           <div className="flex gap-5"></div>
 
-          <div className="flex gap-5 justify-center">
+          <div className="flex gap-5 justify-center mt-1">
             {token ? (
               <>
                 <NavLink to="/profile">Profile</NavLink>
