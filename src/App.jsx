@@ -16,6 +16,7 @@ import Users from "./pages/Users";
 import profileLoader from "./loaders/profileLoader";
 import postsLoader from "./loaders/postsLoader";
 import postLoader from "./loaders/postLoader";
+import usersLoader from "./loaders/usersLoader";
 
 const routes = [
   {
@@ -30,7 +31,7 @@ const routes = [
       { path: "register", Component: Register },
       { path: "/how-it-works", Component: HowItWorks },
       { path: "/about", Component: About },
-      { path: "users", Component: Users },
+      { path: "users", Component: Users, loader: usersLoader },
       { path: "*", Component: NotFoundPage },
     ],
   },

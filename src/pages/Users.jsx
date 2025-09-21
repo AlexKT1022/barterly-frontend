@@ -1,4 +1,9 @@
+import { useLoaderData } from "react-router";
+import UsersStats from "../components/Users/UsersStats";
+
 const Users = () => {
+  const usersData = useLoaderData() || [];
+
   return (
     <>
       <div className="mt-5 ">
@@ -16,22 +21,8 @@ const Users = () => {
           </button>
         </form>
       </div>
-      <div className="mt-3 flex justify-center gap-5">
-        <div className="h-32 w-48 border border-zinc-300 px-5 py-6 rounded-md flex flex-col justify-between">
-          <p className="text-sm">Total Users</p>
-          <p className="font-semibold text-xl">2,123</p>
-        </div>
-
-        <div className="h-32 w-48 border border-zinc-300 px-5 py-6 rounded-md flex flex-col justify-between">
-          <p className="text-sm">Active Traders</p>
-          <p className="font-semibold text-xl">1,024</p>
-        </div>
-
-        <div className="h-32 w-48 border border-zinc-300 px-5 py-6 rounded-md flex flex-col justify-between">
-          <p className="text-sm">New This Month</p>
-          <p className="font-semibold text-xl">1,024</p>
-        </div>
-      </div>
+      {/* Users Stats */}
+      <UsersStats stats={usersData} />
       {/* Users */}
       <div className="mt-5 grid grid-cols-3 gap-5">
         <div className="w-84 h-75 border border-zinc-300 rounded-lg p-5">
