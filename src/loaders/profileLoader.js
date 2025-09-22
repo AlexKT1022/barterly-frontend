@@ -1,7 +1,7 @@
 const fetchActivitiesByUserId = async () => {
-  const token = sessionStorage.getItem('token');
+  const token = sessionStorage.getItem("token");
   try {
-    const res = await fetch('http://localhost:3000/api/users/me/activity', {
+    const res = await fetch("http://localhost:3000/api/users/me/activity", {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await res.json();
@@ -12,9 +12,9 @@ const fetchActivitiesByUserId = async () => {
 };
 
 const fetchPostsByUserId = async () => {
-  const token = sessionStorage.getItem('token');
+  const token = sessionStorage.getItem("token");
   try {
-    const res = await fetch('http://localhost:3000/api/users/me/posts', {
+    const res = await fetch("http://localhost:3000/api/users/me/posts", {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await res.json();
@@ -27,8 +27,8 @@ const fetchPostsByUserId = async () => {
 
 const profileLoader = async () => {
   try {
-    const token = sessionStorage.getItem('token');
-    const res = await fetch('http://localhost:3000/api/users/me', {
+    const token = sessionStorage.getItem("token");
+    const res = await fetch("http://localhost:3000/api/users/me", {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await res.json();
@@ -36,6 +36,8 @@ const profileLoader = async () => {
     const userActivities = await fetchActivitiesByUserId();
     const userPosts = await fetchPostsByUserId();
     const userData = { ...data, userPosts, userActivities };
+
+    console.log(userData);
 
     return userData;
   } catch (err) {

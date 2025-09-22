@@ -1,4 +1,4 @@
-const ProfileStats = ({ profileStats }) => {
+const UserProfileStats = ({ profileStats }) => {
   const totalItems = profileStats?.userPosts?.total ?? 0;
   const mePosts = profileStats?.userPosts?.posts ?? [];
 
@@ -44,4 +44,4 @@ const ProfileStats = ({ profileStats }) => {
   );
 };
 
-export default ProfileStats;
+export default UserProfileStats;

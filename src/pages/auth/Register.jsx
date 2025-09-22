@@ -9,10 +9,13 @@ const Register = () => {
   const [error, setError] = useState(null);
 
   const handleRegister = async (FormData) => {
+    const first_name = FormData.get("firstname");
+    const last_name = FormData.get("lastname");
     const username = FormData.get("username");
     const password = FormData.get("password");
+    const location = FormData.get("location");
 
-    const credentials = { username, password };
+    const credentials = { first_name, last_name, username, password, location };
 
     try {
       await register(credentials);
@@ -31,24 +34,46 @@ const Register = () => {
             Already have an account?
           </Link>
           <form action={handleRegister}>
-            <input
-              type="text"
-              name="username"
-              placeholder="username"
-              className="border rounded-lg p-2 border-zinc-300 mb-3 mr-3"
-              required
-            ></input>
-            <input
-              type="text"
-              name="password"
-              placeholder="password"
-              className="border rounded-lg p-2 border-zinc-300 mb-3"
-              required
-            ></input>
+            <div className="flex mx-auto gap-2">
+              <input
+                type="text"
+                name="firstname"
+                placeholder="first name"
+                className="border rounded-lg p-2 border-zinc-300 mb-3 w-full md:w-1/2"
+                required
+              ></input>
+              <input
+                type="text"
+                name="lastname"
+                placeholder="last name"
+                className="border rounded-lg p-2 border-zinc-300 mb-3 w-full md:w-1/2"
+                required
+              ></input>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="username"
+                placeholder="username"
+                className="border rounded-lg p-2 border-zinc-300 mb-3 mr-3 w-full"
+                required
+              ></input>
+            </div>
+            <div>
+              {" "}
+              <input
+                type="text"
+                name="password"
+                placeholder="password"
+                className="border rounded-lg p-2 border-zinc-300 mb-3 w-full"
+                required
+              ></input>
+            </div>
+
             <select
-              name="state"
+              name="location"
               className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="state"
+              id="location"
               required
             >
               <option value="" selected disabled hidden>

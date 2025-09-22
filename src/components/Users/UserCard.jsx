@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const UserCard = ({ user, posts }) => {
   const sortPosts = (postData) => {
     let count = 0;
@@ -12,6 +14,7 @@ const UserCard = ({ user, posts }) => {
     const year = normalize.getFullYear();
     return year;
   };
+  console.log(user);
   //   console.log(posts);
   //   console.log(sortPosts(posts));
 
@@ -43,9 +46,11 @@ const UserCard = ({ user, posts }) => {
             <p>{joinedDate(user.created_at)}</p>
           </div>
           <div className="flex justify-evenly mt-5">
-            <button className="px-4 h-10 w-32 rounded-md border-1 border-zinc-500 transition-colors duration-300 hover:bg-zinc-500 hover:text-white hover:border-transparent">
-              View Profile
-            </button>
+            <Link to={`/user/${user.id}`}>
+              <button className="px-4 h-10 w-32 rounded-md border-1 border-zinc-500 transition-colors duration-300 hover:bg-zinc-500 hover:text-white hover:border-transparent">
+                View Profile
+              </button>
+            </Link>
             <button className="px-4 h-10 w-32 rounded-md bg-zinc-800 text-white transition-colors duration-300 hover:bg-zinc-500">
               Message
             </button>

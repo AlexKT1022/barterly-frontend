@@ -1,26 +1,50 @@
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router";
+import { useLoaderData } from "react-router";
+
+import Pagination from "../components/Pagination";
+import ProductsList from "../components/Categories/ProductsList";
+import ProductCard from "../components/Categories/ProductCard";
+import CategorySelection from "../components/Categories/CategorySelection";
+
+import {
+  FaTv,
+  FaTshirt,
+  FaBook,
+  FaHome,
+  FaFootballBall,
+  FaCar,
+  FaGamepad,
+  FaRegGem,
+  FaPencilRuler,
+  FaCat,
+  FaBabyCarriage,
+  FaGuitar,
+  FaPaintBrush,
+  FaWrench,
+  FaCouch,
+  FaPeopleCarry,
+} from "react-icons/fa";
 
 const Categories = () => {
   const categories = [
-    { name: "Electronics" },
-    { name: "Clothing" },
-    { name: "Books" },
-    { name: "Home & Garden" },
-    { name: "Sports" },
-    { name: "Automotive" },
-    { name: "Toys & Games" },
-    { name: "Jewelry & Accessories" },
-    { name: "Office Supplies" },
-    { name: "Pet Supplies" },
-    { name: "Baby Products" },
-    { name: "Groceries" },
-    { name: "Music & Instruments" },
-    { name: "Art & Craft Supplies" },
-    { name: "Tools & Hardware" },
-    { name: "Furniture" },
+    { name: "Electronics", icon: <FaTv /> },
+    { name: "Clothing", icon: <FaTshirt /> },
+    { name: "Books", icon: <FaBook /> },
+    { name: "Home & Garden", icon: <FaHome /> },
+    { name: "Sports", icon: <FaFootballBall /> },
+    { name: "Automotive", icon: <FaCar /> },
+    { name: "Toys & Games", icon: <FaGamepad /> },
+    { name: "Jewelry & Accessories", icon: <FaRegGem /> },
+    { name: "Office Supplies", icon: <FaPencilRuler /> },
+    { name: "Pet Supplies", icon: <FaCat /> },
+    { name: "Baby Products", icon: <FaBabyCarriage /> },
+    { name: "Music & Instruments", icon: <FaGuitar /> },
+    { name: "Art & Craft Supplies", icon: <FaPaintBrush /> },
+    { name: "Tools & Hardware", icon: <FaWrench /> },
+    { name: "Furniture", icon: <FaCouch /> },
+    { name: "Services", icon: <FaPeopleCarry /> },
   ];
-
   const products = [
     {
       id: 1,
@@ -122,39 +146,47 @@ const Categories = () => {
         "https://images.unsplash.com/photo-1602810316636-fd3cba6004a4?auto=format&fit=crop&w=500&q=60",
     },
   ];
-
-  // Filter States
+  // Filters
   const [searchProducts, setSearchProducts] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
-
-  const filteredProducts = products.filter((product) => {
-    const matchesSearch = product.name
-      .toLowerCase()
-      .includes(searchProducts.toLowerCase());
-    const matchesCategory = selectedCategory
-      ? product.category === selectedCategory
-      : true;
-    const matchesStatus = selectedStatus ? product.status === selectedStatus : true;
-
-    return matchesSearch && matchesCategory && matchesStatus;
-  });
-
+  // Pagination
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(8);
+  // Filtered list
+  const filteredProducts = useMemo(() => {
+    const q = searchProducts.toLowerCase();
+    return products.filter((p) => {
+      const matchesSearch = p.name.toLowerCase().includes(q);
+      const matchesCategory = selectedCategory
+        ? p.category === selectedCategory
+        : true;
+      const matchesStatus = selectedStatus ? p.status === selectedStatus : true;
+      return matchesSearch && matchesCategory && matchesStatus;
+    });
+  }, [products, searchProducts, selectedCategory, selectedStatus]);
+  // Reset to page 1 if filters/pageSize change
+  useEffect(() => {
+    setPage(1);
+  }, [searchProducts, selectedCategory, selectedStatus, pageSize]);
+  // Slice for current page
+  const total = filteredProducts.length;
+  const start = (page - 1) * pageSize;
+  const pageItems = filteredProducts.slice(start, start + pageSize);
   const handleCategoryClick = (categoryName) => {
     setSelectedCategory((prev) => (prev === categoryName ? "" : categoryName));
   };
 
-  return (
-    <div className="p-6 max-w-6xl mx-auto text-gray-800">
-      {/* Header */}
+  const postData = useLoaderData() || [];
 
+  return (
+    <div className="mx-auto md:max-w-3xl lg:max-w-6xl text-gray-800">
+      {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <h2 className="text-lg font-semibold">Product Marketplace</h2>
       </div>
-
       {/* Search + Filters */}
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
-
         <input
           type="text"
           placeholder="Search products..."
@@ -168,8 +200,8 @@ const Categories = () => {
           onChange={(e) => setSelectedCategory(e.target.value)}
         >
           <option value="">Select category</option>
-          {categories.map((c, index) => (
-            <option key={index} value={c.name}>
+          {categories.map((c, i) => (
+            <option key={i} value={c.name}>
               {c.name}
             </option>
           ))}
@@ -185,77 +217,60 @@ const Categories = () => {
           <option value="Pending">Pending</option>
         </select>
       </div>
+      {/* Category Options */}
+      <div className="mb-8 hidden md:block">
+        <h3 className="font-semibold mb-4">Browse Categories</h3>
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-2">
+          {categories.map((c, i) => (
+            <div
+              key={i}
+              onClick={() => handleCategoryClick(c.name)}
+              className={`flex-shrink-0 w-24 border rounded flex flex-col items-center justify-center p-4 cursor-pointer transition hover:bg-gray-100 snap-start
+                ${
+                  selectedCategory === c.name ? "bg-sky-100 border-sky-400" : ""
+                }`}
+            >
+              {c.icon}
 
-      {/* Category Cards */}
-
-<div className="mb-8 hidden md:block">
-  <h3 className="font-semibold mb-4">Browse Categories</h3>
-  
-  {/* Scrollable container with snap */}
-  <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-2">
-    {categories.map((c, index) => (
-      <div
-        key={index}
-        onClick={() => handleCategoryClick(c.name)}
-        className={`flex-shrink-0 w-24 border rounded flex flex-col items-center justify-center p-4 cursor-pointer transition hover:bg-gray-100 snap-start
-          ${selectedCategory === c.name ? 'bg-sky-100 border-sky-400' : ''}`}
-      >
-        <img
-          src="src/assets/electronics.png"
-          alt={c.name}
-          className="w-12 h-12 object-contain mb-2"
-        />
-        <span className="text-sm text-center">{c.name}</span>
+              {/* <img
+                src="src/assets/electronics.png"
+                alt={c.name}
+                className="w-12 h-12 object-contain mb-2"
+              /> */}
+              <span className="text-sm text-center">{c.name}</span>
+            </div>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
-      {/* Product Grid */}
+      {/* Product Grid + Pagination */}
       <div>
         <h3 className="font-semibold mb-4">Recent Products</h3>
-        {filteredProducts.length === 0 ? (
+        {pageItems.length === 0 ? (
           <div className="text-gray-500">No products match your filters.</div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map((p) => (
-              <div
-                key={p.id}
-                className="border rounded-lg p-4 flex flex-col justify-center"
-              >
-                <div className='grid place-items-center'>
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    className="h-30 w-50% object-cover rounded mb-3 bg-gray-100"
-                  />
-                  <h4 className="font-semibold">{p.name}</h4>
-                  <div className="text-sm text-gray-500">{p.category}</div>
-                  <div
-                    className={`mt-1 text-xs inline-block px-2 py-1 rounded 
-                      ${
-                        p.status === 'Available'
-                          ? 'bg-green-100 text-green-600'
-                          : p.status === 'Sold'
-                          ? 'bg-red-100 text-red-600'
-                          : 'bg-yellow-100 text-yellow-600'
-                      }`}
-                  >
-                    {p.status}
-                  </div>
-                </div>
-                <Link
-                  to={`/product/${p.id}`}
-                  className="block mt-4 text-center px-4 h-10 rounded-md bg-sky-500/75 text-white transition-colors duration-300 hover:bg-sky-700 shadow-sm"
-                >
-                  View Details
-                </Link>
-              </div>
-            ))}
-          </div>
+          <>
+            <ProductsList posts={postData} />
+
+            {/* Reusable Pagination */}
+            <Pagination
+              className="mt-6"
+              page={page}
+              pageSize={pageSize}
+              total={total}
+              onPageChange={setPage}
+              onPageSizeChange={(n) => {
+                setPageSize(n);
+                setPage(1);
+              }}
+              /* pageSizeOptions omitted to use component default [4,8,12,16] */
+              siblingCount={1}
+              showSummary
+              showPageSize
+            />
+          </>
         )}
       </div>
     </div>
   );
 };
-
 export default Categories;
