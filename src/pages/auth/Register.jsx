@@ -1,10 +1,12 @@
 import { Link, useNavigate } from "react-router";
+import { useState } from "react";
 import { useAuth } from "/src/context/AuthContext.jsx";
 import states from "./usStates.js";
 
 const Register = () => {
   const navigate = useNavigate();
   const { register } = useAuth();
+  const [error, setError] = useState(null);
 
   const handleRegister = async (FormData) => {
     const username = FormData.get("username");
@@ -12,9 +14,12 @@ const Register = () => {
 
     const credentials = { username, password };
 
-    await register(credentials);
-
-    navigate("/profile");
+    try {
+      await register(credentials);
+      navigate("/profile");
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
@@ -57,9 +62,13 @@ const Register = () => {
                 );
               })}
             </select>
-            <button className="bg-zinc-800 text-white p-3 rounded-lg mt-5 hover:bg-zinc-500 duration-300">
+            <button
+              type="submit"
+              className="bg-zinc-800 text-white p-3 rounded-lg mt-5 hover:bg-zinc-500 duration-300"
+            >
               Register
             </button>
+            {error && <output>{error}</output>}
           </form>
         </div>
       </div>
