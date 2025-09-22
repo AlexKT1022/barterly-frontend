@@ -1,11 +1,11 @@
 const Settings = ({ meData }) => {
   return (
     <>
-      <div className="border border-zinc-300 w-full mt-5 p-5 rounded-lg">
+      <div className="flex flex-col border border-zinc-300 mt-5 p-5 rounded-lg">
         <p className="mb-2">Personal Information</p>
         {/* Profile photo  */}
-        <div className="grid grid-cols-[200px_minmax(900px,_1fr)] gap-5">
-          <div className="w-50 h-full p-2 border border-zinc-300 rounded-lg flex flex-col justify-between items-center">
+        <div className="md:grid md:grid-cols-[200px_minmax(900px,_1fr)] gap-5">
+          <div className="md:w-50 h-full p-2 border border-zinc-300 rounded-lg flex flex-col justify-between items-center">
             <img
               src={meData.profile_image_url}
               className="w-30 h-30 mt-10 rounded-full bg-black"
@@ -17,22 +17,22 @@ const Settings = ({ meData }) => {
 
           {/* Personal Info */}
           <div>
-            <form action="" className="">
-              <div className="flex justify-between">
-                <label htmlFor="" className="">
+            <form action="" className="flex flex-col">
+              <div className="md:flex-row justify-between">
+                <label>
                   First Name
                   <input
                     type="text"
                     placeholder="Nick"
-                    className="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 w-md"
+                    className="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 w-full md:w-md"
                   />
                 </label>
-                <label htmlFor="">
+                <label>
                   Last Name
                   <input
                     type="text"
-                    placeholder="Nick"
-                    className="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 w-md"
+                    placeholder="Vila"
+                    className="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 w-full md:w-md"
                   />
                 </label>
               </div>

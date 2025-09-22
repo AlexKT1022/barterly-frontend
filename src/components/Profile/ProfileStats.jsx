@@ -25,16 +25,16 @@ const ProfileStats = ({ profileStats }) => {
   return (
     <>
       <div className="flex mt-5 gap-5 justify-center">
-        <div className="items-listed border rounded-lg border-zinc-300 w-60 h-30 p-5">
-          <p className="text-sm font-semibold mb-5">Open Items</p>
+        <div className="flex flex-col h-20 w-24 md:h-28 md:w-40 border border-zinc-300 rounded-md justify-evenly pl-2 md:pl-3">
+          <p className="text-sm font-semibold mb-5">Open Trades</p>
           <p className="text-xl font-bold">{openPosts(mePosts)}</p>
         </div>
-        <div className="items-traded items-listed border rounded-lg border-zinc-300 w-60 h-30 p-5">
+        <div className="flex flex-col h-20 w-24 md:h-28 md:w-40 border border-zinc-300 rounded-md justify-evenly pl-2 md:pl-3">
           <p className="text-sm font-semibold mb-5">Items Traded</p>
           <p className="text-xl font-bold">{completedPosts(mePosts)}</p>
         </div>
-        <div className="total-trades items-listed border rounded-lg border-zinc-300 w-60 h-30 p-5">
-          <p className="text-sm font-semibold mb-5">Total Items Listed</p>
+        <div className="flex flex-col h-20 w-24 md:h-28 md:w-40 border border-zinc-300 rounded-md justify-evenly pl-2 md:pl-3">
+          <p className="text-sm font-semibold mb-5">Total Trades Listed</p>
           <p className="text-xl font-bold">
             {totalItems >= 1 ? totalItems : 0}
           </p>

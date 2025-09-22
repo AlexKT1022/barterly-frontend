@@ -1,7 +1,7 @@
 const ReviewCard = () => {
   return (
     <>
-      <div className="w-full h-32 border border-zinc-300 rounded-lg grid grid-cols-[80px_minmax(900px,_1fr)] content-center">
+      <div className="w-full p-5 md:h-32 border border-zinc-300 rounded-lg grid md:grid-cols-[80px_minmax(900px,_1fr)] content-center">
         <img
           src=""
           className="bg-black w-12 h-12 rounded-full justify-self-center"

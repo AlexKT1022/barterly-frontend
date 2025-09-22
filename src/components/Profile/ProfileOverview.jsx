@@ -10,10 +10,10 @@ const ProfileOverview = ({ profileData }) => {
 
   return (
     <>
-      <div className="bg-zinc-200 w-full h-8 rounded-full mt-5 flex justify-between pt-1 pb-1 pl-1 pr-1">
+      <div className="flex flex-col md:flex-row justify-evenly md:justify-between bg-zinc-200 w-full h-32 md:h-8 rounded-lg md:rounded-full mt-5 pt-1 pb-1 pl-1 pr-1">
         <button
           onClick={() => setActive("myProducts")}
-          className={`text-sm rounded-full w-60 font-semibold cursor-pointer transition-all duration-500 ${
+          className={`text-sm rounded-full md:w-60 font-semibold cursor-pointer transition-all duration-500 ${
             active === "myProducts"
               ? "bg-white"
               : "bg-transparent hover:bg-zinc-400 hover:text-white"
@@ -23,7 +23,7 @@ const ProfileOverview = ({ profileData }) => {
         </button>
         <button
           onClick={() => setActive("recentActivities")}
-          className={`text-sm rounded-full w-60 font-semibold cursor-pointer transition-all duration-500 ${
+          className={`text-sm rounded-full md:w-60 font-semibold cursor-pointer transition-all duration-500 ${
             active === "recentActivities"
               ? "bg-white"
               : "bg-transparent hover:bg-zinc-400 hover:text-white"
@@ -33,7 +33,7 @@ const ProfileOverview = ({ profileData }) => {
         </button>
         <button
           onClick={() => setActive("reviews")}
-          className={`text-sm rounded-full w-60 font-semibold cursor-pointer transition-all duration-500 ${
+          className={`text-sm rounded-full md:w-60 font-semibold cursor-pointer transition-all duration-500 ${
             active === "reviews"
               ? "bg-white"
               : "bg-transparent hover:bg-zinc-400 hover:text-white"
@@ -43,7 +43,7 @@ const ProfileOverview = ({ profileData }) => {
         </button>
         <button
           onClick={() => setActive("settings")}
-          className={`text-sm rounded-full w-60 font-semibold cursor-pointer transition-all duration-500 ${
+          className={`text-sm rounded-full md:w-60 font-semibold cursor-pointer transition-all duration-500 ${
             active === "settings"
               ? "bg-white"
               : "bg-transparent hover:bg-zinc-400 hover:text-white"

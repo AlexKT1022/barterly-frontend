@@ -5,7 +5,7 @@ const MyProducts = ({ products }) => {
   return (
     <>
       <div className="flex justify-evenly mt-5 mb-5">
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-3 gap-5">
           {postData.map((post) => {
             return <ProductCard key={post.id} post={post} />;
           })}
