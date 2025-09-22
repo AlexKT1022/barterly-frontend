@@ -31,16 +31,31 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-12 mx-auto px-4 max-w-6xl">
           {/* Logo */}
           <div className="font-bold flex items-center text-lg">
-            <img src="/bartley_outline.svg" className="mr-1 h-6 w-auto" alt="logo" />
+            <img
+              src="/bartley_outline.svg"
+              className="mr-1 h-6 w-auto"
+              alt="logo"
+            />
             <NavLink to="/">Barterly</NavLink>
           </div>
 
           {/* Desktop Menu */}
           <div className="flex gap-5 text-lg">
-            <NavLink to="/categories" className="hover-underline-animation">Categories</NavLink>
-            <NavLink to="/how-it-works" className="hover-underline-animation">How It Works</NavLink>
-            <NavLink to="/about" className="hover-underline-animation">About</NavLink>
-            <NavLink to="/posts" className="hover-underline-animation">Posts</NavLink>
+            <NavLink to="/users" className="hover-underline-animation">
+              Community
+            </NavLink>
+            <NavLink to="/categories" className="hover-underline-animation">
+              Categories
+            </NavLink>
+            <NavLink to="/posts" className="hover-underline-animation">
+              Posts
+            </NavLink>
+            <NavLink to="/how-it-works" className="hover-underline-animation">
+              How It Works
+            </NavLink>
+            <NavLink to="/about" className="hover-underline-animation">
+              About
+            </NavLink>
           </div>
 
           {/* Desktop Auth */}
@@ -76,7 +91,11 @@ const Navbar = () => {
       <div className="flex justify-between items-center h-12 mx-auto px-4 max-w-6xl">
         {/* Logo */}
         <div className="font-bold flex items-center text-lg">
-          <img src="/bartley_outline.svg" className="mr-1 h-6 w-auto" alt="logo" />
+          <img
+            src="/bartley_outline.svg"
+            className="mr-1 h-6 w-auto"
+            alt="logo"
+          />
           <NavLink to="/">Barterly</NavLink>
         </div>
 
@@ -85,21 +104,62 @@ const Navbar = () => {
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
-          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
       </div>
 
       {isMenuOpen && (
         <div className="bg-white border-t shadow px-4 py-2 space-y-2">
-          <NavLink to="/categories" className="block" onClick={() => setIsMenuOpen(false)}>Categories</NavLink>
-          <NavLink to="/how-it-works" className="block" onClick={() => setIsMenuOpen(false)}>How It Works</NavLink>
-          <NavLink to="/about" className="block" onClick={() => setIsMenuOpen(false)}>About</NavLink>
-          <NavLink to="/posts" className="block" onClick={() => setIsMenuOpen(false)}>Posts</NavLink>
+          <NavLink
+            to="/users"
+            className="block"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Community
+          </NavLink>
+          <NavLink
+            to="/categories"
+            className="block"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Categories
+          </NavLink>
+          <NavLink
+            to="/posts"
+            className="block"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Posts
+          </NavLink>
+          <NavLink
+            to="/how-it-works"
+            className="block"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            How It Works
+          </NavLink>
+          <NavLink
+            to="/about"
+            className="block"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            About
+          </NavLink>
 
           <div className="border-t pt-2">
             {token ? (
               <>
-                <NavLink to="/profile" className="block" onClick={() => setIsMenuOpen(false)}>Profile</NavLink>
+                <NavLink
+                  to="/profile"
+                  className="block"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Profile
+                </NavLink>
                 <button
                   onClick={() => {
                     logout();
