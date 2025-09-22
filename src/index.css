@@ -1,4 +1,8 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-xs: 30rem; /* Creates a new `xs` breakpoint at 480px */
+}
 
 * {
   /* margin: 0; */
@@ -19,7 +23,7 @@
 }
 
 .hover-underline-animation::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -42,14 +46,14 @@
   transform-origin: bottom left;
 }
 
-h1 {
+/* h1 {
   font-size: var(--text-6xl);
 }
 
 h2 {
   font-size: var(--text-2xl);
-}
+} */
 
-#home-search {
+/* #home-search {
   padding-left: 10px;
-}
+} */
