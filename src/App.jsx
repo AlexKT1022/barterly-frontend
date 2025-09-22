@@ -11,6 +11,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import postsLoader from './loaders/postsLoader';
 import postLoader from './loaders/postLoader';
 import HowItWorks from './pages/HowItWorks';
+import PostsPage from './pages/Postpage';
 
 import profileLoader from './loaders/profileLoader';
 
@@ -56,12 +57,15 @@ const routes = [
       {
         path: '/how-it-works',
         Component: HowItWorks,
-
-
       },
       {
         path: '/about',
         Component: About,
+
+      },
+      {
+        path: '/posts',
+        Component: PostsPage,
 
       },
     ],

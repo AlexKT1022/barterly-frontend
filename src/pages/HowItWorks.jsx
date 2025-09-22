@@ -7,8 +7,7 @@ import GetStartedSection from "../components/HowItWorks/GetStartedSection";
 
 const HowItWorks = () => {
     return (
-        <div className="p-8 max-w-6xl mx-auto text-gray-800">
-            {/* Header */}
+        <div className="p-6 max-w-6xl mx-auto text-gray-800">
             <div className="text-center mb-12">
                 <h1 className="text-3xl font-bold">How Product Exchange Works</h1>
                 <p className="text-gray-600 mt-2">

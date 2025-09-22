@@ -2,12 +2,12 @@ import { Link } from 'react-router';
 
 const Homepage = () => {
   return (
-    <>
-      <div className='flex flex-col justify-center items-center mx-auto h-200'>
-        <h1 className='font-bold w-lg text-center text-base/15 mb-5'>
+    <div className='max-w-6xl mx-auto px-6 py-12'>
+      <div className='flex flex-col justify-center items-center h-200'>
+        <h1 className='font-bold text-center text-base/15 mb-5'>
           Trade goods and services directly
         </h1>
-        <h2 className='text-center w-xl mb-5'>
+        <h2 className='text-center mb-5'>
           Barterly is a platform for swapping items and skills without the use
           of money. Start trading today!
         </h2>
@@ -17,14 +17,14 @@ const Homepage = () => {
           </button>
         </Link>
         <div className='mb-10'>
-          <form>
+          <form className='flex flex-col justify-center items-center'>
             <input
-              className='w-lg h-10 rounded-md border-1 border-zinc-400 mr-3'
+              className='md:w-lg h-10 rounded-md border-1 border-zinc-400 mr-3'
               placeholder='Search for items or services...'
               id='home-search'
             ></input>
             <Link to=''>
-              <button className='px-8 h-10 rounded-md bg-zinc-800 text-white transition-colors duration-300 hover:bg-zinc-500 shadow-sm'>
+              <button className='px-8 h-10 mt-4 rounded-md bg-zinc-800 text-white transition-colors duration-300 hover:bg-zinc-500 shadow-sm'>
                 Search
               </button>
             </Link>
@@ -69,7 +69,7 @@ const Homepage = () => {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
