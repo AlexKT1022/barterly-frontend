@@ -1,12 +1,19 @@
 const ProfileCard = ({ meProfileData }) => {
   return (
     <>
-      <div className="user-profile mx-auto mt-5 h-42 border rounded-lg border-zinc-300 grid grid-cols-[100px_minmax(900px,_1fr)_100px] gap-5 p-5">
-        <div className="profile-photo w-24 h-24 rounded-full bg-zinc-800 justify-self-center self-center">
+      <div
+        className="mx-auto mt-5 max-w-6xl px-4 border rounded-lg border-zinc-300 
+                 gap-5 p-5 hover:shadow-md transition-shadow
+                 md:flex md:flex-col lg:grid lg:grid-cols-[96px_minmax(0,1fr)_120px]"
+      >
+        <div
+          className="profile-photo w-24 h-24 rounded-full bg-zinc-800 
+                  overflow-hidden shrink-0 place-self-center md:place-self-start"
+        >
           <img
             src={meProfileData.profile_image_url}
-            alt=""
-            className="rounded-full"
+            alt="Profile"
+            className="w-full h-full object-cover"
           />
         </div>
 

@@ -8,14 +8,16 @@ const Profile = () => {
   const profileData = useLoaderData() || [];
   return (
     <>
-      {/* Profile */}
-      <ProfileCard meProfileData={profileData} />
+      <div className="max-auto max-w-6xl">
+        {/* Profile */}
+        <ProfileCard meProfileData={profileData} />
 
-      {/* Stats */}
-      <ProfileStats profileStats={profileData} />
+        {/* Stats */}
+        <ProfileStats profileStats={profileData} />
 
-      {/* Overview*/}
-      <ProfileOverview profileData={profileData} />
+        {/* Overview*/}
+        <ProfileOverview profileData={profileData} />
+      </div>
     </>
   );
 };
