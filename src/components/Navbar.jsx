@@ -27,7 +27,7 @@ const Navbar = () => {
   // --- Desktop Layout ---
   if (isDesktop) {
     return (
-      <nav className="bg-white shadow">
+      <nav>
         <div className="flex justify-between items-center h-12 mx-auto px-4 max-w-6xl">
           {/* Logo */}
           <div className="font-bold flex items-center text-lg">
@@ -72,7 +72,7 @@ const Navbar = () => {
 
   // --- Mobile Layout ---
   return (
-    <nav className="bg-white shadow">
+    <nav>
       <div className="flex justify-between items-center h-12 mx-auto px-4 max-w-6xl">
         {/* Logo */}
         <div className="font-bold flex items-center text-lg">
