@@ -11,13 +11,15 @@ const Users = () => {
 
   return (
     <>
-      <div className="mt-5">
+      {/* Users Stats */}
+      <UsersStats stats={usersData} className="max-auto max-w-6xl" />
+      <div className="mx-auto max-w-6xl mt-5">
         <form
-          className="flex justify-between"
+          className="w-full flex flex-col sm:flex-row items-stretch gap-3"
           onSubmit={(event) => event.preventDefault()}
         >
           <input
-            className="w-3xl h-10 p-5 rounded-md border-1 border-zinc-400 mx-auto"
+            className="flex w-full h-10 rounded-md border border-zinc-400 px-3"
             placeholder="Search for members..."
             id="user-search"
             value={search}
@@ -33,10 +35,13 @@ const Users = () => {
           </button> */}
         </form>
       </div>
-      {/* Users Stats */}
-      <UsersStats stats={usersData} />
+
       {/* Users */}
-      <UsersList data={usersData} search={search} />
+      <UsersList
+        data={usersData}
+        search={search}
+        className="max-auto max-w-6xl"
+      />
     </>
   );
 };
