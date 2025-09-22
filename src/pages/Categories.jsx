@@ -128,36 +128,33 @@ const Categories = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
 
-  // Filtered Product List
-  const chargingList = products.filter((product) => {
-    const Search = product.name
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch = product.name
       .toLowerCase()
       .includes(searchProducts.toLowerCase());
-    const Category = selectedCategory
+    const matchesCategory = selectedCategory
       ? product.category === selectedCategory
       : true;
-    const Status = selectedStatus ? product.status === selectedStatus : true;
+    const matchesStatus = selectedStatus ? product.status === selectedStatus : true;
 
-    return Search && Category && Status;
+    return matchesSearch && matchesCategory && matchesStatus;
   });
 
-  // Reset category filter by clicking the same category icon
   const handleCategoryClick = (categoryName) => {
     setSelectedCategory((prev) => (prev === categoryName ? "" : categoryName));
   };
 
   return (
-    <div>
+    <div className="p-6 max-w-6xl mx-auto text-gray-800">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <h2 className="text-lg font-semibold">Product Marketplace</h2>
-        <button className="px-4 h-10 rounded-md bg-sky-500/75 text-white transition-colors duration-300 hover:bg-sky-700 shadow-sm">
-          Add Product
-        </button>
       </div>
 
       {/* Search + Filters */}
-      <div className="flex gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row gap-4 mb-8">
+
         <input
           type="text"
           placeholder="Search products..."
@@ -190,74 +187,73 @@ const Categories = () => {
       </div>
 
       {/* Category Cards */}
-      <h3 className="font-semibold mb-4">Browse Categories</h3>
-      <div className="flex flex-nowrap gap-4 mb-8 overflow-x-auto scroll-snap-x scroll-snap-mandatory scroll-smooth">
-        {categories.map((c, index) => (
-          <div
-            key={index}
-            onClick={() => handleCategoryClick(c.name)}
-            className={`w-32 h-32 flex-shrink-0 border rounded flex flex-col items-center justify-center cursor-pointer transition hover:bg-gray-100
-                        scroll-snap-align-center scroll-snap-stop-always
-                        ${
-                          selectedCategory === c.name
-                            ? "bg-sky-100 border-sky-400"
-                            : ""
-                        }
-                    `}
-          >
-            <img
-              src="src\assets\electronics.png" // <- assumes your category has an `image` property
-              className="w-12 h-12 object-contain mb-2"
-            />
-            <span className="text-sm text-center">{c.name}</span>
-          </div>
-        ))}
-      </div>
 
-      {/* Products List */}
-      <h3 className="font-semibold mb-4">Recent Products</h3>
-      {chargingList.length === 0 ? (
-        <div className="text-gray-500">No products match your filters.</div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {chargingList.map((p) => (
-            <div
-              key={p.id}
-              className="border rounded-lg p-4 flex flex-col justify-between"
-            >
-              <div>
-                <img
-                  src={p.image}
-                  alt={p.name}
-                  className="h-24 bg-gray-100 rounded mb-3"
-                />
-                <h4 className="font-semibold">{p.name}</h4>
-                <div className="text-sm text-gray-500">{p.category}</div>
-                <div
-                  className={`mt-1 text-xs inline-block px-2 py-1 rounded 
-                                    ${
-                                      p.status === "Available"
-                                        ? "bg-green-100 text-green-600"
-                                        : p.status === "Sold"
-                                        ? "bg-red-100 text-red-600"
-                                        : p.status === "Pending"
-                                        ? "bg-yellow-100 text-yellow-600"
-                                        : "bg-gray-100 text-gray-600" // fallback for unexpected statuses
-                                    }`}
-                >
-                  {p.status}
-                </div>
-              </div>
-              <Link
-                to={`/product/${p.id}`}
-                className="block mt-4 text-center px-4 h-10 rounded-md bg-sky-500/75 text-white transition-colors duration-300 hover:bg-sky-700 shadow-sm"
+<div className="mb-8 hidden md:block">
+  <h3 className="font-semibold mb-4">Browse Categories</h3>
+  
+  {/* Scrollable container with snap */}
+  <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory px-2">
+    {categories.map((c, index) => (
+      <div
+        key={index}
+        onClick={() => handleCategoryClick(c.name)}
+        className={`flex-shrink-0 w-24 border rounded flex flex-col items-center justify-center p-4 cursor-pointer transition hover:bg-gray-100 snap-start
+          ${selectedCategory === c.name ? 'bg-sky-100 border-sky-400' : ''}`}
+      >
+        <img
+          src="src/assets/electronics.png"
+          alt={c.name}
+          className="w-12 h-12 object-contain mb-2"
+        />
+        <span className="text-sm text-center">{c.name}</span>
+      </div>
+    ))}
+  </div>
+</div>
+      {/* Product Grid */}
+      <div>
+        <h3 className="font-semibold mb-4">Recent Products</h3>
+        {filteredProducts.length === 0 ? (
+          <div className="text-gray-500">No products match your filters.</div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredProducts.map((p) => (
+              <div
+                key={p.id}
+                className="border rounded-lg p-4 flex flex-col justify-center"
               >
-                View Details
-              </Link>
-            </div>
-          ))}
-        </div>
-      )}
+                <div className='grid place-items-center'>
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="h-30 w-50% object-cover rounded mb-3 bg-gray-100"
+                  />
+                  <h4 className="font-semibold">{p.name}</h4>
+                  <div className="text-sm text-gray-500">{p.category}</div>
+                  <div
+                    className={`mt-1 text-xs inline-block px-2 py-1 rounded 
+                      ${
+                        p.status === 'Available'
+                          ? 'bg-green-100 text-green-600'
+                          : p.status === 'Sold'
+                          ? 'bg-red-100 text-red-600'
+                          : 'bg-yellow-100 text-yellow-600'
+                      }`}
+                  >
+                    {p.status}
+                  </div>
+                </div>
+                <Link
+                  to={`/product/${p.id}`}
+                  className="block mt-4 text-center px-4 h-10 rounded-md bg-sky-500/75 text-white transition-colors duration-300 hover:bg-sky-700 shadow-sm"
+                >
+                  View Details
+                </Link>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

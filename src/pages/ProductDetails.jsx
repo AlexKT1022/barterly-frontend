@@ -89,7 +89,7 @@ const ProductDetails = () => {
   }
 
   return (
-    <div className='space-y-10 mt-10'>
+    <div className=' p-6 max-w-6xl mx-auto text-gray-800'>
       <Link
         to={`/categories`}
         className='bg-gray-200 text-blacktransition-colors duration-300 hover:bg-zinc-300 px-6 py-2 rounded shadow-sm'

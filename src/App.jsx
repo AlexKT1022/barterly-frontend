@@ -1,3 +1,4 @@
+
 import { createBrowserRouter } from "react-router";
 
 import RootLayout from "./layouts/RootLayout";
@@ -10,6 +11,7 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import NotFoundPage from "./pages/NotFoundPage";
 import HowItWorks from "./pages/HowItWorks";
+import PostsPage from './pages/Postpage';
 import About from "./pages/About";
 import Users from "./pages/Users";
 
@@ -32,6 +34,7 @@ const routes = [
       { path: "/how-it-works", Component: HowItWorks },
       { path: "/about", Component: About },
       { path: "users", Component: Users, loader: usersLoader },
+      { path: "/posts", Component: PostsPage},
       { path: "*", Component: NotFoundPage },
     ],
   },

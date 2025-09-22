@@ -77,7 +77,7 @@ const Homepage = () => {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

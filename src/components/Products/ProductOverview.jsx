@@ -8,12 +8,12 @@ const ProductOverview = ({ product }) => {
   const [active, setActive] = useState('DescriptionProducts');
 
   return (
-    <>
+    <div className='w-full'>
       {/* Tab Buttons */}
-      <div className='bg-zinc-200 w-full h-8 rounded-full mt-5 flex justify-between pt-1 pb-1 pl-1 pr-1'>
+      <div className='bg-zinc-200 w-full rounded-full mt-5 flex flex-wrap gap-2 p-1'>
         <button
           onClick={() => setActive('DescriptionProducts')}
-          className={`text-sm rounded-full w-60 font-semibold cursor-pointer transition-all duration-500 ${
+          className={`text-sm flex-1 sm:flex-none sm:w-60 rounded-full font-semibold cursor-pointer transition-all duration-500 ${
             active === 'DescriptionProducts'
               ? 'bg-white'
               : 'bg-transparent hover:bg-zinc-400 hover:text-white'
@@ -23,7 +23,7 @@ const ProductOverview = ({ product }) => {
         </button>
         <button
           onClick={() => setActive('SpecificationsProducts')}
-          className={`text-sm rounded-full w-60 font-semibold cursor-pointer transition-all duration-500 ${
+          className={`text-sm flex-1 sm:flex-none sm:w-60 rounded-full font-semibold cursor-pointer transition-all duration-500 ${
             active === 'SpecificationsProducts'
               ? 'bg-white'
               : 'bg-transparent hover:bg-zinc-400 hover:text-white'
@@ -33,7 +33,7 @@ const ProductOverview = ({ product }) => {
         </button>
         <button
           onClick={() => setActive('ReviewsProducts')}
-          className={`text-sm rounded-full w-60 font-semibold cursor-pointer transition-all duration-500 ${
+          className={`text-sm flex-1 sm:flex-none sm:w-60 rounded-full font-semibold cursor-pointer transition-all duration-500 ${
             active === 'ReviewsProducts'
               ? 'bg-white'
               : 'bg-transparent hover:bg-zinc-400 hover:text-white'
@@ -43,17 +43,8 @@ const ProductOverview = ({ product }) => {
         </button>
       </div>
 
-      {/* Active Tab Label */}
-      <div className='mt-5 flex justify-between items-center'>
-        <p className='font-semibold text-lg'>
-          {active === 'DescriptionProducts'}
-          {active === 'SpecificationsProducts'}
-          {active === 'ReviewsProducts'}
-        </p>
-      </div>
-
       {/* Active Tab Content */}
-      <div className='mt-4'>
+      <div className='mt-4 w-full'>
         {active === 'DescriptionProducts' && (
           <DescriptionProducts product={product} />
         )}
@@ -62,7 +53,7 @@ const ProductOverview = ({ product }) => {
         )}
         {active === 'ReviewsProducts' && <ReviewsProducts product={product} />}
       </div>
-    </>
+    </div>
   );
 };
 
