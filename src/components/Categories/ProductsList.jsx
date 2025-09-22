@@ -1,7 +1,6 @@
 import ProductCard from "./ProductCard";
 
 const ProductsList = ({ posts, search }) => {
-  console.log(posts);
   const postSearch = search.trim().toLowerCase();
   const filteredPosts = postSearch
     ? posts.filter((post) =>

@@ -14,7 +14,6 @@ const UserCard = ({ user, posts }) => {
     const year = normalize.getFullYear();
     return year;
   };
-  console.log(user);
   //   console.log(posts);
   //   console.log(sortPosts(posts));
 

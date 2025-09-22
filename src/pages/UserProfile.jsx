@@ -2,16 +2,16 @@ import { useLoaderData } from "react-router";
 
 import UserProfileCard from "../components/User/UserProfileCard";
 import UserProfileStats from "../components/User/UserProfileStats";
-import UserProductCard from "../components/User/UserProductCard";
+import UserProductsList from "../components/User/UserProductsList";
 
 const UserProfile = () => {
   const userData = useLoaderData() || [];
-  console.log(userData);
+  const userPosts = userData.userPosts;
   return (
     <>
       <UserProfileCard data={userData} />
-      <UserProfileStats />
-      <UserProductCard />
+      <UserProfileStats data={userPosts} />
+      <UserProductsList data={userPosts} />
     </>
   );
 };

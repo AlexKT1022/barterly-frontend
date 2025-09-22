@@ -1,9 +1,12 @@
 import UserProductCard from "./UserProductCard";
 
-const UserProductsList = () => {
+const UserProductsList = ({ data }) => {
+  const posts = data.posts;
   return (
     <>
-      <UserProductCard />
+      {posts.map((post) => {
+        return <UserProductCard id={post.id} data={post} />;
+      })}
     </>
   );
 };

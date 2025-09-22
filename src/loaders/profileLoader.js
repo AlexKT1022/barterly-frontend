@@ -37,8 +37,6 @@ const profileLoader = async () => {
     const userPosts = await fetchPostsByUserId();
     const userData = { ...data, userPosts, userActivities };
 
-    console.log(userData);
-
     return userData;
   } catch (err) {
     console.error(err);

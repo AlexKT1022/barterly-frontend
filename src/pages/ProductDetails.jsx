@@ -75,8 +75,6 @@ const ProductDetails = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === Number(id));
 
-  console.log(useLoaderData());
-
   if (!product) {
     return (
       <div className='text-center p-8'>
