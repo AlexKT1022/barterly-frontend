@@ -1,4 +1,3 @@
-// src/components/Products/ProductOverview.js
 import { useState } from 'react';
 import DescriptionProducts from './OverviewOptionsProducts/DescriptionProducts';
 import ReviewsProducts from './OverviewOptionsProducts/ReviewsProducts';

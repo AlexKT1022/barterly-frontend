@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const fetchItemsByPostId = async (id) => {
   try {
@@ -18,7 +19,6 @@ const ProductCard = ({ post }) => {
 
     const loadData = async () => {
       const data = await fetchItemsByPostId(post.id);
-      console.log(data);
       setPostData(data);
     };
     try {
@@ -58,12 +58,14 @@ const ProductCard = ({ post }) => {
       {/* <p className="text-xs text-zinc-500 mb-1">{post.username}</p> */}
       <p>{post.description}</p>
       <div className="flex justify-around">
-        <button
-          to={`/product/${post.id}`}
-          className="w-32 bg-zinc-800 text-white p-3 rounded-lg mt-5 hover:bg-zinc-500 duration-300"
-        >
-          View Details
-        </button>
+        <Link to={`/product/${post.id}`}>
+          <button
+            to={`/product/${post.id}`}
+            className="w-32 bg-zinc-800 text-white p-3 rounded-lg mt-5 hover:bg-zinc-500 duration-300"
+          >
+            View Details
+          </button>
+        </Link>
       </div>
     </div>
   );

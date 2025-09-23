@@ -9,7 +9,7 @@ const SimilarProducts = ({ similar }) => {
 
       {/* Mobile: horizontal scroll */}
       <div className='flex lg:hidden overflow-x-auto gap-4'>
-        {similar.map((product) => (
+        {/* {similar.map((product) => (
           <Link
             to={`/product/${product.id}`}
             key={product.id}
@@ -23,12 +23,12 @@ const SimilarProducts = ({ similar }) => {
             <p className='font-medium text-center text-sm mt-2'>{product.name}</p>
             <p className='text-gray-600 text-sm'>${product.price}</p>
           </Link>
-        ))}
+        ))} */}
       </div>
 
       {/* Large screens: vertical list */}
       <div className='hidden lg:block space-y-4'>
-        {similar.map((product) => (
+        {/* {similar.map((product) => (
           <Link
             to={`/product/${product.id}`}
             key={product.id}
@@ -44,7 +44,7 @@ const SimilarProducts = ({ similar }) => {
               <p className='text-gray-600 text-sm'>${product.price}</p>
             </div>
           </Link>
-        ))}
+        ))} */}
       </div>
     </div>
   );
