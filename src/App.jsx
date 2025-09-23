@@ -1,4 +1,3 @@
-
 import { createBrowserRouter } from "react-router";
 
 import RootLayout from "./layouts/RootLayout";
@@ -11,14 +10,16 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import NotFoundPage from "./pages/NotFoundPage";
 import HowItWorks from "./pages/HowItWorks";
-import PostsPage from './pages/Postpage';
+import PostsPage from "./pages/Postpage";
 import About from "./pages/About";
 import Users from "./pages/Users";
+import UserProfile from "./pages/UserProfile";
 
 import profileLoader from "./loaders/profileLoader";
 import postsLoader from "./loaders/postsLoader";
 import postLoader from "./loaders/postLoader";
 import usersLoader from "./loaders/usersLoader";
+import userLoader from "./loaders/userLoader";
 
 const routes = [
   {
@@ -34,7 +35,8 @@ const routes = [
       { path: "/how-it-works", Component: HowItWorks },
       { path: "/about", Component: About },
       { path: "users", Component: Users, loader: usersLoader },
-      { path: "/posts", Component: PostsPage},
+      { path: "user/:id", Component: UserProfile, loader: userLoader },
+      { path: "/posts", Component: PostsPage },
       { path: "*", Component: NotFoundPage },
     ],
   },

@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const UserCard = ({ user, posts }) => {
   const sortPosts = (postData) => {
     let count = 0;
@@ -12,8 +14,8 @@ const UserCard = ({ user, posts }) => {
     const year = normalize.getFullYear();
     return year;
   };
-  //   console.log(posts);
-  //   console.log(sortPosts(posts));
+
+  console.log(user);
 
   return (
     <>
@@ -29,11 +31,11 @@ const UserCard = ({ user, posts }) => {
           </div>
         </div>
         {/* Removing below until we have more data to provide here */}
-        {/* <div className="pt-10 flex justify-between">
-          <p className="text-xs bg-zinc-100 py-1 px-2 rounded-lg">Seller</p>
+        <div className="pt-10 flex justify-between">
+          {/* <p className="text-xs bg-zinc-100 py-1 px-2 rounded-lg"></p> */}
           <p>⭐ 4.8</p>
-        </div> */}
-        <div className="mt-15">
+        </div>
+        <div>
           <div className="pt-3 flex justify-between text-zinc-500">
             <p className="">Open Trades:</p>
             <p>{sortPosts(posts)}</p>
@@ -43,9 +45,11 @@ const UserCard = ({ user, posts }) => {
             <p>{joinedDate(user.created_at)}</p>
           </div>
           <div className="flex justify-evenly mt-5">
-            <button className="px-4 h-10 w-32 rounded-md border-1 border-zinc-500 transition-colors duration-300 hover:bg-zinc-500 hover:text-white hover:border-transparent">
-              View Profile
-            </button>
+            <Link to={`/user/${user.id}`}>
+              <button className="px-4 h-10 w-32 rounded-md border-1 border-zinc-500 transition-colors duration-300 hover:bg-zinc-500 hover:text-white hover:border-transparent">
+                View Profile
+              </button>
+            </Link>
             <button className="px-4 h-10 w-32 rounded-md bg-zinc-800 text-white transition-colors duration-300 hover:bg-zinc-500">
               Message
             </button>
