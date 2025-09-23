@@ -9,9 +9,11 @@ const UserProfile = () => {
   const userPosts = userData.userPosts;
   return (
     <>
-      <UserProfileCard data={userData} />
-      <UserProfileStats data={userPosts} />
-      <UserProductsList data={userPosts} />
+      <div className="max-auto max-w-6xl">
+        <UserProfileCard data={userData} />
+        <UserProfileStats data={userPosts} />
+        <UserProductsList data={userPosts} />
+      </div>
     </>
   );
 };

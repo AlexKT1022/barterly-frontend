@@ -25,16 +25,16 @@ const UserProfileStats = ({ data }) => {
   return (
     <>
       <div className="flex mt-5 mb-5 gap-5 justify-center">
-        <div className="items-listed border rounded-lg border-zinc-300 w-60 h-30 p-5">
-          <p className="text-sm font-semibold mb-5">Open Items</p>
+        <div className="flex flex-col h-20 w-24 md:h-28 md:w-40 border border-zinc-300 rounded-md justify-evenly pl-2 md:pl-3">
+          <p className="text-sm font-semibold">Open Items</p>
           <p className="text-xl font-bold">{openPosts(userPosts)}</p>
         </div>
-        <div className="items-traded items-listed border rounded-lg border-zinc-300 w-60 h-30 p-5">
-          <p className="text-sm font-semibold mb-5">Items Traded</p>
+        <div className="flex flex-col h-20 w-24 md:h-28 md:w-40 border border-zinc-300 rounded-md justify-evenly pl-2 md:pl-3">
+          <p className="text-sm font-semibold">Items Traded</p>
           <p className="text-xl font-bold">{completedPosts(userPosts)}</p>
         </div>
-        <div className="total-trades items-listed border rounded-lg border-zinc-300 w-60 h-30 p-5">
-          <p className="text-sm font-semibold mb-5">Total Items Listed</p>
+        <div className="flex flex-col h-20 w-24 md:h-28 md:w-40 border border-zinc-300 rounded-md justify-evenly pl-2 md:pl-3">
+          <p className="text-sm font-semibold">Total Items Listed</p>
           <p className="text-xl font-bold">
             {totalItems >= 1 ? totalItems : 0}
           </p>
