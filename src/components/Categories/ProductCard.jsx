@@ -9,7 +9,7 @@ const ProductCard = ({ post }) => {
       <img
         src=""
         alt=""
-        className="w-full h-full bg-black rounded-lg mb-1 h-40 object-cover object-top"
+        className="w-full bg-black rounded-lg mb-1 h-40 object-cover object-top"
       />
       <div className="flex">
         <p

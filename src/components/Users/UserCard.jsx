@@ -14,8 +14,8 @@ const UserCard = ({ user, posts }) => {
     const year = normalize.getFullYear();
     return year;
   };
-  //   console.log(posts);
-  //   console.log(sortPosts(posts));
+
+  console.log(user);
 
   return (
     <>
@@ -31,11 +31,11 @@ const UserCard = ({ user, posts }) => {
           </div>
         </div>
         {/* Removing below until we have more data to provide here */}
-        {/* <div className="pt-10 flex justify-between">
-          <p className="text-xs bg-zinc-100 py-1 px-2 rounded-lg">Seller</p>
+        <div className="pt-10 flex justify-between">
+          {/* <p className="text-xs bg-zinc-100 py-1 px-2 rounded-lg"></p> */}
           <p>⭐ 4.8</p>
-        </div> */}
-        <div className="mt-15">
+        </div>
+        <div>
           <div className="pt-3 flex justify-between text-zinc-500">
             <p className="">Open Trades:</p>
             <p>{sortPosts(posts)}</p>

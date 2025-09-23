@@ -1,5 +1,4 @@
 const UserProductCard = ({ data }) => {
-  console.log(data);
   const status = {
     open: "bg-green-100 text-green-600",
     pending: "bg-yellow-100 text-yellow-600",
