@@ -57,6 +57,7 @@ const ProductCard = ({ post }) => {
       <p className="font-semibold mt-1">{post.title}</p>
       {/* <p className="text-xs text-zinc-500 mb-1">{post.username}</p> */}
       <p>{post.description}</p>
+      {/* <p className="font-semibold text-gray-700">Quantity: {post.quantity}</p> */}
       <div className="flex justify-around">
         <button
           to={`/product/${post.id}`}
