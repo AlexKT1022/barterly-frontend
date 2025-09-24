@@ -16,7 +16,7 @@ const Login = () => {
     };
     try {
       await login(credentials);
-      navigate("/profile");
+      navigate(-1);
     } catch (error) {
       setError(error.message);
     }

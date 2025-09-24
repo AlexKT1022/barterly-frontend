@@ -1,5 +1,4 @@
 import { useLoaderData } from "react-router";
-
 import { useState } from "react";
 
 import UsersStats from "../components/Users/UsersStats";

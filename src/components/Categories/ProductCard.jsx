@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const fetchItemsByPostId = async (id) => {
   try {
@@ -18,7 +19,6 @@ const ProductCard = ({ post }) => {
 
     const loadData = async () => {
       const data = await fetchItemsByPostId(post.id);
-      console.log(data);
       setPostData(data);
     };
     try {
@@ -41,7 +41,7 @@ const ProductCard = ({ post }) => {
   return (
     <div className="flex flex-col rounded-lg border border-zinc-300 w-80 min-h-80 p-5 hover:shadow-md transition-shadow">
       <img
-        src={postData.items?.[0].imageUrl}
+        src={postData.items?.[0]?.imageUrl}
         alt=""
         className="w-full bg-black rounded-lg mb-1 h-40 object-cover object-top"
       />
@@ -59,12 +59,14 @@ const ProductCard = ({ post }) => {
       <p>{post.description}</p>
       {/* <p className="font-semibold text-gray-700">Quantity: {post.quantity}</p> */}
       <div className="flex justify-around">
-        <button
-          to={`/product/${post.id}`}
-          className="w-32 bg-zinc-800 text-white p-3 rounded-lg mt-5 hover:bg-zinc-500 duration-300"
-        >
-          View Details
-        </button>
+        <Link to={`/product/${post.id}`}>
+          <button
+            to={`/product/${post.id}`}
+            className="w-32 bg-zinc-800 text-white p-3 rounded-lg mt-5 hover:bg-zinc-500 duration-300"
+          >
+            View Details
+          </button>
+        </Link>
       </div>
     </div>
   );

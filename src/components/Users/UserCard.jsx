@@ -1,5 +1,9 @@
 import { Link } from "react-router";
 
+import { jwtDecode } from "jwt-decode";
+const token = sessionStorage.getItem("token");
+const { id } = jwtDecode(token);
+
 const UserCard = ({ user, posts }) => {
   const sortPosts = (postData) => {
     let count = 0;
@@ -15,8 +19,14 @@ const UserCard = ({ user, posts }) => {
     return year;
   };
 
-  console.log(user);
-
+  // checks if the user is currently logged in, redirects to profile if true
+  const isLoggedIn = (userId) => {
+    if (user.id === id) {
+      return "/profile";
+    } else {
+      return `/user/${user.id}`;
+    }
+  };
   return (
     <>
       <div className="w-84 h-75 border border-zinc-300 rounded-lg p-5 hover:shadow-xl transition-all duration-300">
@@ -45,7 +55,7 @@ const UserCard = ({ user, posts }) => {
             <p>{joinedDate(user.created_at)}</p>
           </div>
           <div className="flex justify-evenly mt-5">
-            <Link to={`/user/${user.id}`}>
+            <Link to={isLoggedIn(user.id)}>
               <button className="px-4 h-10 w-32 rounded-md border-1 border-zinc-500 transition-colors duration-300 hover:bg-zinc-500 hover:text-white hover:border-transparent">
                 View Profile
               </button>
