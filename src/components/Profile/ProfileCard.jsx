@@ -1,4 +1,6 @@
 const ProfileCard = ({ meProfileData }) => {
+
+  const created = meProfileData?.created_at?.slice(0, 4);
   return (
     <>
       <div
@@ -28,7 +30,7 @@ const ProfileCard = ({ meProfileData }) => {
             {/* <p>⭐ 4.7 (127 reviews)</p> */}
           </div>
           <p className="text-zinc-600 mb-2 italic">
-            Member Since {meProfileData.created_at.slice(0, 4)}
+            Member Since {meProfileData?.created_at?.slice?.(0, 4) || "Unknown"}
           </p>
           {/* <div>
             Experienced seller with a passion for tech and collectibles. Member
