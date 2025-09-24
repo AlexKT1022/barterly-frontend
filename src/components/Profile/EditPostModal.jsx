@@ -28,7 +28,6 @@ const deletePost = async (id) => {
 
 const EditPostModal = ({ setActive, data }) => {
   const [showDelete, setShowDelete] = useState(false);
-  console.log(data);
   return (
     <>
       <div

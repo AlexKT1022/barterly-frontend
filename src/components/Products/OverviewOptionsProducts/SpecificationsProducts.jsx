@@ -1,10 +1,7 @@
-import React from "react";
-
 const SpecificationsProducts = ({ product }) => {
   if (!product) return null;
 
   const items = product.items;
-  console.log(items);
 
   const specifications = {
     Storage: product.storage,

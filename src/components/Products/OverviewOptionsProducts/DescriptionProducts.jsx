@@ -3,7 +3,6 @@ import React from "react";
 
 const DescriptionProducts = ({ product }) => {
   const items = product.items;
-  console.log(items);
   return (
     <>
       <div className="p-5 md:p-8 bg-gray-50 mb-6  ">

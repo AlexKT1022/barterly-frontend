@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router";
+import { useAuth } from "../../context/AuthContext.jsx";
 
 import MakeOfferModal from "../Users/MakeOfferModal";
 
@@ -10,6 +12,7 @@ const status = {
 
 const ProductInformation = ({ product }) => {
   const [active, setActive] = useState(false);
+  const { token } = useAuth();
 
   return (
     <>
@@ -30,22 +33,38 @@ const ProductInformation = ({ product }) => {
           </span> */}
           </div>
         </div>
-
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3">
-          <button className="bg-black text-white px-6 py-2 rounded w-full sm:w-auto">
-            Contact Seller
-          </button>
-          {/* <button className='bg-gray-200 px-6 py-2 rounded w-full sm:w-auto'>
+        {!token ? (
+          <>
+            <div className="flex items-center">
+              <p className="mr-3 font-semibold italic">
+                Want to make an offer?
+              </p>
+              <Link to="/login">
+                <button className="bg-zinc-800 text-white px-5 py-2 rounded-md hover:bg-zinc-500">
+                  Login
+                </button>
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button className="bg-black text-white px-6 py-2 rounded w-full sm:w-auto">
+                Contact Seller
+              </button>
+              {/* <button className='bg-gray-200 px-6 py-2 rounded w-full sm:w-auto'>
           ❤️ Add to Wishlist
         </button> */}
-          <button
-            className="bg-blue-600 text-white px-6 py-2 rounded w-full sm:w-auto"
-            onClick={() => setActive(true)}
-          >
-            Make Offer
-          </button>
-        </div>
+              <button
+                className="bg-blue-600 text-white px-6 py-2 rounded w-full sm:w-auto"
+                onClick={() => setActive(true)}
+              >
+                Make Offer
+              </button>
+            </div>
+          </>
+        )}
 
         {/* Product Stats */}
         <div className="text-sm text-gray-600 space-y-1">

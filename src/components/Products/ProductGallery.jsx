@@ -6,9 +6,8 @@ const ProductGallery = ({ images }) => {
 
   return (
     <div className="w-full flex flex-col lg:flex-row gap-4">
-      {/* Main Image */}
       <div className="w-full sm:w-4/5 md:w-3/4 lg:w-3/4 flex justify-center items-center">
-        <div className="w-full sm:w-4/5 md:w-full h-96 sm:h-[500px] bg-gray-100 rounded-lg border flex justify-center items-center">
+        <div className="w-full sm:w-4/5 md:w-full h-96 sm:h-[500px] bg-gray-100 border rounded-lg flex justify-center items-center">
           <img
             src={mainImage}
             alt="Main product"
