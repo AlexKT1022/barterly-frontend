@@ -3,9 +3,11 @@ import MyProducts from "./OverviewOptions/MyProducts";
 import RecentActivities from "./OverviewOptions/RecentActivities";
 import Reviews from "./OverviewOptions/Reviews";
 import Settings from "./OverviewOptions/Settings";
+import NewPostModal from "./OverviewOptions/NewPostModal";
 
 const ProfileOverview = ({ profileData }) => {
   const [active, setActive] = useState("myProducts");
+  const [activeNewPost, setActiveNewPost] = useState(false);
   const data = profileData;
 
   return (
@@ -59,8 +61,11 @@ const ProfileOverview = ({ profileData }) => {
           {active === "reviews" && "Reviews"}
           {active === "settings" && "Settings"}
         </p>
-        <button className="bg-black text-white h-10 rounded-lg text-sm pl-2 pr-2 cursor-pointer transition-colors duration-300 hover:bg-zinc-500">
-          Add New Product
+        <button
+          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500"
+          onClick={() => setActiveNewPost(true)}
+        >
+          + New Post
         </button>
       </div>
       <div>
@@ -73,6 +78,9 @@ const ProfileOverview = ({ profileData }) => {
       </div>
       <div>{active === "reviews" && <Reviews />}</div>
       <div>{active === "settings" && <Settings meData={data} />}</div>
+      {activeNewPost && (
+        <NewPostModal setActive={setActiveNewPost} />
+      )}
     </>
   );
 };

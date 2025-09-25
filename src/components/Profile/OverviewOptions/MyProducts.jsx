@@ -1,7 +1,7 @@
 import ProductCard from "./ProductCard";
 
 const MyProducts = ({ products }) => {
-  const postData = products?.posts ?? [];
+  const postData = products?.posts;
   return (
     <>
       <div className="flex justify-evenly mt-5 mb-5">

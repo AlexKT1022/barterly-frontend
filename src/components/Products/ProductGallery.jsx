@@ -1,4 +1,3 @@
-// src/components/ProductImageGallery.js
 import { useState } from "react";
 
 const ProductGallery = ({ images }) => {

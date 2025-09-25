@@ -47,9 +47,9 @@ const Navbar = () => {
             <NavLink to="/categories" className="hover-underline-animation">
               Categories
             </NavLink>
-            <NavLink to="/posts" className="hover-underline-animation">
+            {/* <NavLink to="/posts" className="hover-underline-animation">
               Posts
-            </NavLink>
+            </NavLink> */}
             <NavLink to="/how-it-works" className="hover-underline-animation">
               How It Works
             </NavLink>

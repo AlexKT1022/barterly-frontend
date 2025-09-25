@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import EditPostModal from "../EditPostModal";
 
 const ProductCard = ({ post }) => {
@@ -34,9 +35,11 @@ const ProductCard = ({ post }) => {
         >
           Edit
         </button>
-        <button className="w-32 bg-zinc-800 text-white p-3 rounded-lg mt-5 hover:bg-zinc-500 duration-300">
-          View Details
-        </button>
+        <Link to={`/product/${post.id}`}>
+          <button className="w-32 bg-zinc-800 text-white p-3 rounded-lg mt-5 hover:bg-zinc-500 duration-300">
+            View Details
+          </button>
+        </Link>
       </div>
     </div>
   );

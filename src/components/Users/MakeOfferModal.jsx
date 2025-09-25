@@ -24,7 +24,7 @@ const fetchPostsByUserId = async () => {
 
 const loggedUser = await fetchPostsByUserId(id);
 const loggedUserPosts = loggedUser.posts;
-console.log(loggedUserPosts);
+
 
 const MakeOfferModal = ({ setActive }) => {
   return (

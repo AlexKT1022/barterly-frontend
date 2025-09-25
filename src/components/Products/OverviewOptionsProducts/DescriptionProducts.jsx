@@ -1,4 +1,3 @@
-// src/components/Products/DescriptionProducts.js
 import React from "react";
 
 const DescriptionProducts = ({ product }) => {
@@ -15,7 +14,7 @@ const DescriptionProducts = ({ product }) => {
             <ul>
               {items.map((item) => {
                 return (
-                  <li>
+                  <li key={item.id}>
                     <span className="font-semibold">{item.name}: </span>
                     {item.description}
                   </li>

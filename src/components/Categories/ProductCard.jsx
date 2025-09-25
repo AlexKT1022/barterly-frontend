@@ -38,6 +38,8 @@ const ProductCard = ({ post }) => {
 
   if (loading) return <p>loading</p>;
 
+
+  
   return (
     <div className="flex flex-col rounded-lg border border-zinc-300 w-80 min-h-80 p-5 hover:shadow-md transition-shadow">
       <img
