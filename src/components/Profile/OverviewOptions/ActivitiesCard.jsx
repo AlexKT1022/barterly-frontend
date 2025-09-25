@@ -6,63 +6,33 @@ const ActivitiesCard = ({ activity }) => {
       return "Trade";
     } else if (activity.type === "response_on_my_post") {
       return "User Response";
+    } else if (activity.type === "my_response") {
+      return "Offered";
     }
   };
 
-  // Found the below function from:
-  // https://docs.budibase.com/docs/time-ago-snippet-function?utm_source=chatgpt.com
-  const pastTimeString = (dateTime) => {
-    const pastTime = new Date(dateTime);
-    const now = new Date();
-    const delta = now - pastTime;
-
-    const days = Math.floor(delta / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (delta % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((delta % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((delta % (1000 * 60)) / 1000);
-
-    const timeStrings = [];
-    if (days > 0) {
-      timeStrings.push(`${days} days`);
-    }
-
-    if (days === 1) {
-      timeStrings.push(`${days} day`);
-    }
-    // if (hours > 0) {
-    //   timeStrings.push(`${hours} hours`);
-    // }
-    // if (minutes > 0) {
-    //   timeStrings.push(`${minutes} minutes`);
-    // }
-    // if (seconds > 0) {
-    //   timeStrings.push(`${seconds} seconds`);
-    // }
-
-    if (timeStrings.length === 0) {
-      return "just now";
-    } else if (timeStrings.length === 1) {
-      return timeStrings[0];
-    } else {
-      return (
-        // timeStrings.slice(0, -1).join(", ") +
-        // ", and " +
-        timeStrings.slice(-1) + " ago"
-      );
-    }
+  const normalizeDate = (date) => {
+    const dateChange = new Date(date).toDateString();
+    return dateChange;
   };
 
-  // console.log(pastTimeString(activity.at));
+  const normalizeTime = (time) => {
+    const timeChange = new Date(time).toLocaleTimeString();
+    return timeChange;
+  };
+
+  console.log(activity);
 
   return (
     <div className="w-full h-24 border border-zinc-300 rounded-lg p-5 ">
       <div className="flex justify-between">
         <p>{normalizeActivity(activity)}</p>
-        <p className="text-zinc-500">{pastTimeString(activity.at)}</p>
+        <p className="text-zinc-500">{normalizeDate(activity.at)}</p>
       </div>
-      <p className="text-zinc-500">{activity.title || activity.post_title}</p>
+      <div className="flex justify-between">
+        <p className="text-zinc-500">{activity.title || activity.post_title}</p>
+        <p className="text-zinc-500">{normalizeTime(activity.at)}</p>
+      </div>
     </div>
   );
 };

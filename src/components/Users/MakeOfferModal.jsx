@@ -13,18 +13,16 @@ const fetchPostsByUserId = async () => {
   }
 };
 
-
 // const createOffer = () => {
 //   try {
 //     const res = await fetch("http://localhost:3000/api/offers")
 //   } catch (error) {
-    
+
 //   }
 // }
 
 const loggedUser = await fetchPostsByUserId(id);
 const loggedUserPosts = loggedUser.posts;
-
 
 const MakeOfferModal = ({ setActive }) => {
   return (
@@ -49,10 +47,7 @@ const MakeOfferModal = ({ setActive }) => {
           ></textarea>
         </form>
         <div className="flex justify-evenly">
-          <button
-            className="p-5 bg-zinc-800 hover:bg-zinc-500 text-white w-40"
-            onClick={() => console.log("Clicked!")}
-          >
+          <button className="p-5 bg-zinc-800 hover:bg-zinc-500 text-white w-40">
             Make Offer
           </button>
           <button

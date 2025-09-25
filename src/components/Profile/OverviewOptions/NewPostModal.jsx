@@ -52,7 +52,7 @@ const NewPostModal = ({ setActive }) => {
       name: newFormData.get("name"),
       description: newFormData.get("itemDesc"),
       condition: newFormData.get("condition"),
-      imageUrl: newFormData.get("imgUrl"),
+      image_url: newFormData.get("imgUrl"),
       quantity: Number(newFormData.get("qty")),
     };
 
@@ -77,7 +77,9 @@ const NewPostModal = ({ setActive }) => {
         {/* Items Section */}
         <div className="mb-2">
           {items.length === 0 ? (
-            <p>Please add items to your post</p>
+            <p className="text-center">
+              Please add items to your post before submitting
+            </p>
           ) : (
             <>
               <p className="text-center mb-1 w-full bg-zinc-800 text-white p-1">
@@ -100,7 +102,7 @@ const NewPostModal = ({ setActive }) => {
         </div>
         <div className="flex justify-center mt-3">
           <button
-            className="w-32 p-2 bg-red-700 text-white mb-5 rounded-sm"
+            className="w-32 p-2 bg-red-700 hover:bg-red-600 text-white mb-5 rounded-sm"
             onClick={() => setItemModal(true)}
           >
             + Add Item
@@ -132,13 +134,13 @@ const NewPostModal = ({ setActive }) => {
 
           <div className="flex gap-5 justify-center">
             <button
-              className="p-3 w-32 bg-green-600 text-white rounded-md"
+              className="p-3 w-32 bg-green-600 hover:bg-green-500 text-white rounded-md"
               type="submit"
             >
               Submit
             </button>
             <button
-              className="p-3 w-32 bg-zinc-800 text-white rounded-md"
+              className="p-3 w-32 bg-zinc-800 hover:bg-zinc-500 text-white rounded-md"
               type="button"
               onClick={() => setActive(false)}
             >
@@ -195,18 +197,19 @@ const NewPostModal = ({ setActive }) => {
                 defaultValue="1"
                 required
               ></input>
-              <button className="w-full p-5 bg-zinc-800 text-white mb-5">
-                Save
-              </button>
+              <div className="gap-5 flex justify-center">
+                <button className="w-32 p-3 bg-green-600 hover:bg-green-500 text-white rounded-md">
+                  Save
+                </button>
+                <button
+                  className="w-32 p-3 bg-zinc-800 hover:bg-zinc-500 text-white rounded-md"
+                  type="button"
+                  onClick={() => setItemModal(false)}
+                >
+                  Cancel
+                </button>
+              </div>
             </form>
-            <div className="gap-5 flex justify-center">
-              <button
-                className="w-full p-5 bg-zinc-800 text-white mb-5"
-                onClick={() => setItemModal(false)}
-              >
-                Cancel
-              </button>
-            </div>
           </div>
         </>
       )}
