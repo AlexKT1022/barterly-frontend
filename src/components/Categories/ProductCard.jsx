@@ -38,14 +38,17 @@ const ProductCard = ({ post }) => {
 
   if (loading) return <p>loading</p>;
 
+  const imgFail = (event) => {
+    event.target.src = "../../../public/bartley_outline.svg";
+  };
 
-  
   return (
     <div className="flex flex-col rounded-lg border border-zinc-300 w-80 min-h-80 p-5 hover:shadow-md transition-shadow">
       <img
         src={postData.items?.[0]?.imageUrl}
         alt=""
-        className="w-full bg-black rounded-lg mb-1 h-40 object-cover object-top"
+        className="w-full bg-white rounded-lg mb-1 h-40 object-cover object-top"
+        onError={imgFail}
       />
       <div className="flex">
         <p
