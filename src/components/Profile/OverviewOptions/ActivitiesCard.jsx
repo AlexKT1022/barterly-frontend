@@ -21,8 +21,6 @@ const ActivitiesCard = ({ activity }) => {
     return timeChange;
   };
 
-  console.log(activity);
-
   return (
     <div className="w-full h-24 border border-zinc-300 rounded-lg p-5 ">
       <div className="flex justify-between">

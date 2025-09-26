@@ -1,5 +1,3 @@
-
-
 const fetchActivitiesByUserId = async () => {
   const token = sessionStorage.getItem("token");
   try {

@@ -10,24 +10,27 @@ const ProductCard = ({ post }) => {
   };
   const [active, setActive] = useState(false);
   return (
-    <div className="flex flex-col rounded-lg border border-zinc-300 w-80 h-80 p-5 hover:shadow-md transition-shadow">
+    <div className="flex flex-col rounded-lg border border-zinc-300 w-80 h-85 p-5 hover:shadow-md transition-shadow">
       {active && <EditPostModal setActive={setActive} data={post} />}
       <img
         src={post.items[0]?.imageUrl}
         alt=""
-        className="w-full h-full bg-black rounded-lg mb-1 object-cover object-top"
+        className="w-full h-full bg-black rounded-lg mb-3 object-cover object-top"
       />
-      <p className="font-semibold">{post.title}</p>
-      <div>
-        <p className="text-md mb-1">Category</p>
+
+      <div className="flex gap-2 items-center">
+        <p className="text-xs inline-block px-2 py-1 bg-zinc-200 rounded">
+          {post.categoryId}
+        </p>
         <p
-          className={`text-xs inline-block px-2 py-1 rounded ${
+          className={`text-xs inline-block px-2 py-1 rounded self-center ${
             status[post.status]
           }`}
         >
           {post.status}
         </p>
       </div>
+      <p className="font-semibold">{post.title}</p>
       <div className="flex justify-around">
         <button
           className="w-32 bg-zinc-800 text-white p-3 rounded-lg mt-5 hover:bg-zinc-500 duration-300"

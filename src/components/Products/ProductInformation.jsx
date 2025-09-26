@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
 import { useAuth } from "../../context/AuthContext.jsx";
 
-import MakeOfferModal from "../Users/MakeOfferModal";
+import MakeOfferModal from "./MakeOfferModal.jsx";
 
 const status = {
   open: "bg-green-100 text-green-600",
@@ -13,6 +13,60 @@ const status = {
 const ProductInformation = ({ product }) => {
   const [active, setActive] = useState(false);
   const { token } = useAuth();
+  const { id } = useParams();
+
+  // check if the child_post_id === page id
+  // if true return different buttons
+  // else show contact seller / make offer
+
+  const isTrade = () => {
+    const loggedUserData = product.loggedUserData.items.filter(
+      (response) => response.type === "response_on_my_post"
+    );
+    if (token && +id === loggedUserData[0].child_post_id) {
+      return (
+        <>
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button className="bg-black text-white px-6 py-2 rounded w-full sm:w-auto">
+              Commit Trade
+            </button>
+            {/* <button className='bg-gray-200 px-6 py-2 rounded w-full sm:w-auto'>
+          ❤️ Add to Wishlist
+        </button> */}
+            <button
+              className="bg-blue-600 text-white px-6 py-2 rounded w-full sm:w-auto"
+              onClick={() => setActive(true)}
+            >
+              Decline
+            </button>
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <>
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button className="bg-black text-white px-6 py-2 rounded w-full sm:w-auto">
+              Contact Seller
+            </button>
+            {/* <button className='bg-gray-200 px-6 py-2 rounded w-full sm:w-auto'>
+          ❤️ Add to Wishlist
+        </button> */}
+            <button
+              className="bg-blue-600 text-white px-6 py-2 rounded w-full sm:w-auto"
+              onClick={() => setActive(true)}
+            >
+              Make Offer
+            </button>
+          </div>
+        </>
+      );
+    }
+  };
+
+  // console.log(typeof id);
 
   return (
     <>
@@ -47,23 +101,7 @@ const ProductInformation = ({ product }) => {
             </div>
           </>
         ) : (
-          <>
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <button className="bg-black text-white px-6 py-2 rounded w-full sm:w-auto">
-                Contact Seller
-              </button>
-              {/* <button className='bg-gray-200 px-6 py-2 rounded w-full sm:w-auto'>
-          ❤️ Add to Wishlist
-        </button> */}
-              <button
-                className="bg-blue-600 text-white px-6 py-2 rounded w-full sm:w-auto"
-                onClick={() => setActive(true)}
-              >
-                Make Offer
-              </button>
-            </div>
-          </>
+          <>{isTrade()}</>
         )}
 
         {/* Product Stats */}
