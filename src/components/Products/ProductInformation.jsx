@@ -7,13 +7,78 @@ import MakeOfferModal from "./MakeOfferModal.jsx";
 const status = {
   open: "bg-green-100 text-green-600",
   pending: "bg-yellow-100 text-yellow-600",
-  closed: "bg-red-100 text-red-600",
+  traded: "bg-red-100 text-red-600",
 };
 
 const ProductInformation = ({ product }) => {
   const [active, setActive] = useState(false);
   const { token } = useAuth();
   const { id } = useParams();
+
+  const responseId = product.loggedUserData.items.find(
+    (item) => item.type === "response_on_my_post"
+  )?.response_id;
+
+  // User accepts trade
+  const handleAcceptTrade = async () => {
+    const offer_id = id;
+    const acting_user_id = product.authorId;
+    const payload = { offer_id, acting_user_id };
+
+    const token = sessionStorage.getItem("token");
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/offers/${responseId}/accept`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || "Submission failed");
+      }
+      await res.json();
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  };
+
+  const handleDeclineTrade = async () => {
+    const offer_id = id;
+    const acting_user_id = product.authorId;
+    const payload = { offer_id, acting_user_id };
+
+    const token = sessionStorage.getItem("token");
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/offers/${responseId}/reject`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || "Submission failed");
+      }
+      await res.json();
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  };
 
   // check if the child_post_id === page id
   // if true return different buttons
@@ -28,14 +93,15 @@ const ProductInformation = ({ product }) => {
         <>
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
-            <button className="bg-black text-white px-6 py-2 rounded w-full sm:w-auto">
-              Commit Trade
-            </button>
-            {/* <button className='bg-gray-200 px-6 py-2 rounded w-full sm:w-auto'>
-          ❤️ Add to Wishlist
-        </button> */}
             <button
-              className="bg-blue-600 text-white px-6 py-2 rounded w-full sm:w-auto"
+              className="bg-black text-white px-6 py-2 rounded w-full sm:w-auto hover:bg-zinc-500"
+              onClick={() => handleAcceptTrade()}
+            >
+              Accept
+            </button>
+
+            <button
+              className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded w-full sm:w-auto"
               onClick={() => setActive(true)}
             >
               Decline
@@ -51,9 +117,7 @@ const ProductInformation = ({ product }) => {
             <button className="bg-black text-white px-6 py-2 rounded w-full sm:w-auto">
               Contact Seller
             </button>
-            {/* <button className='bg-gray-200 px-6 py-2 rounded w-full sm:w-auto'>
-          ❤️ Add to Wishlist
-        </button> */}
+
             <button
               className="bg-blue-600 text-white px-6 py-2 rounded w-full sm:w-auto"
               onClick={() => setActive(true)}
@@ -65,8 +129,6 @@ const ProductInformation = ({ product }) => {
       );
     }
   };
-
-  // console.log(typeof id);
 
   return (
     <>
@@ -80,11 +142,6 @@ const ProductInformation = ({ product }) => {
             <span className={`px-2 py-1 rounded ${status[product.status]}`}>
               {product.status}
             </span>
-
-            {/* Categories */}
-            {/* <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded">
-            {product.condition}
-          </span> */}
           </div>
         </div>
         {!token ? (
@@ -106,12 +163,6 @@ const ProductInformation = ({ product }) => {
 
         {/* Product Stats */}
         <div className="text-sm text-gray-600 space-y-1">
-          {/* <p>
-          <strong>Views:</strong> {product.views}
-        </p> */}
-          {/* <p>
-          <strong>Watchers:</strong> {product.watchers}
-        </p> */}
           <p>
             <strong>Posted:</strong> {product.createdAt.slice(0, 10)}
           </p>

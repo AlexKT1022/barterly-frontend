@@ -3,6 +3,10 @@ import { useState } from "react";
 const ProductGallery = ({ images }) => {
   const [mainImage, setMainImage] = useState(images[0].imageUrl);
 
+  const imgFail = (event) => {
+    event.target.src = "../../public/bartley_outline.svg";
+  };
+
   return (
     <div className="w-full flex flex-col lg:flex-row gap-4">
       <div className="w-full sm:w-4/5 md:w-3/4 lg:w-3/4 flex justify-center items-center">
@@ -11,6 +15,7 @@ const ProductGallery = ({ images }) => {
             src={mainImage}
             alt="Main product"
             className="max-h-full max-w-full object-contain"
+            onError={imgFail}
           />
         </div>
       </div>
