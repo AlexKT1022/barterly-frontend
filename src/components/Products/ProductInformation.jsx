@@ -15,6 +15,8 @@ const ProductInformation = ({ product }) => {
   const { token } = useAuth();
   const { id } = useParams();
 
+  console.log(product);
+
   const pageId = id;
 
   const responseId =
@@ -22,7 +24,6 @@ const ProductInformation = ({ product }) => {
       (item) =>
         item.type === "response_on_my_post" && +pageId === item.child_post_id
     )?.response_id ?? null;
-
 
   // User accepts trade
   const handleAcceptTrade = async () => {

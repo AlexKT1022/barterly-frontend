@@ -3,7 +3,7 @@ const ActivitiesCard = ({ activity }) => {
     if (activity.type === "post_created") {
       return "Post Created";
     } else if (activity.type === "trade") {
-      return "Trade";
+      return "Traded";
     } else if (activity.type === "response_on_my_post") {
       return "User Response";
     } else if (activity.type === "my_response") {

@@ -1,3 +1,14 @@
+const fetchOffers = async () => {
+  const token = sessionStorage.getItem("token");
+  try {
+    const res = await fetch("http://localhost:3000/api/offers");
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 const fetchActivitiesByUserId = async () => {
   const token = sessionStorage.getItem("token");
   try {
@@ -35,7 +46,8 @@ const profileLoader = async () => {
 
     const userActivities = await fetchActivitiesByUserId();
     const userPosts = await fetchPostsByUserId();
-    const userData = { ...data, userPosts, userActivities };
+    const offers = await fetchOffers();
+    const userData = { ...data, userPosts, userActivities, offers };
 
     return userData;
   } catch (err) {
