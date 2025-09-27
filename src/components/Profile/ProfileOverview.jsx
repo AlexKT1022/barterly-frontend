@@ -65,7 +65,7 @@ const ProfileOverview = ({ profileData }) => {
           Settings
         </button>
       </div>
-      <div className="mt-5 flex justify-between items-center">
+      <div className="mt-5 flex justify-between items-center md:w-1/2 lg:w-full">
         <p className="font-semibold">
           {active === "myProducts" && "My Products"}
           {active === "recentActivities" && "Recent Activities"}

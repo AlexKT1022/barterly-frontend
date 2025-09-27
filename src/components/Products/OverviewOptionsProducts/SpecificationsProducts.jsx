@@ -26,14 +26,15 @@ const SpecificationsProducts = ({ product }) => {
             </tr>
           ))} */}
           <tr className="border-b">
-            <td>{items[0].name}</td>
-            <td>{items[0].condition}</td>
-            <td>{items[0].quantity}</td>
-          </tr>
-          <tr className="border-b">
-            <td>{items[1].name}</td>
-            <td>{items[0].condition}</td>
-            <td>{items[1].quantity}</td>
+            {items.map((item) => {
+              return (
+                <>
+                  <td>{item.name}</td>
+                  <td>{item.condition}</td>
+                  <td>{item.quantity}</td>
+                </>
+              );
+            })}
           </tr>
         </tbody>
       </table>

@@ -15,9 +15,14 @@ const ProductInformation = ({ product }) => {
   const { token } = useAuth();
   const { id } = useParams();
 
-  const responseId = product.loggedUserData.items.find(
-    (item) => item.type === "response_on_my_post"
-  )?.response_id;
+  const pageId = id;
+
+  const responseId =
+    product.loggedUserData.items.find(
+      (item) =>
+        item.type === "response_on_my_post" && +pageId === item.child_post_id
+    )?.response_id ?? null;
+
 
   // User accepts trade
   const handleAcceptTrade = async () => {
@@ -79,10 +84,6 @@ const ProductInformation = ({ product }) => {
       throw err;
     }
   };
-
-  // check if the child_post_id === page id
-  // if true return different buttons
-  // else show contact seller / make offer
 
   const isTrade = () => {
     const loggedUserData = product.loggedUserData.items.filter(

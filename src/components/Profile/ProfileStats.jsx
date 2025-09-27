@@ -24,7 +24,7 @@ const ProfileStats = ({ profileStats }) => {
 
   return (
     <>
-      <div className="flex mt-5 gap-5 justify-center">
+      <div className="md:w-3xl lg:w-6xl flex mt-5 gap-5 justify-center">
         <div className="flex flex-col h-20 w-24 md:h-28 md:w-40 border border-zinc-300 rounded-md justify-evenly pl-2 md:pl-3">
           <p className="text-sm font-semibold mb-5">Open Trades</p>
           <p className="text-xl font-bold">{openPosts(mePosts)}</p>
