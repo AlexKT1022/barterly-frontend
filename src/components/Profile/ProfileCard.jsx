@@ -8,7 +8,7 @@ const ProfileCard = ({ meProfileData }) => {
   return (
     <>
       <div
-        className="mt-5 md:w-2xl lg:w-6xl px-4 border rounded-lg border-zinc-300 
+        className="mx-auto mt-5 md:w-2xl lg:w-6xl px-4 border rounded-lg border-zinc-300 
                  gap-5 p-5 hover:shadow-md transition-shadow grid
                  md:flex md:flex-col lg:grid lg:grid-cols-[96px_minmax(0,1fr)_120px]"
       >

@@ -58,7 +58,7 @@ const MakeOfferModal = ({ setActive }) => {
         const res = await fetch(`http://localhost:3000/api/users/${id}/posts`);
         const data = await res.json();
 
-        setLoggedUserPosts(data?.posts ?? []);
+        setLoggedUserPosts(data.posts);
       } catch (err) {
         console.error("Failed to fetch posts:", err);
       }
@@ -66,6 +66,8 @@ const MakeOfferModal = ({ setActive }) => {
 
     fetchPosts();
   }, []);
+
+  const openPosts = loggedUserPosts.filter((fp) => fp.status === "open");
 
   return (
     <div
@@ -83,7 +85,7 @@ const MakeOfferModal = ({ setActive }) => {
             onChange={(event) => handleSelectedTrade(event.target.value)}
           >
             <option>Select from your posts...</option>
-            {loggedUserPosts.map((post) => (
+            {openPosts.map((post) => (
               <option key={post.id} value={post.id}>
                 {post.title}
               </option>
@@ -94,16 +96,16 @@ const MakeOfferModal = ({ setActive }) => {
             placeholder="Leave a message - barter!"
             className="w-full border border-zinc-300 p-2 rounded-lg h-90"
           ></textarea>
-          <div className="flex justify-evenly">
+          <div className="mx-auto flex justify-evenly w-60 mt-5">
             <button
-              className="p-5 bg-zinc-800 hover:bg-zinc-500 text-white w-40"
+              className="w-24 p-2 rounded-md bg-zinc-800 hover:bg-zinc-500 text-white"
               type="submit"
             >
               Make Offer
             </button>
             <button
               type="button"
-              className="p-5 bg-red-500 hover:bg-red-800 text-white w-40"
+              className="w-24 p-2 rounded-md bg-red-500 hover:bg-red-800 text-white"
               onClick={() => setActive(false)}
             >
               Cancel

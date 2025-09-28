@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router";
 import { useAuth } from "../../context/AuthContext.jsx";
+import { IoIosAlert } from "react-icons/io";
 
 import MakeOfferModal from "./MakeOfferModal.jsx";
 
@@ -14,8 +15,6 @@ const ProductInformation = ({ product }) => {
   const [active, setActive] = useState(false);
   const { token } = useAuth();
   const { id } = useParams();
-
-  console.log(product);
 
   const pageId = id;
 
@@ -88,9 +87,11 @@ const ProductInformation = ({ product }) => {
 
   const isTrade = () => {
     const loggedUserData = product.loggedUserData.items.filter(
-      (response) => response.type === "response_on_my_post"
+      (response) =>
+        response.type === "response_on_my_post" &&
+        response.child_post_id === +id
     );
-    if (token && +id === loggedUserData[0].child_post_id) {
+    if (token && +id === loggedUserData.child_post_id) {
       return (
         <>
           {/* Action Buttons */}
@@ -104,10 +105,19 @@ const ProductInformation = ({ product }) => {
 
             <button
               className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded w-full sm:w-auto"
-              onClick={() => setActive(true)}
+              onClick={() => handleDeclineTrade()}
             >
               Decline
             </button>
+          </div>
+        </>
+      );
+    } else if (product.status === "traded") {
+      return (
+        <>
+          <div className="flex items-center">
+            <IoIosAlert className="w-16 h-16 text-red-400" />
+            <p>This has been traded and is no longer available</p>
           </div>
         </>
       );

@@ -12,7 +12,7 @@ const ProfileOverview = ({ profileData }) => {
   const data = profileData;
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-evenly md:justify-between bg-zinc-200 md:w-1/2 lg:w-full h-32 md:h-8 rounded-lg md:rounded-full mt-5 pt-1 pb-1 pl-1 pr-1">
+      <div className="mx-auto flex flex-col md:flex-row justify-evenly md:justify-between bg-zinc-200 md:w-1/2 lg:w-full h-32 md:h-8 rounded-lg md:rounded-full mt-5 pt-1 pb-1 pl-1 pr-1">
         <button
           onClick={() => setActive("myProducts")}
           className={`text-sm rounded-full md:w-60 font-semibold cursor-pointer transition-all duration-500 ${
@@ -65,7 +65,7 @@ const ProfileOverview = ({ profileData }) => {
           Settings
         </button>
       </div>
-      <div className="mt-5 flex justify-between items-center md:w-1/2 lg:w-full">
+      <div className="mx-auto mt-5 flex justify-between items-center md:w-1/2 lg:w-full">
         <p className="font-semibold">
           {active === "myProducts" && "My Products"}
           {active === "recentActivities" && "Recent Activities"}
