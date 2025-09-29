@@ -19,7 +19,7 @@ const ProductInformation = ({ product }) => {
   const pageId = id;
 
   const responseId =
-    product.loggedUserData.items.find(
+    (product.loggedUserData?.items || []).find(
       (item) =>
         item.type === "response_on_my_post" && +pageId === item.child_post_id
     )?.response_id ?? null;
