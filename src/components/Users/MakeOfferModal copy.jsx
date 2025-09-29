@@ -1,34 +1,32 @@
-import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+const token = sessionStorage.getItem("token");
+const { id } = jwtDecode(token);
+
+const fetchPostsByUserId = async () => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/users/${id}/posts`);
+    const data = await res.json();
+
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+
+// const createOffer = () => {
+//   try {
+//     const res = await fetch("http://localhost:3000/api/offers")
+//   } catch (error) {
+    
+//   }
+// }
+
+const loggedUser = await fetchPostsByUserId(id);
+const loggedUserPosts = loggedUser.posts;
+console.log(loggedUserPosts);
 
 const MakeOfferModal = ({ setActive }) => {
-  const [loggedUserPosts, setLoggedUserPosts] = useState([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const token =
-          typeof window !== "undefined"
-            ? sessionStorage.getItem("token")
-            : null;
-        if (!token) return;
-
-        const payload = jwtDecode(token);
-        const id = payload?.id;
-        if (!id) return;
-
-        const res = await fetch(`http://localhost:3000/api/users/${id}/posts`);
-        const data = await res.json();
-
-        setLoggedUserPosts(data?.posts ?? []);
-      } catch (err) {
-        console.error("Failed to fetch posts:", err);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
   return (
     <div
       id="offer-modal"
@@ -41,9 +39,9 @@ const MakeOfferModal = ({ setActive }) => {
         <form className="w-full mb-5">
           <select className="w-full border border-zinc-300 p-2 rounded-lg mb-2">
             <option>Select from your posts...</option>
-            {loggedUserPosts.map((post) => (
-              <option key={post.id}>{post.title}</option>
-            ))}
+            {loggedUserPosts.map((post) => {
+              return <option>{post.title}</option>;
+            })}
           </select>
           <textarea
             placeholder="Leave a message - barter!"
@@ -51,7 +49,10 @@ const MakeOfferModal = ({ setActive }) => {
           ></textarea>
         </form>
         <div className="flex justify-evenly">
-          <button className="p-5 bg-zinc-800 hover:bg-zinc-500 text-white w-40">
+          <button
+            className="p-5 bg-zinc-800 hover:bg-zinc-500 text-white w-40"
+            onClick={() => console.log("Clicked!")}
+          >
             Make Offer
           </button>
           <button
