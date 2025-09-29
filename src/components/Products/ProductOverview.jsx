@@ -9,7 +9,7 @@ const ProductOverview = ({ product }) => {
   return (
     <div className='w-full'>
       {/* Tab Buttons */}
-      <div className='bg-zinc-200 w-full rounded-full mt-5 flex flex-wrap gap-2 p-1'>
+      <div className='bg-zinc-200 w-full rounded-full mt-5 flex flex-wrap gap-2 p-1 justify-center'>
         <button
           onClick={() => setActive('DescriptionProducts')}
           className={`text-sm flex-1 sm:flex-none sm:w-60 rounded-full font-semibold cursor-pointer transition-all duration-500 ${

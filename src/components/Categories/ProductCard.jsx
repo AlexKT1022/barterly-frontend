@@ -46,7 +46,7 @@ const ProductCard = ({ post }) => {
   const statusColors = {
     open: "bg-green-100 text-green-600",
     pending: "bg-yellow-100 text-yellow-600",
-    closed: "bg-red-100 text-red-600",
+    traded: "bg-red-100 text-red-600",
   };
 
   const conditionColors = {
@@ -63,8 +63,7 @@ const ProductCard = ({ post }) => {
     event.target.src = "https://t4.ftcdn.net/jpg/16/71/95/79/360_F_1671957940_D2dYs3RXTsWEOeS7xY20y6RStabYt6DV.jpg";
   };
   const item = postData?.items?.[0] ?? {};
-  console.log("Categories:", categories);
-  console.log("Post category_id:", post.categoryId);
+
   const category = categories.find(
     //post.category_id
     //ensures type coercion so comparison works whether
@@ -76,8 +75,9 @@ const ProductCard = ({ post }) => {
   return (
     <div className="flex flex-col rounded-lg border border-zinc-300 w-80 min-h-80 p-5 hover:shadow-md transition-shadow">
       <img
+
       //just  changed item.image_url to .imageUrl
-        src={item.imageUrl|| "/placeholder.png"}
+        src={item.imageUrl}
         alt={item.name || post.title}
         className="w-full bg-black rounded-lg mb-1 h-40 object-cover object-top"
         onError={imgFail}

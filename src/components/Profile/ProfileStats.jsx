@@ -15,7 +15,7 @@ const ProfileStats = ({ profileStats }) => {
   const completedPosts = (posts) => {
     let total = 0;
     posts.map((post) => {
-      if (post.status === "closed") {
+      if (post.status === "traded") {
         total++;
       }
     });
@@ -24,7 +24,7 @@ const ProfileStats = ({ profileStats }) => {
 
   return (
     <>
-      <div className="flex mt-5 gap-5 justify-center">
+      <div className="mx-auto md:w-2xl lg:w-6xl flex mt-5 gap-5 justify-center">
         <div className="flex flex-col h-20 w-24 md:h-28 md:w-40 border border-zinc-300 rounded-md justify-evenly pl-2 md:pl-3">
           <p className="text-sm font-semibold mb-5">Open Trades</p>
           <p className="text-xl font-bold">{openPosts(mePosts)}</p>
@@ -34,7 +34,7 @@ const ProfileStats = ({ profileStats }) => {
           <p className="text-xl font-bold">{completedPosts(mePosts)}</p>
         </div>
         <div className="flex flex-col h-20 w-24 md:h-28 md:w-40 border border-zinc-300 rounded-md justify-evenly pl-2 md:pl-3">
-          <p className="text-sm font-semibold mb-5">Total Trades Listed</p>
+          <p className="text-sm font-semibold mb-5">Total Items</p>
           <p className="text-xl font-bold">
             {totalItems >= 1 ? totalItems : 0}
           </p>

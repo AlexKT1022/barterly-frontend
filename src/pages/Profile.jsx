@@ -6,6 +6,7 @@ import { useLoaderData } from "react-router";
 
 const Profile = () => {
   const profileData = useLoaderData() || [];
+
   return (
     <>
       <div className="max-auto max-w-6xl">
