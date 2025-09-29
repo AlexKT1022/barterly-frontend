@@ -47,9 +47,6 @@ const Navbar = () => {
             <NavLink to="/categories" className="hover-underline-animation">
               Categories
             </NavLink>
-            {/* <NavLink to="/posts" className="hover-underline-animation">
-              Posts
-            </NavLink> */}
             <NavLink to="/how-it-works" className="hover-underline-animation">
               How It Works
             </NavLink>
@@ -127,13 +124,6 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             Categories
-          </NavLink>
-          <NavLink
-            to="/posts"
-            className="block"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Posts
           </NavLink>
           <NavLink
             to="/how-it-works"

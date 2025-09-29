@@ -44,15 +44,15 @@ const Categories = () => {
 
   const [searchProducts, setSearchProducts] = useState("");
   const [showForm, setShowForm] = useState(false);
+  // const [selectedCategory, setSelectedCategory] = useState(""); // <-- selected category state
   const postData = useLoaderData() || [];
 
-  // Get token from sessionStorage to determine if user is logged in
   const token = sessionStorage.getItem("token");
-  const isLoggedIn = !!token; // true if token exists
+  const isLoggedIn = !!token;
 
   const onAdd = (item) => {
     postData.push({ ...item, username: "test" });
-    setShowForm(false); 
+    setShowForm(false);
   };
 
   return (
@@ -61,7 +61,6 @@ const Categories = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <h2 className="text-lg font-semibold">Trading Marketplace</h2>
 
-        {/* Only show button if user is logged in */}
         {isLoggedIn && (
           <button
             onClick={() => setShowForm(true)}
@@ -81,6 +80,21 @@ const Categories = () => {
           value={searchProducts}
           onChange={(e) => setSearchProducts(e.target.value)}
         />
+
+        {/* Category Select
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+          className="border border-gray-300 p-3 w-full sm:w-64 mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+          required
+        >
+          <option value="">Select Category</option>
+          {categories.map((c, index) => (
+            <option key={index} value={c.name}>
+              {c.name}
+            </option>
+          ))}
+        </select> */}
       </div>
 
       {/* Products */}

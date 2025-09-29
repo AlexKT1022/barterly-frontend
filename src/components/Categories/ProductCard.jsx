@@ -10,65 +10,106 @@ const fetchItemsByPostId = async (id) => {
   }
 };
 
+const fetchCategories = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/categories");
+    if (!res.ok) throw new Error("Failed to fetch categories");
+    const data = await res.json();
+    return data.categories;
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
 const ProductCard = ({ post }) => {
-  const [postData, setPostData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [postData, setPostData] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-
     const loadData = async () => {
-      const data = await fetchItemsByPostId(post.id);
-      setPostData(data);
+      try {
+        const data = await fetchItemsByPostId(post.id);
+        const dataCategory = await fetchCategories();
+        setPostData(data);
+        setCategories(dataCategory);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
     };
-    try {
-      loadData();
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+    loadData();
+  }, [post.id]);
 
-  const status = {
+  const statusColors = {
     open: "bg-green-100 text-green-600",
     pending: "bg-yellow-100 text-yellow-600",
     traded: "bg-red-100 text-red-600",
   };
 
-  if (loading) return <p>loading</p>;
-
-  const imgFail = (event) => {
-    event.target.src = "../../../public/bartley_outline.svg";
+  const conditionColors = {
+    "New": "bg-green-100 text-green-600",
+    "Like New": "bg-yellow-100 text-yellow-600",
+    "Used - Excellent": "bg-blue-100 text-blue-600",
+    "Used - Good": "bg-gray-100 text-gray-600",
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (!postData) return <p className="text-red-500">Failed to load product.</p>;
+  
+  const imgFail = (event) => {
+    event.target.src = "https://t4.ftcdn.net/jpg/16/71/95/79/360_F_1671957940_D2dYs3RXTsWEOeS7xY20y6RStabYt6DV.jpg";
+  };
+  const item = postData?.items?.[0] ?? {};
+
+  const category = categories.find(
+    //post.category_id
+    //ensures type coercion so comparison works whether
+    // one is a string and the other a number
+    (cat) => Number(cat.id) === Number(post.categoryId)
+  );
+  const categoryName = category ? category.name : "Unknown";
 
   return (
     <div className="flex flex-col rounded-lg border border-zinc-300 w-80 min-h-80 p-5 hover:shadow-md transition-shadow">
       <img
-        src={postData.items?.[0]?.imageUrl}
-        alt=""
-        className="w-full bg-white rounded-lg mb-1 h-40 object-cover object-top"
+
+      //just  changed item.image_url to .imageUrl
+        src={item.imageUrl}
+        alt={item.name || post.title}
+        className="w-full bg-black rounded-lg mb-1 h-40 object-cover object-top"
         onError={imgFail}
       />
-      <div className="flex">
-        <p
-          className={`text-xs inline-block px-2 py-1 rounded ${
-            status[post.status]
-          }`}
-        >
-          {post.status}
-        </p>
-      </div>
-      <p className="font-semibold mt-1">{post.title}</p>
-      {/* <p className="text-xs text-zinc-500 mb-1">{post.username}</p> */}
-      <p>{post.description}</p>
-      {/* <p className="font-semibold text-gray-700">Quantity: {post.quantity}</p> */}
-      <div className="flex justify-around">
-        <Link to={`/product/${post.id}`}>
-          <button
-            to={`/product/${post.id}`}
-            className="w-32 bg-zinc-800 text-white p-3 rounded-lg mt-5 hover:bg-zinc-500 duration-300"
+
+      <div className="flex gap-2 mb-2">
+        {post.status && (
+          <p
+            className={`text-xs inline-block px-2 py-1 rounded ${statusColors[post.status] || "bg-gray-100 text-gray-600"
+              }`}
           >
+            {post.status}
+          </p>
+        )}
+
+        {item.condition && (
+          <p
+            className={`text-xs inline-block px-2 py-1 rounded ${conditionColors[item.condition] || "bg-gray-100 text-gray-600"
+              }`}
+          >
+            {item.condition}
+          </p>
+        )}
+        <p className="text-sm text-gray-500 bg-red-100 text-red-600">{categoryName}</p>
+      </div>
+
+      <p className="font-semibold mt-1">{post.title}</p>
+      <p className="text-gray-700 text-sm">{post.description}</p>
+
+      <div className="flex justify-around mt-4">
+        <Link to={`/product/${post.id}`}>
+          <button className="w-32 bg-zinc-800 text-white p-3 rounded-lg hover:bg-zinc-500 duration-300">
             View Details
           </button>
         </Link>
