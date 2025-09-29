@@ -10,7 +10,6 @@ import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import NotFoundPage from "./pages/NotFoundPage";
 import HowItWorks from "./pages/HowItWorks";
-import PostsPage from "./pages/Postpage";
 import About from "./pages/About";
 import Users from "./pages/Users";
 import UserProfile from "./pages/UserProfile";
@@ -36,7 +35,6 @@ const routes = [
       { path: "/about", Component: About },
       { path: "users", Component: Users, loader: usersLoader },
       { path: "user/:id", Component: UserProfile, loader: userLoader },
-      { path: "/posts", Component: PostsPage },
       { path: "*", Component: NotFoundPage },
     ],
   },
