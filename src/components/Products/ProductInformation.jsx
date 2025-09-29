@@ -30,7 +30,7 @@ const ProductInformation = ({ product }) => {
   const { id } = useParams();
 
   const pageId = id;
-
+  console.log(product);
   const responseId =
     (product.loggedUserData?.items || []).find(
       (item) =>
@@ -170,7 +170,14 @@ const ProductInformation = ({ product }) => {
           <h1 className="text-2xl sm:text-3xl font-bold">{product.title}</h1>
           <p>
             <strong>Created by: &nbsp;</strong>
-            <Link to={token && currentUserId === product.authorId ? "/profile" : `/user/${product.authorId}`} className="underline">
+            <Link
+              to={
+                token && currentUserId === product.authorId
+                  ? "/profile"
+                  : `/user/${product.authorId}`
+              }
+              className="underline"
+            >
               {product.username}
             </Link>
           </p>

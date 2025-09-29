@@ -46,16 +46,6 @@ const ProfileOverview = ({ profileData }) => {
           Trade Responses
         </button>
 
-        {/* <button
-          onClick={() => setActive("reviews")}
-          className={`text-sm rounded-full md:w-60 font-semibold cursor-pointer transition-all duration-500 ${
-            active === "reviews"
-              ? "bg-white"
-              : "bg-transparent hover:bg-zinc-400 hover:text-white"
-          }`}
-        >
-          Reviews
-        </button> */}
         <button
           onClick={() => setActive("settings")}
           className={`text-sm rounded-full md:w-60 font-semibold cursor-pointer transition-all duration-500 ${

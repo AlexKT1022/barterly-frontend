@@ -11,9 +11,6 @@ const ProductCard = ({ post, categories }) => {
   };
 
   const category = categories.find(
-    //post.category_id
-    //ensures type coercion so comparison works whether
-    // one is a string and the other a number
     (cat) => Number(cat.id) === Number(post.categoryId)
   );
   const categoryName = category ? category.name : "Unknown";
