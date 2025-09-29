@@ -5,9 +5,10 @@ const ResponseCard = ({ data }) => {
   const tradeActivities = data.userActivities.items;
 
   const filteredActivities = tradeActivities.filter(
-    (activity) =>
-      activity.type === "response_on_my_post" && activity.status === "pending"
+    (activity) => activity.type === "response_on_my_post"
   );
+
+  console.log(tradeActivities);
 
   const normalizeDate = (date) => {
     const dateChange = new Date(date).toDateString();
@@ -20,10 +21,13 @@ const ResponseCard = ({ data }) => {
   };
 
   return (
-    <div className="mx-auto md:w-2xl lg:w-6xl md:h-24 sm:h-32 border border-zinc-300 rounded-lg p-5 mt-5">
+    <div className="mx-auto md:w-2xl lg:w-6xl md:h-24 sm:h-32 p-5 mt-5">
       {filteredActivities.length > 0 ? (
         filteredActivities.map((activity) => (
-          <div key={activity.id} className="flex flex-col">
+          <div
+            key={activity.id}
+            className="flex flex-col border border-zinc-300 rounded-lg mt-5 p-2"
+          >
             <div className="md:flex md:justify-between md:mb-1 md:italic text-zinc-500">
               <div className="text-center">
                 <p>

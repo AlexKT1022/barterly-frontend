@@ -6,6 +6,7 @@ const MakeOfferModal = ({ setActive }) => {
   const [loggedUserPosts, setLoggedUserPosts] = useState([]);
   const [selectedTrade, setSelectedTrade] = useState(null); // start as null
   const { id } = useParams();
+  
   const handleSelectedTrade = (postId) => {
     // ensure number (helpful if you pass strings from UI)
     setSelectedTrade(postId ? Number(postId) : null);

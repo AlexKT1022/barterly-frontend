@@ -2,8 +2,21 @@ import { useState } from "react";
 import { Link, useParams } from "react-router";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { IoIosAlert } from "react-icons/io";
+import { jwtDecode } from "jwt-decode";
 
 import MakeOfferModal from "./MakeOfferModal.jsx";
+
+let currentUserId = null;
+try {
+  const token =
+    typeof window !== "undefined" ? sessionStorage.getItem("token") : null;
+  if (token) {
+    const payload = jwtDecode(token);
+    currentUserId = payload?.id ?? null;
+  }
+} catch (err) {
+  console.warn("Invalid token:", err);
+}
 
 const status = {
   open: "bg-green-100 text-green-600",
@@ -86,12 +99,18 @@ const ProductInformation = ({ product }) => {
   };
 
   const isTrade = () => {
-    const loggedUserData = product.loggedUserData.items.filter(
-      (response) =>
-        response.type === "response_on_my_post" &&
-        response.child_post_id === +id
-    );
-    if (token && +id === loggedUserData.child_post_id) {
+    const loggedUserData =
+      product.loggedUserData.items
+        .filter(
+          (response) =>
+            response.type === "response_on_my_post" &&
+            response.child_post_id === +id
+        )
+        .find((p) => p.child_post_id)?.child_post_id ?? null;
+    if (token && currentUserId === product.authorId) {
+      return <></>;
+    }
+    if (token && +id === loggedUserData) {
       return (
         <>
           {/* Action Buttons */}
@@ -149,6 +168,12 @@ const ProductInformation = ({ product }) => {
         {/* Product Title and Labels */}
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold">{product.title}</h1>
+          <p>
+            <strong>Created by: &nbsp;</strong>
+            <Link to={token && currentUserId === product.authorId ? "/profile" : `/user/${product.authorId}`} className="underline">
+              {product.username}
+            </Link>
+          </p>
           <div className="flex flex-wrap gap-2 mt-2 text-sm">
             {/* <span className='bg-gray-200 px-2 py-1 rounded'>{product.category}</span> */}
             <span className={`px-2 py-1 rounded ${status[product.status]}`}>
@@ -178,6 +203,7 @@ const ProductInformation = ({ product }) => {
           <p>
             <strong>Posted:</strong> {product.createdAt.slice(0, 10)}
           </p>
+
           <p>
             <strong>Updated:</strong>
             {product.updatedAt === null ? " No updates" : product.updateAt}

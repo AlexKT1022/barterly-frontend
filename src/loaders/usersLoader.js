@@ -1,5 +1,3 @@
-import { jwtDecode } from "jwt-decode";
-
 const fetchPostsByAllUsers = async () => {
   try {
     const res = await fetch("http://localhost:3000/api/posts");

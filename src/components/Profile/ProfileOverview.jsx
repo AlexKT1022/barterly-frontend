@@ -10,6 +10,8 @@ const ProfileOverview = ({ profileData }) => {
   const [active, setActive] = useState("myProducts");
   const [activeNewPost, setActiveNewPost] = useState(false);
   const data = profileData;
+  const categories = profileData.categories;
+
   return (
     <>
       <div className="mx-auto flex flex-col md:flex-row justify-evenly md:justify-between bg-zinc-200 md:w-1/2 lg:w-full h-32 md:h-8 rounded-lg md:rounded-full mt-5 pt-1 pb-1 pl-1 pr-1">
@@ -80,7 +82,9 @@ const ProfileOverview = ({ profileData }) => {
         </button>
       </div>
       <div>
-        {active === "myProducts" && <MyProducts products={data.userPosts} />}
+        {active === "myProducts" && (
+          <MyProducts products={data.userPosts} categories={categories} />
+        )}
       </div>
       <div>
         {active === "recentActivities" && (
@@ -90,7 +94,9 @@ const ProfileOverview = ({ profileData }) => {
       <div>{active === "reviews" && <Reviews />}</div>
       <div>{active === "responses" && <Responses data={data} />}</div>
       <div>{active === "settings" && <Settings meData={data} />}</div>
-      {activeNewPost && <NewPostModal setActive={setActiveNewPost} />}
+      {activeNewPost && (
+        <NewPostModal setActive={setActiveNewPost} categories={categories} />
+      )}
     </>
   );
 };

@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 
-const NewPostModal = ({ setActive }) => {
+const NewPostModal = ({ setActive, categories }) => {
   const [itemModal, setItemModal] = useState(false);
+  const [category_id, setCategory] = useState("");
   const [items, setItems] = useState([]);
+
+
 
   const handlePostSubmit = async (event) => {
     event.preventDefault();
@@ -11,8 +14,9 @@ const NewPostModal = ({ setActive }) => {
 
     const title = newFormData.get("title");
     const description = newFormData.get("postDesc");
+    const category_id = newFormData.get("category");
 
-    const formData = { title, description, items };
+    const formData = { title, description, category_id, items };
 
     const token = sessionStorage.getItem("token");
 
@@ -125,6 +129,22 @@ const NewPostModal = ({ setActive }) => {
             placeholder="Title"
             required
           ></input>
+          <select
+            name="category"
+            onChange={(e) => setCategory(Number(e.target.value))}
+            className="w-full p-2 rounded-md border border-zinc-300"
+            value={category_id}
+            required
+          >
+            <option value="">Select Category</option>
+            {categories.map((cat) => {
+              return (
+                <option key={cat.id} value={cat.id}>
+                  {cat.name}
+                </option>
+              );
+            })}
+          </select>
           <textarea
             name="postDesc"
             className="w-full p-2 rounded-md border border-zinc-300"

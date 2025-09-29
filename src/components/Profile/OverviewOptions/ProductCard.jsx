@@ -2,13 +2,22 @@ import { useState } from "react";
 import { Link } from "react-router";
 import EditPostModal from "../EditPostModal";
 
-const ProductCard = ({ post }) => {
+const ProductCard = ({ post, categories }) => {
+  const [active, setActive] = useState(false);
   const status = {
     open: "bg-green-100 text-green-600",
     pending: "bg-yellow-100 text-yellow-600",
     traded: "bg-red-100 text-red-600",
   };
-  const [active, setActive] = useState(false);
+
+  const category = categories.find(
+    //post.category_id
+    //ensures type coercion so comparison works whether
+    // one is a string and the other a number
+    (cat) => Number(cat.id) === Number(post.categoryId)
+  );
+  const categoryName = category ? category.name : "Unknown";
+
   return (
     <div className="flex flex-col rounded-lg border border-zinc-300 w-80 h-85 p-5 hover:shadow-md transition-shadow">
       {active && <EditPostModal setActive={setActive} data={post} />}
@@ -20,7 +29,7 @@ const ProductCard = ({ post }) => {
 
       <div className="flex gap-2 items-center">
         <p className="text-xs inline-block px-2 py-1 bg-zinc-200 rounded">
-          {post.categoryId}
+          {categoryName}
         </p>
         <p
           className={`text-xs inline-block px-2 py-1 rounded self-center ${
