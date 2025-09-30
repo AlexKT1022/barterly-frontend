@@ -1,6 +1,8 @@
 const fetchAllUserPosts = async (id) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/users/${id}/posts`);
+    const res = await fetch(
+      `https://barterly-backend.onrender.com/api/users/${id}/posts`
+    );
     const data = await res.json();
     return data;
   } catch (error) {
@@ -10,7 +12,9 @@ const fetchAllUserPosts = async (id) => {
 
 const userLoader = async ({ params }) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/users/${params.id}`);
+    const res = await fetch(
+      `https://barterly-backend.onrender.com/api/users/${params.id}`
+    );
     const data = await res.json();
     const userPosts = await fetchAllUserPosts(params.id);
     const userData = { ...data, userPosts };

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { jwtDecode } from "jwt-decode";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import { jwtDecode } from 'jwt-decode';
 
 const MakeOfferModal = ({ setActive }) => {
   const [loggedUserPosts, setLoggedUserPosts] = useState([]);
@@ -14,25 +14,28 @@ const MakeOfferModal = ({ setActive }) => {
     event.preventDefault();
     const newFormData = new FormData(event.currentTarget);
     const post_id = Number(id); // parent post id
-    const message = newFormData.get("message") || ""; // optional
+    const message = newFormData.get('message') || ''; // optional
     // Build payload. Only include child_post_id if user picked one.
     const payload = { post_id, message };
     if (Number.isFinite(selectedTrade) && selectedTrade > 0) {
       payload.child_post_id = selectedTrade; // <-- IMPORTANT: correct key name
     }
-    const token = sessionStorage.getItem("token");
+    const token = sessionStorage.getItem('token');
     try {
-      const res = await fetch("http://localhost:3000/api/offers", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(payload),
-      });
+      const res = await fetch(
+        'https://barterly-backend.onrender.com/api/offers',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(payload),
+        }
+      );
       if (!res.ok) {
         const text = await res.text();
-        throw new Error(text || "Submission failed");
+        throw new Error(text || 'Submission failed');
       }
       await res.json();
       window.location.reload();
@@ -46,8 +49,8 @@ const MakeOfferModal = ({ setActive }) => {
     const fetchPosts = async () => {
       try {
         const token =
-          typeof window !== "undefined"
-            ? sessionStorage.getItem("token")
+          typeof window !== 'undefined'
+            ? sessionStorage.getItem('token')
             : null;
         if (!token) return;
 
@@ -55,33 +58,35 @@ const MakeOfferModal = ({ setActive }) => {
         const id = payload?.id;
         if (!id) return;
 
-        const res = await fetch(`http://localhost:3000/api/users/${id}/posts`);
+        const res = await fetch(
+          `https://barterly-backend.onrender.com/api/users/${id}/posts`
+        );
         const data = await res.json();
 
         setLoggedUserPosts(data.posts);
       } catch (err) {
-        console.error("Failed to fetch posts:", err);
+        console.error('Failed to fetch posts:', err);
       }
     };
 
     fetchPosts();
   }, []);
 
-  const openPosts = loggedUserPosts.filter((fp) => fp.status === "open");
+  const openPosts = loggedUserPosts.filter((fp) => fp.status === 'open');
 
   return (
     <div
-      id="offer-modal"
-      className="mx-auto bg-white border border-zinc-300 shadow-xl rounded-lg fixed p-5 inset-x-5 inset-y-25 lg:inset-x-1/3"
+      id='offer-modal'
+      className='mx-auto bg-white border border-zinc-300 shadow-xl rounded-lg fixed p-5 inset-x-5 inset-y-25 lg:inset-x-1/3'
     >
-      <div className="flex flex-col justify-center">
-        <h1 className="mb-5 text-lg text-center">
+      <div className='flex flex-col justify-center'>
+        <h1 className='mb-5 text-lg text-center'>
           Make an offer they can't refuse!
         </h1>
-        <form className="w-full mb-5" onSubmit={handleOfferSubmit}>
+        <form className='w-full mb-5' onSubmit={handleOfferSubmit}>
           <select
-            className="w-full border border-zinc-300 p-2 rounded-lg mb-2"
-            name="responseItem"
+            className='w-full border border-zinc-300 p-2 rounded-lg mb-2'
+            name='responseItem'
             onChange={(event) => handleSelectedTrade(event.target.value)}
           >
             <option>Select from your posts...</option>
@@ -92,20 +97,20 @@ const MakeOfferModal = ({ setActive }) => {
             ))}
           </select>
           <textarea
-            name="message"
-            placeholder="Leave a message - barter!"
-            className="w-full border border-zinc-300 p-2 rounded-lg h-90"
+            name='message'
+            placeholder='Leave a message - barter!'
+            className='w-full border border-zinc-300 p-2 rounded-lg h-90'
           ></textarea>
-          <div className="mx-auto flex justify-evenly w-60 mt-5">
+          <div className='mx-auto flex justify-evenly w-60 mt-5'>
             <button
-              className="w-24 p-2 rounded-md bg-zinc-800 hover:bg-zinc-500 text-white"
-              type="submit"
+              className='w-24 p-2 rounded-md bg-zinc-800 hover:bg-zinc-500 text-white'
+              type='submit'
             >
               Make Offer
             </button>
             <button
-              type="button"
-              className="w-24 p-2 rounded-md bg-red-500 hover:bg-red-800 text-white"
+              type='button'
+              className='w-24 p-2 rounded-md bg-red-500 hover:bg-red-800 text-white'
               onClick={() => setActive(false)}
             >
               Cancel

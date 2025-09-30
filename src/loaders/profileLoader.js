@@ -1,7 +1,7 @@
 const fetchOffers = async () => {
-  const token = sessionStorage.getItem("token");
+  const token = sessionStorage.getItem('token');
   try {
-    const res = await fetch("http://localhost:3000/api/offers");
+    const res = await fetch('https://barterly-backend.onrender.com/api/offers');
     const data = await res.json();
     return data;
   } catch (err) {
@@ -10,11 +10,14 @@ const fetchOffers = async () => {
 };
 
 const fetchActivitiesByUserId = async () => {
-  const token = sessionStorage.getItem("token");
+  const token = sessionStorage.getItem('token');
   try {
-    const res = await fetch("http://localhost:3000/api/users/me/activity", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const res = await fetch(
+      'https://barterly-backend.onrender.com/api/users/me/activity',
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     const data = await res.json();
     return data;
   } catch (err) {
@@ -23,11 +26,14 @@ const fetchActivitiesByUserId = async () => {
 };
 
 const fetchPostsByUserId = async () => {
-  const token = sessionStorage.getItem("token");
+  const token = sessionStorage.getItem('token');
   try {
-    const res = await fetch("http://localhost:3000/api/users/me/posts", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const res = await fetch(
+      'https://barterly-backend.onrender.com/api/users/me/posts',
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     const data = await res.json();
 
     return data;
@@ -38,10 +44,13 @@ const fetchPostsByUserId = async () => {
 
 const profileLoader = async () => {
   try {
-    const token = sessionStorage.getItem("token");
-    const res = await fetch("http://localhost:3000/api/users/me", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const token = sessionStorage.getItem('token');
+    const res = await fetch(
+      'https://barterly-backend.onrender.com/api/users/me',
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     const data = await res.json();
 
     const userActivities = await fetchActivitiesByUserId();

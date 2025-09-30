@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 
 const fetchItemsByPostId = async (id) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/posts/${id}`);
+    const res = await fetch(
+      `https://barterly-backend.onrender.com/api/posts/${id}`
+    );
     return await res.json();
   } catch (err) {
     console.error(err);
@@ -12,8 +14,10 @@ const fetchItemsByPostId = async (id) => {
 
 const fetchCategories = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/categories");
-    if (!res.ok) throw new Error("Failed to fetch categories");
+    const res = await fetch(
+      'https://barterly-backend.onrender.com/api/categories'
+    );
+    if (!res.ok) throw new Error('Failed to fetch categories');
     const data = await res.json();
     return data.categories;
   } catch (err) {
@@ -44,24 +48,24 @@ const ProductCard = ({ post }) => {
   }, [post.id]);
 
   const statusColors = {
-    open: "bg-green-100 text-green-600",
-    pending: "bg-yellow-100 text-yellow-600",
-    traded: "bg-red-100 text-red-600",
+    open: 'bg-green-100 text-green-600',
+    pending: 'bg-yellow-100 text-yellow-600',
+    traded: 'bg-red-100 text-red-600',
   };
 
   const conditionColors = {
-    New: "bg-green-100 text-green-600",
-    "Like New": "bg-yellow-100 text-yellow-600",
-    "Used - Excellent": "bg-blue-100 text-blue-600",
-    "Used - Good": "bg-gray-100 text-gray-600",
+    New: 'bg-green-100 text-green-600',
+    'Like New': 'bg-yellow-100 text-yellow-600',
+    'Used - Excellent': 'bg-blue-100 text-blue-600',
+    'Used - Good': 'bg-gray-100 text-gray-600',
   };
 
   if (loading) return <p>Loading...</p>;
-  if (!postData) return <p className="text-red-500">Failed to load product.</p>;
+  if (!postData) return <p className='text-red-500'>Failed to load product.</p>;
 
   const imgFail = (event) => {
     event.target.src =
-      "https://t4.ftcdn.net/jpg/16/71/95/79/360_F_1671957940_D2dYs3RXTsWEOeS7xY20y6RStabYt6DV.jpg";
+      'https://t4.ftcdn.net/jpg/16/71/95/79/360_F_1671957940_D2dYs3RXTsWEOeS7xY20y6RStabYt6DV.jpg';
   };
   const item = postData?.items?.[0] ?? {};
 
@@ -71,26 +75,26 @@ const ProductCard = ({ post }) => {
     // one is a string and the other a number
     (cat) => Number(cat.id) === Number(post.categoryId)
   );
-  const categoryName = category ? category.name : "Unknown";
+  const categoryName = category ? category.name : 'Unknown';
 
   return (
-    <div className="flex flex-col rounded-lg border border-zinc-300 w-80 min-h-80 p-5 hover:shadow-md transition-shadow">
+    <div className='flex flex-col rounded-lg border border-zinc-300 w-80 min-h-80 p-5 hover:shadow-md transition-shadow'>
       <img
         //just  changed item.image_url to .imageUrl
         src={
           item.imageUrl ||
-          "https://t4.ftcdn.net/jpg/16/71/95/79/360_F_1671957940_D2dYs3RXTsWEOeS7xY20y6RStabYt6DV.jpg"
+          'https://t4.ftcdn.net/jpg/16/71/95/79/360_F_1671957940_D2dYs3RXTsWEOeS7xY20y6RStabYt6DV.jpg'
         }
         alt={item.name || post.title}
-        className="w-full bg-black rounded-lg mb-1 h-40 object-cover object-top"
+        className='w-full bg-black rounded-lg mb-1 h-40 object-cover object-top'
         onError={imgFail}
       />
 
-      <div className="flex gap-2 mb-2">
+      <div className='flex gap-2 mb-2'>
         {post.status && (
           <p
             className={`text-xs inline-block px-2 py-1 rounded ${
-              statusColors[post.status] || "bg-gray-100 text-gray-600"
+              statusColors[post.status] || 'bg-gray-100 text-gray-600'
             }`}
           >
             {post.status}
@@ -100,23 +104,23 @@ const ProductCard = ({ post }) => {
         {item.condition && (
           <p
             className={`text-xs inline-block px-2 py-1 rounded ${
-              conditionColors[item.condition] || "bg-gray-100 text-gray-600"
+              conditionColors[item.condition] || 'bg-gray-100 text-gray-600'
             }`}
           >
             {item.condition}
           </p>
         )}
-        <p className="text-sm text-gray-500 bg-red-100 text-red-600">
+        <p className='text-sm text-gray-500 bg-red-100 text-red-600'>
           {categoryName}
         </p>
       </div>
 
-      <p className="font-semibold mt-1">{post.title}</p>
-      <p className="text-gray-700 text-sm">{post.description}</p>
+      <p className='font-semibold mt-1'>{post.title}</p>
+      <p className='text-gray-700 text-sm'>{post.description}</p>
 
-      <div className="flex justify-around mt-4">
+      <div className='flex justify-around mt-4'>
         <Link to={`/product/${post.id}`}>
-          <button className="w-32 bg-zinc-800 text-white p-3 rounded-lg hover:bg-zinc-500 duration-300">
+          <button className='w-32 bg-zinc-800 text-white p-3 rounded-lg hover:bg-zinc-500 duration-300'>
             View Details
           </button>
         </Link>
