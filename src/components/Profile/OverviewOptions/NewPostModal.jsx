@@ -7,7 +7,6 @@ const NewPostModal = ({ setActive, categories }) => {
   const [items, setItems] = useState([]);
 
 
-
   const handlePostSubmit = async (event) => {
     event.preventDefault();
     const newFormData = new FormData(event.currentTarget);
@@ -47,7 +46,7 @@ const NewPostModal = ({ setActive, categories }) => {
     }
   };
 
-  //   Form for items
+  // Form for items
   const handleSaveItems = (event) => {
     event.preventDefault();
     const newFormData = new FormData(event.currentTarget);
@@ -112,8 +111,6 @@ const NewPostModal = ({ setActive, categories }) => {
             + Add Item
           </button>
         </div>
-
-        {/* End of Items */}
 
         {/* Post form  */}
         <p className="text-center mb-1 w-full bg-zinc-800 text-white p-1">

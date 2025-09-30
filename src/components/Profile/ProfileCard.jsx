@@ -14,7 +14,7 @@ const ProfileCard = ({ meProfileData }) => {
     <>
       <div
         className="mx-auto  md:w-2xl lg:w-6xl px-4 border rounded-lg mt-5 border-zinc-300 
-                 gap-5 p-5 hover:shadow-md transition-shadow grid
+                 gap-5 p-5 grid
                  md:flex md:flex-col lg:grid lg:grid-cols-[96px_minmax(0,1fr)_120px]"
       >
         <div

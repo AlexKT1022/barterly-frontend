@@ -1,6 +1,5 @@
 const UsersStats = ({ stats }) => {
   const allPosts = stats.allPosts;
-  //   console.log(allPosts);
 
   // Checks for all posts open & pending
   const activePosts = (posts) => {

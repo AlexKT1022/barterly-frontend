@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router";
 import { useAuth } from "../../context/AuthContext.jsx";
+
 import { jwtDecode } from "jwt-decode";
 
 import MakeOfferModal from "./MakeOfferModal.jsx";
@@ -32,8 +33,6 @@ const ProductInformation = ({ product }) => {
   const { token } = useAuth();
   const { id } = useParams();
 
-
-
   return (
     <>
       <div className="w-full lg:w-2/3 space-y-6">
@@ -44,6 +43,9 @@ const ProductInformation = ({ product }) => {
           currentUserId={currentUserId}
           status={status}
         />
+
+        <UserResponses product={product} token={token} currentUserId={currentUserId}/>
+
         {!token ? (
           <>
             <div className="flex items-center">
@@ -58,14 +60,7 @@ const ProductInformation = ({ product }) => {
             </div>
           </>
         ) : (
-          // <>{isTrade()}</>
-          <>
-            <UserResponses
-              product={product}
-              token={token}
-              currentUserId={currentUserId}
-            />
-          </>
+          <></>
         )}
 
         {/* Product Dates */}

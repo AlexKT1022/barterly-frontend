@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { jwtDecode } from "jwt-decode";
 
 const UserCard = ({ user, posts }) => {
-  // safely decode the token once per render
   let currentUserId = null;
   try {
     const token =
@@ -28,6 +27,9 @@ const UserCard = ({ user, posts }) => {
     return normalize.getFullYear();
   };
 
+  const randomNum = Math.random() * 4 + 1;
+  const randomRating = randomNum.toFixed(1);
+
   // if logged in as this user, go to /profile, otherwise go to /user/:id
   const profileHref =
     currentUserId && user.id === currentUserId
@@ -49,7 +51,7 @@ const UserCard = ({ user, posts }) => {
       </div>
 
       <div className="pt-10 flex justify-between">
-        <p>⭐ 4.8</p>
+        <p>⭐ {randomRating}</p>
       </div>
 
       <div>

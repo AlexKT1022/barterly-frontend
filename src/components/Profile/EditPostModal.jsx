@@ -37,7 +37,6 @@ const EditPostModal = ({ setActive, data }) => {
     const title = newFormData.get("title") || "";
     const description = newFormData.get("description") || "";
     const fields = { title, description };
-    console.log(fields);
     const token = sessionStorage.getItem("token");
     try {
       const res = await fetch(`http://localhost:3000/api/posts/${post_id}`, {

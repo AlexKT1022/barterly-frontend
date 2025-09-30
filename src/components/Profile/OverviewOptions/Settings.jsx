@@ -1,7 +1,6 @@
 import { FaLockOpen } from "react-icons/fa";
 
 const Settings = ({ meData }) => {
-  console.log(meData);
   return (
     <>
       <div className="mx-auto md:w-2xl lg:w-6xl border border-zinc-300 mt-5 p-5 rounded-lg">
