@@ -1,66 +1,51 @@
-import { useState } from "react";
-import { useLoaderData } from "react-router";
+import { useState, useEffect } from "react";
 import NewProductForm from "./NewProductForm";
+import { useLoaderData } from "react-router";
 import ProductsList from "../components/Categories/ProductsList";
 
-import {
-  FaTv,
-  FaTshirt,
-  FaBook,
-  FaHome,
-  FaFootballBall,
-  FaCar,
-  FaGamepad,
-  FaRegGem,
-  FaPencilRuler,
-  FaCat,
-  FaBabyCarriage,
-  FaGuitar,
-  FaPaintBrush,
-  FaWrench,
-  FaCouch,
-  FaPeopleCarry,
-} from "react-icons/fa";
-
 const Categories = () => {
-  const categories = [
-    { name: "Electronics", icon: <FaTv /> },
-    { name: "Clothing", icon: <FaTshirt /> },
-    { name: "Books", icon: <FaBook /> },
-    { name: "Home & Garden", icon: <FaHome /> },
-    { name: "Sports", icon: <FaFootballBall /> },
-    { name: "Automotive", icon: <FaCar /> },
-    { name: "Toys & Games", icon: <FaGamepad /> },
-    { name: "Jewelry & Accessories", icon: <FaRegGem /> },
-    { name: "Office Supplies", icon: <FaPencilRuler /> },
-    { name: "Pet Supplies", icon: <FaCat /> },
-    { name: "Baby Products", icon: <FaBabyCarriage /> },
-    { name: "Music & Instruments", icon: <FaGuitar /> },
-    { name: "Art & Craft Supplies", icon: <FaPaintBrush /> },
-    { name: "Tools & Hardware", icon: <FaWrench /> },
-    { name: "Furniture", icon: <FaCouch /> },
-    { name: "Services", icon: <FaPeopleCarry /> },
-  ];
-
   const [searchProducts, setSearchProducts] = useState("");
   const [showForm, setShowForm] = useState(false);
-  // const [selectedCategory, setSelectedCategory] = useState(""); // <-- selected category state
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [posts, setPosts] = useState([]);
+  const [categories, setCategories] = useState([]);
   const postData = useLoaderData() || [];
 
   const token = sessionStorage.getItem("token");
   const isLoggedIn = !!token;
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [postsRes, categoriesRes] = await Promise.all([
+          fetch("http://localhost:3000/api/posts").then(res => res.json()),
+          fetch("http://localhost:3000/api/categories").then(res => res.json()),
+        ]);
+
+        setPosts(postsRes || []);
+        setCategories(categoriesRes.categories || []);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // const onAdd = (item) => {
+  //   setPosts((prev) => [...prev, { ...item, username: "test" }]);
+  //   setShowForm(false);
+  // };
   const onAdd = (item) => {
     postData.push({ ...item, username: "test" });
     setShowForm(false);
   };
+
 
   return (
     <div className="mx-auto md:max-w-3xl lg:max-w-6xl text-gray-800">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <h2 className="text-lg font-semibold">Trading Marketplace</h2>
-
         {isLoggedIn && (
           <button
             onClick={() => setShowForm(true)}
@@ -71,7 +56,7 @@ const Categories = () => {
         )}
       </div>
 
-      {/* Search */}
+      {/* Search & Category */}
       <div className="flex flex-col sm:flex-row gap-4 mb-8">
         <input
           type="text"
@@ -80,30 +65,29 @@ const Categories = () => {
           value={searchProducts}
           onChange={(e) => setSearchProducts(e.target.value)}
         />
-
-        {/* Category Select
         <select
+          className="border rounded px-3 py-2"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
-          className="border border-gray-300 p-3 w-full sm:w-64 mb-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-          required
         >
-          <option value="">Select Category</option>
-          {categories.map((c, index) => (
-            <option key={index} value={c.name}>
-              {c.name}
+          <option value="">All categories</option>
+          {categories.map((c) => (
+            <option key={c.id} value={c.name}>
+              {c.name} ({c.post_count})
             </option>
           ))}
-        </select> */}
+        </select>
       </div>
 
-      {/* Products */}
-      <div>
-        <h3 className="font-semibold mb-4">Recent Products</h3>
-        <ProductsList posts={postData} search={searchProducts} />
-      </div>
+      {/* Products List */}
+      <ProductsList
+        posts={posts}
+        search={searchProducts}
+        category={selectedCategory}
+        categories={categories}
+      />
 
-      {/* Modal with form */}
+      {/* Modal */}
       {showForm && (
         <div className="fixed mx-auto inset-0 flex items-center justify-center bg-black/50 z-50">
           <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md">
