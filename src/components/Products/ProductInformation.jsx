@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link, useParams } from "react-router";
 import { useAuth } from "../../context/AuthContext.jsx";
@@ -7,10 +8,11 @@ import MakeOfferModal from "./MakeOfferModal.jsx";
 import ProductHeader from "./ProductInformationComponents/ProductHeader.jsx";
 import UserResponses from "./ProductInformationComponents/UserResponses.jsx";
 
+
 const status = {
-  open: "bg-green-100 text-green-600",
-  pending: "bg-yellow-100 text-yellow-600",
-  traded: "bg-red-100 text-red-600",
+  open: 'bg-green-100 text-green-600',
+  pending: 'bg-yellow-100 text-yellow-600',
+  traded: 'bg-red-100 text-red-600',
 };
 
 // grabs the current logged in users id. can I make this a useState?
@@ -32,26 +34,26 @@ const ProductInformation = ({ product }) => {
   const { token } = useAuth();
   const { id } = useParams();
 
-
-
   return (
     <>
-      <div className="w-full lg:w-2/3 space-y-6">
+      <div className='w-full lg:w-2/3 space-y-6'>
         {active && <MakeOfferModal setActive={setActive} />}
         {/* Product Title and Labels */}
+
         <ProductHeader
           product={product}
           currentUserId={currentUserId}
           status={status}
         />
+
         {!token ? (
           <>
-            <div className="flex items-center">
-              <p className="mr-3 font-semibold italic">
+            <div className='flex items-center'>
+              <p className='mr-3 font-semibold italic'>
                 Want to make an offer?
               </p>
-              <Link to="/login">
-                <button className="bg-zinc-800 text-white px-5 py-2 rounded-md hover:bg-zinc-500">
+              <Link to='/login'>
+                <button className='bg-zinc-800 text-white px-5 py-2 rounded-md hover:bg-zinc-500'>
                   Login
                 </button>
               </Link>
@@ -68,8 +70,10 @@ const ProductInformation = ({ product }) => {
           </>
         )}
 
+
         {/* Product Dates */}
         <div className="text-sm text-gray-600 space-y-1">
+
           <p>
             <strong>Posted:</strong> {Date(product.createdAt).slice(0, 10)}
           </p>

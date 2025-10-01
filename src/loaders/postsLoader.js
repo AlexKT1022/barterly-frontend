@@ -1,6 +1,6 @@
 const postsLoader = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/posts");
+    const res = await fetch('https://barterly-backend.onrender.com/api/posts');
     const data = await res.json();
 
     return data;
