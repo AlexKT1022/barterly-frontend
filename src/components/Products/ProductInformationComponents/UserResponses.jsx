@@ -172,5 +172,3 @@ const UserResponses = ({ product, token, currentUserId }) => {
 };
 
 export default UserResponses;
-
-https://barterly-backend.onrender.com
