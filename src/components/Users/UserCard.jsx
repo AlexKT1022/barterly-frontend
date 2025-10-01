@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router";
 import { jwtDecode } from "jwt-decode";
 
 const UserCard = ({ user, posts }) => {
-  // safely decode the token once per render
+  const [toggleMessage, setToggleMessage] = useState(false);
   let currentUserId = null;
   try {
     const token =
@@ -28,6 +29,9 @@ const UserCard = ({ user, posts }) => {
     return normalize.getFullYear();
   };
 
+  const randomNum = Math.random() * 4 + 1;
+  const randomRating = randomNum.toFixed(1);
+
   // if logged in as this user, go to /profile, otherwise go to /user/:id
   const profileHref =
     currentUserId && user.id === currentUserId
@@ -49,12 +53,12 @@ const UserCard = ({ user, posts }) => {
       </div>
 
       <div className="pt-10 flex justify-between">
-        <p>⭐ 4.8</p>
+        <p>⭐ {randomRating}</p>
       </div>
 
       <div>
         <div className="pt-3 flex justify-between text-zinc-500">
-          <p>Open Trades:</p>
+          <p>Available Trades:</p>
           <p>{sortPosts(posts)}</p>
         </div>
         <div className="pt-3 flex justify-between text-zinc-500">
@@ -67,11 +71,41 @@ const UserCard = ({ user, posts }) => {
               View Profile
             </button>
           </Link>
-          <button className="px-4 h-10 w-32 rounded-md bg-zinc-800 text-white transition-colors duration-300 hover:bg-zinc-500">
+          <button
+            className="px-4 h-10 w-32 rounded-md bg-zinc-800 text-white transition-colors duration-300 hover:bg-zinc-500"
+            type="button"
+            onClick={() => setToggleMessage(true)}
+          >
             Message
           </button>
         </div>
       </div>
+      {toggleMessage && (
+        <>
+          <div className="mx-auto w-80 h-60 top-50 absolute inset-0 bg-white border border-zinc-300 shadow-xl rounded-lg p-5">
+            <div className="flex flex-col justify-center items-center">
+              🤯
+              <p className="text-center mb-5">
+                Hey! You found an upcoming feature. Check out our{" "}
+                {
+                  <Link to="/about" className="underline hover:text-zinc-500">
+                    about page
+                  </Link>
+                }{" "}
+                to find out about more of our features. Thanks for being
+                patient!
+              </p>
+              <button
+                type="button"
+                className="px-4 h-10 w-32 rounded-md bg-zinc-800 text-white transition-colors duration-300 hover:bg-zinc-500"
+                onClick={() => setToggleMessage(false)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import { FaLockOpen } from "react-icons/fa";
+
 const Settings = ({ meData }) => {
   return (
     <>
@@ -23,6 +25,7 @@ const Settings = ({ meData }) => {
                 First Name
                 <input
                   type="text"
+                  defaultValue={meData.first_name}
                   className="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 sm:w-full md:w-48 lg:w-90"
                 />
               </label>
@@ -30,25 +33,31 @@ const Settings = ({ meData }) => {
                 Last Name
                 <input
                   type="text"
+                  defaultValue={meData.last_name}
                   className="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 sm:w-full md:w-48 lg:w-90"
+                  disabled
                 />
               </label>
             </div>
 
             <label>
-              Email
+              Username
               <input
                 type="text"
-                placeholder="nick@nite.com"
+                defaultValue={meData.username}
                 className="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 sm:w-full md:w-100 lg:w-184"
+                disabled
               />
             </label>
 
             <label>
-              Bio
+              <div className="flex items-center">
+                Bio &nbsp; <FaLockOpen className="size-3"/>
+              </div>
+
               <input
                 type="text"
-                placeholder="I like pizza, especially when it melts off the top of my mouth! Not true. It hurts... hurts so good t(-_-t)"
+                defaultValue={meData.bio}
                 className="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 sm:w-full md:w-100 lg:w-184"
               />
             </label>

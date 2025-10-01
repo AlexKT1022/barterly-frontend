@@ -45,7 +45,7 @@ const Navbar = () => {
               Community
             </NavLink>
             <NavLink to="/categories" className="hover-underline-animation">
-              Categories
+              Posts
             </NavLink>
             <NavLink to="/how-it-works" className="hover-underline-animation">
               How It Works
@@ -123,7 +123,7 @@ const Navbar = () => {
             className="block"
             onClick={() => setIsMenuOpen(false)}
           >
-            Categories
+            Posts
           </NavLink>
           <NavLink
             to="/how-it-works"

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const AuthContext = createContext();
 
@@ -11,19 +11,22 @@ export const AuthProvider = ({ children }) => {
 
   const saveToken = (token) => {
     setToken(token);
-    sessionStorage.setItem("token", token);
+    sessionStorage.setItem('token', token);
   };
 
   const register = async (credentials) => {
     try {
-      const res = await fetch("http://localhost:3000/api/users/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(credentials),
-      });
+      const res = await fetch(
+        'https://barterly-backend.onrender.com/api/users/register',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(credentials),
+        }
+      );
       if (!res.ok) {
         const message = await res.text();
-        throw new Error(message || "Username taken.");
+        throw new Error(message || 'Username taken.');
       }
       const data = await res.json();
       saveToken(data.token);
@@ -35,15 +38,18 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (credentials) => {
     try {
-      const res = await fetch("http://localhost:3000/api/users/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(credentials),
-      });
+      const res = await fetch(
+        'https://barterly-backend.onrender.com/api/users/login',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(credentials),
+        }
+      );
 
       if (!res.ok) {
         const message = await res.text();
-        throw new Error(message || "Login failed");
+        throw new Error(message || 'Login failed');
       }
       const data = await res.json();
       saveToken(data.token);
@@ -56,7 +62,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     try {
-      sessionStorage.removeItem("token");
+      sessionStorage.removeItem('token');
 
       setToken(null);
     } catch (err) {
@@ -65,7 +71,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const storedToken = sessionStorage.getItem("token");
+    const storedToken = sessionStorage.getItem('token');
 
     if (storedToken) {
       setToken(storedToken);
