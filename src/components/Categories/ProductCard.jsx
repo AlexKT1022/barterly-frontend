@@ -113,6 +113,9 @@ const ProductCard = ({ post }) => {
         <p className='text-sm text-gray-500 bg-red-100 text-red-600'>
           {categoryName}
         </p>
+        <p className="text-sm text-gray-500 bg-orange-100 text-orange-600 ">
+          Qty:{item.quantity}
+        </p>
       </div>
 
       <p className='font-semibold mt-1'>{post.title}</p>

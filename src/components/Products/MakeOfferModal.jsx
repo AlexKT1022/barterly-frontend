@@ -6,6 +6,7 @@ const MakeOfferModal = ({ setActive }) => {
   const [loggedUserPosts, setLoggedUserPosts] = useState([]);
   const [selectedTrade, setSelectedTrade] = useState(null); // start as null
   const { id } = useParams();
+
   const handleSelectedTrade = (postId) => {
     // ensure number (helpful if you pass strings from UI)
     setSelectedTrade(postId ? Number(postId) : null);
@@ -14,13 +15,16 @@ const MakeOfferModal = ({ setActive }) => {
     event.preventDefault();
     const newFormData = new FormData(event.currentTarget);
     const post_id = Number(id); // parent post id
-    const message = newFormData.get('message') || ''; // optional
-    // Build payload. Only include child_post_id if user picked one.
+    const message = newFormData.get("message") || ""; 
+
     const payload = { post_id, message };
+
     if (Number.isFinite(selectedTrade) && selectedTrade > 0) {
-      payload.child_post_id = selectedTrade; // <-- IMPORTANT: correct key name
+      payload.child_post_id = selectedTrade; 
     }
-    const token = sessionStorage.getItem('token');
+    
+    const token = sessionStorage.getItem("token");
+
     try {
       const res = await fetch(
         'https://barterly-backend.onrender.com/api/offers',

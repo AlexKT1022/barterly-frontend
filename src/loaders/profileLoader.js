@@ -1,3 +1,15 @@
+const fetchCategories = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/categories");
+    if (!res.ok) throw new Error("Failed to fetch categories");
+    const data = await res.json();
+    return data.categories;
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
 const fetchOffers = async () => {
   const token = sessionStorage.getItem('token');
   try {
@@ -53,10 +65,11 @@ const profileLoader = async () => {
     );
     const data = await res.json();
 
+    const categories = await fetchCategories();
     const userActivities = await fetchActivitiesByUserId();
     const userPosts = await fetchPostsByUserId();
     const offers = await fetchOffers();
-    const userData = { ...data, userPosts, userActivities, offers };
+    const userData = { ...data, userPosts, userActivities, offers, categories };
 
     return userData;
   } catch (err) {

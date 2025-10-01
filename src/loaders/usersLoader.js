@@ -1,5 +1,3 @@
-import { jwtDecode } from 'jwt-decode';
-
 const fetchPostsByAllUsers = async () => {
   try {
     const res = await fetch('https://barterly-backend.onrender.com/api/posts');

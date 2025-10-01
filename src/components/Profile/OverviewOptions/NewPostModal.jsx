@@ -1,19 +1,20 @@
 import { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 
-const NewPostModal = ({ setActive }) => {
+const NewPostModal = ({ setActive, categories }) => {
   const [itemModal, setItemModal] = useState(false);
+  const [category_id, setCategory] = useState("");
   const [items, setItems] = useState([]);
+
 
   const handlePostSubmit = async (event) => {
     event.preventDefault();
     const newFormData = new FormData(event.currentTarget);
 
-    const title = newFormData.get('title');
-    const description = newFormData.get('postDesc');
-
-    const formData = { title, description, items };
-
+    const title = newFormData.get("title");
+    const description = newFormData.get("postDesc");
+    const category_id = newFormData.get("category");
+    const formData = { title, description, category_id, items };
     const token = sessionStorage.getItem('token');
 
     try {
@@ -46,7 +47,7 @@ const NewPostModal = ({ setActive }) => {
     }
   };
 
-  //   Form for items
+  // Form for items
   const handleSaveItems = (event) => {
     event.preventDefault();
     const newFormData = new FormData(event.currentTarget);
@@ -112,8 +113,6 @@ const NewPostModal = ({ setActive }) => {
           </button>
         </div>
 
-        {/* End of Items */}
-
         {/* Post form  */}
         <p className='text-center mb-1 w-full bg-zinc-800 text-white p-1'>
           Post Form
@@ -128,6 +127,22 @@ const NewPostModal = ({ setActive }) => {
             placeholder='Title'
             required
           ></input>
+          <select
+            name="category"
+            onChange={(e) => setCategory(Number(e.target.value))}
+            className="w-full p-2 rounded-md border border-zinc-300"
+            value={category_id}
+            required
+          >
+            <option value="">Select Category</option>
+            {categories.map((cat) => {
+              return (
+                <option key={cat.id} value={cat.id}>
+                  {cat.name}
+                </option>
+              );
+            })}
+          </select>
           <textarea
             name='postDesc'
             className='w-full p-2 rounded-md border border-zinc-300'

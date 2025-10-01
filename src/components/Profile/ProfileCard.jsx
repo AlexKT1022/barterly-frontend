@@ -1,4 +1,9 @@
+import { RiLockPasswordFill } from "react-icons/ri";
+import { useState } from "react";
+
 const ProfileCard = ({ meProfileData }) => {
+  const [changePassword, setChangePassword] = useState(false);
+
   const normalizeDate = (date) => {
     const dateChange = new Date(date);
     const year = dateChange.getFullYear();
@@ -8,8 +13,8 @@ const ProfileCard = ({ meProfileData }) => {
   return (
     <>
       <div
-        className="mx-auto mt-5 md:w-2xl lg:w-6xl px-4 border rounded-lg border-zinc-300 
-                 gap-5 p-5 hover:shadow-md transition-shadow grid
+        className="mx-auto  md:w-2xl lg:w-6xl px-4 border rounded-lg mt-5 border-zinc-300 
+                 gap-5 p-5 grid
                  md:flex md:flex-col lg:grid lg:grid-cols-[96px_minmax(0,1fr)_120px]"
       >
         <div
@@ -29,13 +34,57 @@ const ProfileCard = ({ meProfileData }) => {
           <p className="text-zinc-600 mb-2 italic">
             Member Since {normalizeDate(meProfileData.created_at) || "Unknown"}
           </p>
+          <p className="italic">{meProfileData.bio}</p>
         </div>
-        <button className="bg-black text-white h-10 rounded-lg text-sm relative top-1 transition-colors duration-300 hover:bg-zinc-500">
-          Edit Profile
+        <button
+          className="bg-black text-white h-10 rounded-lg text-sm relative top-1 transition-colors duration-300 hover:bg-zinc-500"
+          onClick={() => setChangePassword(true)}
+        >
+          <div className="flex items-center justify-center">
+            Password &nbsp; <RiLockPasswordFill />
+          </div>
         </button>
       </div>
+
+      {changePassword && (
+        <>
+          <div
+            id="offer-modal"
+            className="mx-auto bg-white border border-zinc-300 shadow-xl rounded-lg fixed p-5 inset-x-5 lg:inset-x-1/3"
+          >
+            <p className="text-center mb-5">Change your password</p>
+            <form>
+              <input
+                placeholder="old password"
+                className="w-full border border-zinc-300 p-2 rounded-md"
+              ></input>
+              <input
+                placeholder="new password"
+                className="w-full border border-zinc-300 p-2 rounded-md"
+              ></input>
+              <div className="flex justify-center gap-5 mb-2">
+                <button
+                  className="w-32 p-3 bg-green-600 hover:bg-green-500 text-white rounded-md"
+                  type="submit"
+                >
+                  Save
+                </button>
+                <button
+                  className="w-32 p-3 bg-zinc-800 hover:bg-zinc-500 text-white rounded-md"
+                  type="button"
+                  onClick={() => setChangePassword(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </>
+      )}
     </>
   );
 };
 
 export default ProfileCard;
+
+//max-auto max-w-6xl
