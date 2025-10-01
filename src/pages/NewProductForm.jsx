@@ -6,8 +6,6 @@ const NewPostModal = ({ categories, setShowForm }) => {
   const [category_id, setCategory] = useState("");
   const [items, setItems] = useState([]);
 
-  console.log(categories);
-
   const handlePostSubmit = async (event) => {
     event.preventDefault();
     const newFormData = new FormData(event.currentTarget);

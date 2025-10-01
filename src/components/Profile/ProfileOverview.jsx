@@ -12,7 +12,6 @@ const ProfileOverview = ({ profileData }) => {
   const data = profileData;
   const categories = profileData.categories;
 
-  console.log(data);
 
   return (
     <>
