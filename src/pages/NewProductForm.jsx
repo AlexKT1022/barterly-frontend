@@ -233,5 +233,5 @@ const NewPostModal = ({ setActive, categories }) => {
             )}
         </>
     );
-
+};
 export default NewPostModal;
