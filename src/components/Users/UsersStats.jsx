@@ -1,6 +1,5 @@
 const UsersStats = ({ stats }) => {
   const allPosts = stats.allPosts;
-  //   console.log(allPosts);
 
   // Checks for all posts open & pending
   const activePosts = (posts) => {
@@ -44,7 +43,7 @@ const UsersStats = ({ stats }) => {
           <p className="font-semibold text-xl">{activePosts(allPosts)}</p>
         </div>
 
-        {/* Need to figure out how the below would work */}
+        {/* Need to figure out how the below would work -- starting to think I might not get this one*/}
         <div className="flex flex-col h-20 w-24 md:h-28 md:w-40 border border-zinc-300 rounded-md justify-evenly pl-2 md:pl-3">
           <p className="text-sm">Posts This Month</p>
           <p className="font-semibold text-xl">{monthlyPosts(allPosts)}</p>

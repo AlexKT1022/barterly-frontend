@@ -1,5 +1,4 @@
 const UserProfileCard = ({ data }) => {
-  // console.log(data);
   return (
     <>
       <div

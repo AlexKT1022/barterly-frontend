@@ -25,6 +25,14 @@ const Register = () => {
     }
   };
 
+  const normalizeError = (err) => {
+    if (err === '{"error":"Username is already taken"}') {
+      return "Username is already taken";
+    } else {
+      return err;
+    }
+  };
+
   return (
     <>
       <div className="flex flex-col justify-center items-center mx-auto h-200">
@@ -87,13 +95,15 @@ const Register = () => {
                 );
               })}
             </select>
-            <button
-              type="submit"
-              className="bg-zinc-800 text-white p-3 rounded-lg mt-5 hover:bg-zinc-500 duration-300"
-            >
-              Register
-            </button>
-            {error && <output>{error}</output>}
+            <div className="flex flex-col">
+              {error && <p className="text-center">{normalizeError(error)}</p>}
+              <button
+                type="submit"
+                className="bg-zinc-800 text-white p-3 rounded-lg mt-5 hover:bg-zinc-500 duration-300"
+              >
+                Register
+              </button>
+            </div>
           </form>
         </div>
       </div>
