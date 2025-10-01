@@ -18,8 +18,12 @@ const Categories = () => {
     const fetchData = async () => {
       try {
         const [postsRes, categoriesRes] = await Promise.all([
-          fetch("https://barterly-backend.onrender.com/api/posts").then(res => res.json()),
-          fetch("https://barterly-backend.onrender.com/api/categories").then(res => res.json()),
+          fetch("https://barterly-backend.onrender.com/api/posts").then((res) =>
+            res.json()
+          ),
+          fetch("https://barterly-backend.onrender.com/api/categories").then(
+            (res) => res.json()
+          ),
         ]);
 
         setPosts(postsRes || []);
@@ -31,15 +35,11 @@ const Categories = () => {
     fetchData();
   }, []);
 
-  // const onAdd = (item) => {
-  //   setPosts((prev) => [...prev, { ...item, username: "test" }]);
-  //   setShowForm(false);
-  // };
+
   const onAdd = (item) => {
     postData.push({ ...item, username: "test" });
     setShowForm(false);
   };
-
 
   return (
     <div className="mx-auto md:max-w-3xl lg:max-w-6xl text-gray-800">
@@ -89,20 +89,7 @@ const Categories = () => {
 
       {/* Modal */}
       {showForm && (
-        <div className="fixed mx-auto inset-0 flex items-center justify-center bg-black/50 z-50">
-          <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold">Create New Post to Trade</h3>
-              <button
-                onClick={() => setShowForm(false)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                ✖
-              </button>
-            </div>
-            <NewProductForm onAdd={onAdd} token={token} />
-          </div>
-        </div>
+        <NewProductForm categories={categories} onAdd={onAdd} setShowForm={setShowForm} />
       )}
     </div>
   );
