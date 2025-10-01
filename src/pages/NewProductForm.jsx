@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 
-const NewPostModal = ({ setActive, categories }) => {
+const NewPostModal = ({ setActive, categories}) => {
     const [itemModal, setItemModal] = useState(false);
     const [category_id, setCategory] = useState("");
     const [items, setItems] = useState([]);
@@ -135,7 +135,7 @@ const NewPostModal = ({ setActive, categories }) => {
                         required
                     >
                         <option value="">Select Category</option>
-                        {categories.map((cat) => {
+                        {categories?.map((cat) => {
                             return (
                                 <option key={cat.id} value={cat.id}>
                                     {cat.name}
