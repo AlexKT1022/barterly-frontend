@@ -1,6 +1,6 @@
 const fetchCategories = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/categories");
+    const res = await fetch("https://barterly-backend.onrender.com/api/categories");
     if (!res.ok) throw new Error("Failed to fetch categories");
     const data = await res.json();
     return data.categories;

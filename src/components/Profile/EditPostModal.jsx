@@ -42,7 +42,7 @@ const EditPostModal = ({ setActive, data }) => {
     const fields = { title, description };
     const token = sessionStorage.getItem("token");
     try {
-      const res = await fetch(`http://localhost:3000/api/posts/${post_id}`, {
+      const res = await fetch(`https://barterly-backend.onrender.com/api/posts/${post_id}`, {
         method: "PATCH",
 
         headers: {

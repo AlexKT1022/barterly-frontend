@@ -24,7 +24,7 @@ const UserResponses = ({ product, token, currentUserId }) => {
     const token = sessionStorage.getItem("token");
     try {
       const res = await fetch(
-        `http://localhost:3000/api/offers/${responseId}/accept`,
+        `https://barterly-backend.onrender.com/api/offers/${responseId}/accept`,
         {
           method: "POST",
           headers: {
@@ -54,7 +54,7 @@ const UserResponses = ({ product, token, currentUserId }) => {
     const token = sessionStorage.getItem("token");
     try {
       const res = await fetch(
-        `http://localhost:3000/api/offers/${responseId}/reject`,
+        `https://barterly-backend.onrender.com/api/offers/${responseId}/reject`,
         {
           method: "POST",
           headers: {
@@ -172,3 +172,5 @@ const UserResponses = ({ product, token, currentUserId }) => {
 };
 
 export default UserResponses;
+
+https://barterly-backend.onrender.com

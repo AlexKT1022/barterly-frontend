@@ -18,8 +18,8 @@ const Categories = () => {
     const fetchData = async () => {
       try {
         const [postsRes, categoriesRes] = await Promise.all([
-          fetch("http://localhost:3000/api/posts").then(res => res.json()),
-          fetch("http://localhost:3000/api/categories").then(res => res.json()),
+          fetch("https://barterly-backend.onrender.com/api/posts").then(res => res.json()),
+          fetch("https://barterly-backend.onrender.com/api/categories").then(res => res.json()),
         ]);
 
         setPosts(postsRes || []);
