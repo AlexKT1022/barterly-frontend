@@ -1,31 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 
-const fetchItemsByPostId = async (id) => {
-  try {
-    const res = await fetch(
-      `https://barterly-backend.onrender.com/api/posts/${id}`
-    );
-    return await res.json();
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-const fetchCategories = async () => {
-  try {
-    const res = await fetch(
-      'https://barterly-backend.onrender.com/api/categories'
-    );
-    if (!res.ok) throw new Error('Failed to fetch categories');
-    const data = await res.json();
-    return data.categories;
-  } catch (err) {
-    console.error(err);
-    return [];
-  }
-};
-
 const ProductCard = ({ post }) => {
   const [postData, setPostData] = useState(null);
   const [categories, setCategories] = useState([]);
@@ -34,12 +9,15 @@ const ProductCard = ({ post }) => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const data = await fetchItemsByPostId(post.id);
-        const dataCategory = await fetchCategories();
-        setPostData(data);
-        setCategories(dataCategory);
+        const [postRes, categoriesRes] = await Promise.all([
+          fetch(`https://barterly-backend.onrender.com/api/posts/${post.id}`).then(res => res.json()),
+          fetch('https://barterly-backend.onrender.com/api/categories').then(res => res.json())
+        ]);
+
+        setPostData(postRes);
+        setCategories(categoriesRes?.categories || []);
       } catch (err) {
-        console.error(err);
+        console.error('Error fetching data:', err);
       } finally {
         setLoading(false);
       }
@@ -62,20 +40,18 @@ const ProductCard = ({ post }) => {
 
   if (loading) return <p>Loading...</p>;
   if (!postData) return <p className='text-red-500'>Failed to load product.</p>;
+  const item = postData?.items?.[0] ?? {};
+
+  const category = categories.find(
+    (cat) => Number(cat.id) === Number(post.categoryId)
+  );
+  const categoryName = category ? category.name : 'Unknown';
+
 
   const imgFail = (event) => {
     event.target.src =
       'https://t4.ftcdn.net/jpg/16/71/95/79/360_F_1671957940_D2dYs3RXTsWEOeS7xY20y6RStabYt6DV.jpg';
   };
-  const item = postData?.items?.[0] ?? {};
-
-  const category = categories.find(
-    //post.category_id
-    //ensures type coercion so comparison works whether
-    // one is a string and the other a number
-    (cat) => Number(cat.id) === Number(post.categoryId)
-  );
-  const categoryName = category ? category.name : 'Unknown';
 
   return (
     <div className='flex flex-col rounded-lg border border-zinc-300 w-80 min-h-80 p-5 hover:shadow-md transition-shadow'>
