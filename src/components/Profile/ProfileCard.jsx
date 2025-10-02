@@ -92,7 +92,7 @@ const ProfileCard = ({ meProfileData }) => {
       {changePassword && (
         <>
           <div
-            id="offer-modal"
+            id="password-modal"
             className="mx-auto bg-white border border-zinc-300 shadow-xl rounded-lg fixed p-5 inset-x-5 lg:inset-x-1/3"
           >
             <p className="text-center mb-5">Change your password</p>

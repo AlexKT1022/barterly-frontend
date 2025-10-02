@@ -7,7 +7,7 @@ const UserProfileCard = ({ data }) => {
     <>
       <div
         className="mx-auto mt-5 max-w-6xl px-4 border rounded-lg border-zinc-300 
-                 gap-5 p-5 hover:shadow-md transition-shadow
+                 gap-5 p-5
                  md:flex md:flex-col lg:grid lg:grid-cols-[96px_minmax(0,1fr)_120px]"
       >
         <div
@@ -26,7 +26,7 @@ const UserProfileCard = ({ data }) => {
           <p className="text-zinc-600 mb-2 italic">
             Member Since {data.created_at.slice(0, 4)}
           </p>
-          <div>{data.bio === "no bio provided" ? "" : data.bio}</div>
+          <div>{data.bio}</div>
         </div>
         <button
           className="bg-black text-white h-10 rounded-lg text-sm relative top-1 transition-colors duration-300 hover:bg-zinc-500"
