@@ -115,6 +115,8 @@ const NewProductForm = ({ onAdd }) => {
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        minLength={6}
+        maxLength={255}
         className="border border-gray-300 p-3 w-full mb-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
 

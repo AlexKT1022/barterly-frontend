@@ -48,6 +48,8 @@ const Register = () => {
                 name="firstname"
                 placeholder="first name"
                 className="border rounded-lg p-2 border-zinc-300 mb-3 w-full md:w-1/2"
+                minlength={2}
+                maxLength={30}
                 required
               ></input>
               <input
@@ -55,6 +57,8 @@ const Register = () => {
                 name="lastname"
                 placeholder="last name"
                 className="border rounded-lg p-2 border-zinc-300 mb-3 w-full md:w-1/2"
+                minlength={2}
+                maxLength={30}
                 required
               ></input>
             </div>
@@ -64,16 +68,19 @@ const Register = () => {
                 name="username"
                 placeholder="username"
                 className="border rounded-lg p-2 border-zinc-300 mb-3 mr-3 w-full"
+                minlength={6}
+                maxLength={30}
                 required
               ></input>
             </div>
             <div>
-              {" "}
               <input
                 type="text"
                 name="password"
                 placeholder="password"
                 className="border rounded-lg p-2 border-zinc-300 mb-3 w-full"
+                minlength={8}
+                maxLength={30}
                 required
               ></input>
             </div>

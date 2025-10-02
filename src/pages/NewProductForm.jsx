@@ -125,6 +125,8 @@ const NewPostModal = ({ categories, setShowForm }) => {
             className="w-full p-2 rounded-md border border-zinc-300"
             placeholder="Title"
             required
+            minLength={4}
+            maxLength={60}
           ></input>
           <select
             name="category"
@@ -146,6 +148,8 @@ const NewPostModal = ({ categories, setShowForm }) => {
             name="postDesc"
             className="w-full p-2 rounded-md border border-zinc-300"
             placeholder="Description"
+            minLength={6}
+            maxLength={255}
             required
           ></textarea>
 
@@ -180,12 +184,16 @@ const NewPostModal = ({ categories, setShowForm }) => {
                 name="name"
                 className="w-full p-2 rounded-md border border-zinc-300"
                 placeholder="Item Name"
+                minLength={4}
+                maxLength={60}
                 required
               ></input>
               <input
                 name="itemDesc"
                 className="w-full p-2 rounded-md border border-zinc-300"
                 placeholder="Item Description"
+                minLength={4}
+                maxLength={60}
                 required
               ></input>
               <select
@@ -212,6 +220,8 @@ const NewPostModal = ({ categories, setShowForm }) => {
                 className="w-full p-2 rounded-md border border-zinc-300"
                 placeholder="Quantity"
                 defaultValue="1"
+                minLength={1}
+                maxLength={3}
                 required
               ></input>
               <div className="gap-5 flex justify-center">

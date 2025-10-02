@@ -57,10 +57,13 @@ const ProfileCard = ({ meProfileData }) => {
               <input
                 placeholder="old password"
                 className="w-full border border-zinc-300 p-2 rounded-md"
+                maxLength={30}
               ></input>
               <input
                 placeholder="new password"
                 className="w-full border border-zinc-300 p-2 rounded-md"
+                minLength={8}
+                maxLength={30}
               ></input>
               <div className="flex justify-center gap-5 mb-2">
                 <button
