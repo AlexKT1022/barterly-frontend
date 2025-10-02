@@ -1,10 +1,7 @@
-// src/components/SellerCard.js
 import React from 'react';
-import { useNavigate } from 'react-router';
+import StartTradingButton from './StartTradingButton';
 
 const JourneySection = () => {
-    const navigate = useNavigate();
-
     return (
         <section>
             <h2 className='text-center font-bold mt-15 text-2xl'>Features</h2>
@@ -43,16 +40,9 @@ const JourneySection = () => {
                         </div>
                     </li>
                 </ul>
-
-                <button
-                    onClick={() => navigate('/categories')}
-                    className="px-4 h-10 rounded-md bg-zinc-800 text-white transition-colors duration-300 hover:bg-zinc-500 shadow-sm"
-                >
-                    Start Trading
-                </button>
+                <StartTradingButton />
             </div>
         </section>
-
     );
 };
 

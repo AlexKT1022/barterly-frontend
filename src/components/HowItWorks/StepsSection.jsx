@@ -7,7 +7,7 @@ const steps = [
         color: "bg-blue-50",
         points: [
             "Quick registration with email and password",
-            "Upload ID for trader verification",
+            // "Upload ID for trader verification",
             "Complete your profile for better trust",
         ],
     },
