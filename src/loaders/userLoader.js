@@ -1,3 +1,17 @@
+const fetchCategories = async () => {
+  try {
+    const res = await fetch(
+      "https://barterly-backend.onrender.com/api/categories"
+    );
+    if (!res.ok) throw new Error("Failed to fetch categories");
+    const data = await res.json();
+    return data.categories;
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
 const fetchAllUserPosts = async (id) => {
   try {
     const res = await fetch(
@@ -17,7 +31,8 @@ const userLoader = async ({ params }) => {
     );
     const data = await res.json();
     const userPosts = await fetchAllUserPosts(params.id);
-    const userData = { ...data, userPosts };
+    const categoriesList = await fetchCategories();
+    const userData = { ...data, userPosts, categoriesList };
     return userData;
   } catch (err) {
     console.error(err);

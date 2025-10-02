@@ -3,11 +3,54 @@ import { useState } from "react";
 
 const ProfileCard = ({ meProfileData }) => {
   const [changePassword, setChangePassword] = useState(false);
+  const [passwordSuccess, setPasswordSuccess] = useState(false);
+  const [error, setError] = useState(null);
 
   const normalizeDate = (date) => {
     const dateChange = new Date(date);
     const year = dateChange.getFullYear();
     return year;
+  };
+
+  const handleChangePassword = async (event) => {
+    event.preventDefault();
+    const newFormData = new FormData(event.currentTarget);
+    const old_password = newFormData.get("oldPass");
+    const new_password = newFormData.get("newPass");
+    const fields = { old_password, new_password };
+    const token = sessionStorage.getItem("token");
+    try {
+      const res = await fetch(
+        `https://barterly-backend.onrender.com/api/users/me/password`,
+        {
+          method: "PATCH",
+
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(fields),
+        }
+      );
+
+      if (res.status === 204) {
+        setPasswordSuccess("Password successfully changed!");
+        setTimeout(() => {
+          window.location.reload();
+        }, "1000");
+        return;
+      }
+
+      if (!res.ok) {
+        throw new Error((await res.text()) || "Update failed");
+      }
+
+      await res.json();
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+      setError(error.message);
+    }
   };
 
   return (
@@ -53,19 +96,28 @@ const ProfileCard = ({ meProfileData }) => {
             className="mx-auto bg-white border border-zinc-300 shadow-xl rounded-lg fixed p-5 inset-x-5 lg:inset-x-1/3"
           >
             <p className="text-center mb-5">Change your password</p>
-            <form>
+            <form
+              onSubmit={handleChangePassword}
+              className="flex flex-col justify-evenly"
+            >
               <input
+                name="oldPass"
                 placeholder="old password"
-                className="w-full border border-zinc-300 p-2 rounded-md"
+                className="w-full border border-zinc-300 p-2 mb-2 rounded-md"
                 maxLength={30}
               ></input>
               <input
+                name="newPass"
                 placeholder="new password"
-                className="w-full border border-zinc-300 p-2 rounded-md"
+                className="w-full border border-zinc-300 p-2 mb-2 rounded-md"
                 minLength={8}
                 maxLength={30}
               ></input>
-              <div className="flex justify-center gap-5 mb-2">
+              {error && <p className="text-center">{error}</p>}
+              {passwordSuccess && (
+                <p className="text-center">{passwordSuccess}</p>
+              )}
+              <div className="flex justify-center gap-5 mt-2 mb-2">
                 <button
                   className="w-32 p-3 bg-green-600 hover:bg-green-500 text-white rounded-md"
                   type="submit"
@@ -89,5 +141,3 @@ const ProfileCard = ({ meProfileData }) => {
 };
 
 export default ProfileCard;
-
-//max-auto max-w-6xl
