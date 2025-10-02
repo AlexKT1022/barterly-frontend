@@ -104,12 +104,14 @@ const ProfileCard = ({ meProfileData }) => {
                 name="oldPass"
                 placeholder="old password"
                 className="w-full border border-zinc-300 p-2 mb-2 rounded-md"
+                type="password"
                 maxLength={30}
               ></input>
               <input
                 name="newPass"
                 placeholder="new password"
                 className="w-full border border-zinc-300 p-2 mb-2 rounded-md"
+                type="password"
                 minLength={8}
                 maxLength={30}
               ></input>
