@@ -52,13 +52,15 @@ const Settings = ({ meData }) => {
 
             <label>
               <div className="flex items-center">
-                Bio &nbsp; <FaLockOpen className="size-3"/>
+                Bio &nbsp; <FaLockOpen className="size-3" />
               </div>
 
               <input
                 type="text"
                 defaultValue={meData.bio}
                 className="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 sm:w-full md:w-100 lg:w-184"
+                minLength={4}
+                maxLength={60}
               />
             </label>
 
