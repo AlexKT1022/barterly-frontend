@@ -4,14 +4,14 @@ export default function AboutHeader() {
     const stats = [
         { number: "50K+", label: "Active Users", sub: "Trusted members" },
         { number: "500K+", label: "Products Listed", sub: "Items available" },
-        { number: "1M+", label: "Successful Sales", sub: "Completed transactions" },
+        { number: "1M+", label: "Successful Trades", sub: "Completed transactions" },
         { number: "25+", label: "States", sub: "Country reach" },
     ];
 
     const reasons = [
         { title: "Secure Transactions", desc: "All payments are processed securely with buyer protection." },
-        { title: "Verified Sellers", desc: "Our verification process ensures trustworthy sellers." },
-        { title: "Community Driven", desc: "Join a community of passionate buyers and sellers." },
+        { title: "Verified Traders", desc: "Our verification process ensures trustworthy traders." },
+        { title: "Community Driven", desc: "Join a community of passionate traders." },
         { title: "Wide Selection", desc: "Find everything from electronics to collectibles." },
     ];
 
@@ -25,7 +25,7 @@ export default function AboutHeader() {
                     Our mission is to create a community-driven platform that makes trading simple, safe, and enjoyable.
                 </p>
                 <div className="flex justify-center gap-4">
-                    <NavLink to="https://www.facebook.com/">
+                    <NavLink to="/users">
                         <button className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800">
                             Join Our Community
                         </button>

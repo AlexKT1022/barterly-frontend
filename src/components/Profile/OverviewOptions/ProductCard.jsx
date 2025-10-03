@@ -16,12 +16,12 @@ const ProductCard = ({ post, categories }) => {
   const categoryName = category ? category.name : "Unknown";
 
   return (
-    <div className="flex flex-col rounded-lg border border-zinc-300 w-80 h-85 p-5 hover:shadow-md transition-shadow">
+    <div className="flex flex-col rounded-lg border border-zinc-300 w-80 h-full p-5 hover:shadow-md transition-shadow">
       {active && <EditPostModal setActive={setActive} data={post} />}
       <img
         src={post.items[0]?.imageUrl}
         alt=""
-        className="w-full h-full bg-black rounded-lg mb-3 object-cover object-top"
+        className="w-full h-60 bg-black rounded-lg mb-3 object-cover object-top"
       />
 
       <div className="flex gap-2 items-center">
