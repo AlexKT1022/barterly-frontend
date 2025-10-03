@@ -56,13 +56,12 @@ const ProfileCard = ({ meProfileData }) => {
   return (
     <>
       <div
-        className="mx-auto px-4 border rounded-lg mt-5 border-zinc-300 
-                 gap-5 p-5 grid
-                 md:flex md:flex-col lg:grid lg:grid-cols-[96px_minmax(0,1fr)_120px]"
+        className="mx-auto px-4 border rounded-lg mt-5 border-zinc-300 md:w-135 lg:w-full
+                 gap-5 p-5 grid md:flex md:flex-col lg:grid lg:grid-cols-[96px_minmax(0,1fr)_120px]"
       >
         <div
           className="profile-photo w-24 h-24 rounded-full bg-zinc-800 
-                  overflow-hidden shrink-0 place-self-center md:place-self-start"
+                  overflow-hidden place-self-center"
         >
           <img
             src={meProfileData.profile_image_url}
@@ -71,7 +70,7 @@ const ProfileCard = ({ meProfileData }) => {
           />
         </div>
 
-        <div className="user-details flex flex-col justify-center text-center md:text-left">
+        <div className="user-details flex flex-col justify-center text-center lg:text-left">
           <p className="text-lg font-semibold">{meProfileData.username}</p>
           <p className="text-xs items-center">{meProfileData.location}</p>
           <p className="text-zinc-600 mb-2 italic">
@@ -80,7 +79,7 @@ const ProfileCard = ({ meProfileData }) => {
           <p className="italic">{meProfileData.bio}</p>
         </div>
         <button
-          className="bg-black text-white h-10 rounded-lg text-sm relative top-1 transition-colors duration-300 hover:bg-zinc-500"
+          className="bg-black text-white h-10 w-32 md:w-48 lg:w-32 place-self-center rounded-lg text-sm lg:relative lg:bottom-5 transition-colors duration-300 hover:bg-zinc-500"
           onClick={() => setChangePassword(true)}
         >
           <div className="flex items-center justify-center">
