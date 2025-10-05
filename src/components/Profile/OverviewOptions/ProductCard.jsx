@@ -21,7 +21,7 @@ const ProductCard = ({ post, categories }) => {
       <img
         src={post.items[0]?.imageUrl}
         alt=""
-        className="w-full h-60 bg-black rounded-lg mb-3 object-cover object-top"
+        className="w-full h-40 bg-black rounded-lg mb-3 object-cover object-top"
       />
 
       <div className="flex gap-2 items-center">

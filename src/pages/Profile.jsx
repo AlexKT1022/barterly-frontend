@@ -9,7 +9,7 @@ const Profile = () => {
 
   return (
     <>
-      <div className="max-auto max-w-6xl">
+      <div className="max-auto md:max-w-3xl lg:max-w-6xl">
         {/* Profile */}
         <ProfileCard meProfileData={profileData} />
 

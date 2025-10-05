@@ -72,7 +72,7 @@ const Settings = ({ meData }) => {
 
   return (
     <>
-      <div className="mx-auto md:w-2xl lg:w-6xl border border-zinc-300 mt-5 p-5 rounded-lg">
+      <div className="mx-auto border border-zinc-300 mt-5 p-5 rounded-lg">
         <p className="mb-2">Personal Information</p>
         {/* Profile photo  */}
         <div className="md:grid md:grid-cols-[200px_minmax(900px,_1fr)] md:gap-0 lg:gap-5">

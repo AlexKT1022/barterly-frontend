@@ -21,7 +21,7 @@ const AcceptedResponseCard = ({ data }) => {
   };
 
   return (
-    <div className="mx-auto md:w-2xl lg:w-6xl md:h-24 sm:h-32 p-5 mt-5">
+    <div className="mx-auto md:h-24 sm:h-32 p-5 mt-5">
       {acceptedOffers.length > 0 ? (
         acceptedOffers.map((offer) => (
           <div
