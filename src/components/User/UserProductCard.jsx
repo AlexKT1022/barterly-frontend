@@ -7,7 +7,6 @@ const UserProductCard = ({ data, categories }) => {
     traded: "bg-red-100 text-red-600",
   };
 
-  console.log(data);
   const category = categories.find(
     (cat) => Number(cat.id) === Number(data.categoryId)
   );

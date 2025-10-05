@@ -36,7 +36,6 @@ const Settings = ({ meData }) => {
       bio,
     };
     const token = sessionStorage.getItem("token");
-    console.log(fields);
     try {
       const res = await fetch(
         `https://barterly-backend.onrender.com/api/users/me`,
