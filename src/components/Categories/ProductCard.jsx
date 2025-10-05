@@ -59,7 +59,6 @@ const ProductCard = ({ post }) => {
   return (
     <div className="flex flex-col rounded-lg border border-zinc-300 w-80 min-h-80 p-5 hover:shadow-md transition-shadow">
       <img
-        //just  changed item.image_url to .imageUrl
         src={
           item.imageUrl ||
           "https://t4.ftcdn.net/jpg/16/71/95/79/360_F_1671957940_D2dYs3RXTsWEOeS7xY20y6RStabYt6DV.jpg"

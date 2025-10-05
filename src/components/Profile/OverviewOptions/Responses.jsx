@@ -1,3 +1,5 @@
+// Responses: where interaction between user trade happens. I made two separate components to keep the pending offers and accepted offers separately. 
+
 import { useState } from "react";
 
 import PendingResponseCard from "./PendingResponseCard";

@@ -1,3 +1,5 @@
+//New Post Modal: QoL feature -- A user should be able to create a post while on their profile. This is also my pride and joy as its where I learned how to create modals. 
+
 import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 
@@ -65,7 +67,8 @@ const NewPostModal = ({ setActive, categories }) => {
     setItems(arr);
     setItemModal(false);
   };
-
+  
+// intentionally ignoring the element and jumping straight to index. removing the item by index and resetting items (setItems);
   const onDeleteItem = (itemIndex) => {
     setItems(items.filter((__, index) => index !== itemIndex));
     return setItems;

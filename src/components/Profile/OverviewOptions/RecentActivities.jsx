@@ -1,3 +1,5 @@
+// Recent Activities: Logs kept on the users account. Kind of like a recipe for every action taken. 
+
 import ActivitiesCard from "./ActivitiesCard";
 
 const RecentActivities = ({ activities }) => {

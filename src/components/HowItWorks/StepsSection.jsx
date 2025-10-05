@@ -1,5 +1,3 @@
-import React from "react";
-
 const steps = [
     {
         step: "01",

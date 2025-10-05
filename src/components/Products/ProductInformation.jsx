@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link, useParams } from "react-router";
+import { Link } from "react-router";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { jwtDecode } from "jwt-decode";
 
@@ -15,10 +15,11 @@ const status = {
   traded: 'bg-red-100 text-red-600',
 };
 
-// grabs the current logged in users id. can I make this a useState?
+
+// helpful resource for the issue https://dev.to/vvo/how-to-solve-window-is-not-defined-errors-in-react-and-next-js-5f97 
 let currentUserId = null;
 try {
-  // page loads undefined after token expires
+  // page loads undefined after token expires because jwt is trying to decode null
   const token =
     typeof window !== "undefined" ? sessionStorage.getItem("token") : null;
   if (token) {
@@ -32,7 +33,6 @@ try {
 const ProductInformation = ({ product }) => {
   const [active, setActive] = useState(false);
   const { token } = useAuth();
-  const { id } = useParams();
 
   return (
     <>
@@ -60,7 +60,6 @@ const ProductInformation = ({ product }) => {
             </div>
           </>
         ) : (
-          // <>{isTrade()}</>
           <>
             <UserResponses
               product={product}

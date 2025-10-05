@@ -1,4 +1,7 @@
 const ActivitiesCard = ({ activity }) => {
+
+
+  // Activities coming in as database text need to be translated to human. Looks nicer this way.
   const normalizeActivity = (act) => {
     if (activity.type === "post_created") {
       return "Post Created";
@@ -11,6 +14,7 @@ const ActivitiesCard = ({ activity }) => {
     }
   };
 
+  // These could be combined but it looks cleaner separated.  
   const normalizeDate = (date) => {
     const dateChange = new Date(date).toDateString();
     return dateChange;

@@ -3,14 +3,6 @@ const SpecificationsProducts = ({ product }) => {
 
   const items = product.items;
 
-  const specifications = {
-    Storage: product.storage,
-    Color: product.color,
-    Network: product.network,
-    "Battery Health": product.batteryHealth,
-    Status: product.status,
-  };
-
   return (
     <div className="p-6 md:p-8 bg-gray-50 mb-6">
       <h2 className="text-xl font-semibold mb-4">Included Items</h2>
@@ -19,12 +11,6 @@ const SpecificationsProducts = ({ product }) => {
           <td>Name</td> <td>Condition</td> <td>Quantity</td>
         </thead>
         <tbody>
-          {/* {Object.entries(specifications).map(([specs, index]) => (
-            <tr className="border-b">
-              <td className="py-2 pr-4 font-medium ">{specs}:</td>
-              <td className="py-2 text-gray-700">{index}</td>
-            </tr>
-          ))} */}
           <tr className="border-b">
             {items.map((item) => {
               return (

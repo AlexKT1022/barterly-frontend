@@ -64,5 +64,4 @@ const AcceptedResponseCard = ({ data }) => {
     </div>
   );
 };
-//<div class="grid-cols-[200px_minmax(900px,_1fr)_100px] ...">
 export default AcceptedResponseCard;

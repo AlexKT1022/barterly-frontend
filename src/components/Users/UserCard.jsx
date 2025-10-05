@@ -16,6 +16,7 @@ const UserCard = ({ user, posts }) => {
     console.warn("Invalid token:", err);
   }
 
+  // added default parameter for postData to avoid a crashed page
   const sortPosts = (postData = []) => {
     let count = 0;
     postData.forEach((post) => {
@@ -28,9 +29,6 @@ const UserCard = ({ user, posts }) => {
     const normalize = new Date(date);
     return normalize.getFullYear();
   };
-
-  const randomNum = Math.random() * 4 + 1;
-  const randomRating = randomNum.toFixed(1);
 
   // if logged in as this user, go to /profile, otherwise go to /user/:id
   const profileHref =
@@ -46,15 +44,16 @@ const UserCard = ({ user, posts }) => {
           className="w-16 h-16 rounded-full bg-black mr-2"
           alt=""
         />
-        <div>
+        <div className="mb-15">
           <p className="text-xl">{user.username}</p>
           <p className="text-zinc-500 text-md">{user.location}</p>
         </div>
       </div>
 
-      <div className="pt-10 flex justify-between">
-        <p>⭐ {randomRating}</p>
-      </div>
+      {/* Preserved for future feature - remove mb in above element*/}
+      {/* <div className="pt-10 flex justify-between">
+        <p>⭐</p>
+      </div> */}
 
       <div>
         <div className="pt-3 flex justify-between text-zinc-500">
@@ -80,6 +79,7 @@ const UserCard = ({ user, posts }) => {
           </button>
         </div>
       </div>
+{/* Upcoming feature prompt when 'message' is clicked */}
       {toggleMessage && (
         <>
           <div className="mx-auto w-80 h-60 top-50 absolute inset-0 bg-white border border-zinc-300 shadow-xl rounded-lg p-5">

@@ -1,5 +1,3 @@
-import React from "react";
-
 const faqs = [
     {
         q: "How do I know if a trader is trustworthy?",

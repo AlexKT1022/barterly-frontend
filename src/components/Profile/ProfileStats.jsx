@@ -1,3 +1,5 @@
+// Shows off user statistics. Useful for the users that like to flex about numbers.
+
 const ProfileStats = ({ profileStats }) => {
   const totalItems = profileStats?.userPosts?.total ?? 0;
   const mePosts = profileStats?.userPosts?.posts ?? [];

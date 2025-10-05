@@ -1,3 +1,5 @@
+// Settings: generally used for the user to change information about themselves (including profile photo). Username is locked now for future features(i.e. ratings)
+
 import { useState } from "react";
 import { FaLockOpen } from "react-icons/fa";
 import states from "../../../pages/auth/usStates";

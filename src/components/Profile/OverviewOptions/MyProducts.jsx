@@ -1,3 +1,5 @@
+// My Products: a view that shows all your posts
+
 import ProductCard from "./ProductCard";
 import { Navigate } from "react-router";
 

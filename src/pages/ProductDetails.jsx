@@ -9,19 +9,6 @@ const ProductDetails = () => {
 
   const images = postData.items;
 
-  // const product = products.find((p) => p.id === Number(id));
-
-  // if (!product) {
-  //   return (
-  //     <div className="text-center p-8">
-  //       <h2 className="text-2xl font-semibold mb-4">Product not found</h2>
-  //       <Link to="/categories" className="text-blue-600 hover:underline">
-  //         Go back to Categories
-  //       </Link>
-  //     </div>
-  //   );
-  // }
-
   return (
     <div className=" p-6 max-w-6xl mx-auto text-gray-800">
       <Link

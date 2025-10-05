@@ -1,3 +1,5 @@
+// The profile card is provides the logged in user an idea what other users would see when browsing through the community page. They have the ability to change the content on the card via the Settings component. 
+
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useState } from "react";
 

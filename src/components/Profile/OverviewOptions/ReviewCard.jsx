@@ -1,3 +1,5 @@
+// This feature is a work in progress. Right now its placeholder data. 
+
 const ReviewCard = () => {
   return (
     <>

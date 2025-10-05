@@ -1,4 +1,3 @@
-import React from 'react';
 import StartTradingButton from './StartTradingButton';
 
 const JourneySection = () => {

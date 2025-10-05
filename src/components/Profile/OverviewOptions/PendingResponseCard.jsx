@@ -1,3 +1,5 @@
+//Pending Response: User gets an offer they can view the details here. the user is required to visit the pending offers page for further details. 
+
 import { Link } from "react-router";
 import { FaGrinBeamSweat } from "react-icons/fa";
 
@@ -62,5 +64,4 @@ const PendingResponseCard = ({ data }) => {
     </div>
   );
 };
-//<div class="grid-cols-[200px_minmax(900px,_1fr)_100px] ...">
 export default PendingResponseCard;

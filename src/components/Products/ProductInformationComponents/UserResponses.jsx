@@ -76,7 +76,7 @@ const UserResponses = ({ product, token, currentUserId }) => {
     }
   };
 
-  // grab the child post id from the current loggedin user
+  // grab the child post id from the current logged in user
   const loggedUserData =
     product.loggedUserData.items
       .filter(

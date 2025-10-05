@@ -1,24 +1,5 @@
 import categories from "./CategoriesData.js";
 
-import {
-  FaTv,
-  FaTshirt,
-  FaBook,
-  FaHome,
-  FaFootballBall,
-  FaCar,
-  FaGamepad,
-  FaRegGem,
-  FaPencilRuler,
-  FaCat,
-  FaBabyCarriage,
-  FaGuitar,
-  FaPaintBrush,
-  FaWrench,
-  FaCouch,
-  FaPeopleCarry,
-} from "react-icons/fa";
-
 const CategorySelection = () => {
   return (
     <>

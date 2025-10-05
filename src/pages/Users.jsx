@@ -24,14 +24,6 @@ const Users = () => {
             value={search}
             onChange={(event) => setSearch(event.target.value)}
           ></input>
-
-          {/* Removing buttons until we an work out what to do with these */}
-          {/* <button className="w-32 h-10 border-1 rounded-lg border-zinc-300 transition-colors duration-300 hover:bg-zinc-500 hover:text-white hover:border-transparent">
-            Filter by Role
-          </button>
-          <button className="w-32 h-10 border-1 rounded-lg border-zinc-300 transition-colors duration-300 hover:bg-zinc-500 hover:text-white hover:border-transparent">
-            Sort by Rating
-          </button> */}
         </form>
       </div>
 

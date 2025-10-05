@@ -1,3 +1,5 @@
+// Card view of the object the user is willing to trade. It remains on the page with a status change if the object is traded (leaving a record of its existence).
+
 import { useState } from "react";
 import { Link } from "react-router";
 import EditPostModal from "../EditPostModal";
@@ -21,7 +23,7 @@ const ProductCard = ({ post, categories }) => {
       <img
         src={post.items[0]?.imageUrl}
         alt=""
-        className="w-full h-40 bg-black rounded-lg mb-3 object-cover object-top"
+        className="w-full h-40 bg-black rounded-lg mb-3 object-cover object-top" // using object-top to show only the top portion of the image used. 
       />
 
       <div className="flex gap-2 items-center">

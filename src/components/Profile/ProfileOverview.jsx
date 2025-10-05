@@ -1,3 +1,5 @@
+// The overview just provides users multiple options to go through that pertains to their account. In this case I wanted to keep everything on one single page so I'm using components to present different but specific data.
+
 import { useState } from "react";
 import MyProducts from "./OverviewOptions/MyProducts";
 import RecentActivities from "./OverviewOptions/RecentActivities";

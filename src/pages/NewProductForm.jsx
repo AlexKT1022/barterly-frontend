@@ -65,7 +65,7 @@ const NewPostModal = ({ categories, setShowForm }) => {
     setItems(arr);
     setItemModal(false);
   };
-
+// intentionally ignoring the element and jumping straight to index. removing the item by index and resetting items (setItems);
   const onDeleteItem = (itemIndex) => {
     setItems(items.filter((__, index) => index !== itemIndex));
     return setItems;

@@ -1,5 +1,3 @@
-import React from "react";
-
 const DescriptionProducts = ({ product }) => {
   const items = product.items;
   return (
@@ -23,15 +21,6 @@ const DescriptionProducts = ({ product }) => {
             </ul>
           </div>
         </div>
-        {/* Features */}
-        {/* <div className="mt-6 mb-6"> */}
-        {/* <h3 className="text-xl font-semibold mb-2">Key Features</h3> */}
-        {/* <ul className="list-disc list-inside text-gray-700"> */}
-        {/* {product.features.map((feature, index) => (
-              <li>{feature}</li>
-            ))} */}
-        {/* </ul> */}
-        {/* </div> */}
       </div>
     </>
   );

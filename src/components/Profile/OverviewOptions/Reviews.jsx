@@ -1,4 +1,5 @@
 // Work in progress. We currently don't have a table  for reviews.
+// Logged in user can review the ratings left for them while other users can read about who they will be trading with. 
 
 import ReviewCard from "./ReviewCard";
 

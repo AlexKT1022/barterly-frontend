@@ -1,3 +1,5 @@
+// Simple modal that allows the user to change the post name, description and its status. They can also delete the post in case they no longer want it available on their page. 
+
 import { useState } from "react";
 import { FaTrash } from "react-icons/fa";
 
