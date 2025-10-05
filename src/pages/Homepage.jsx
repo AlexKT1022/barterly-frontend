@@ -100,7 +100,7 @@ const Homepage = () => {
         <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {/* Categories carousel or grid */}
           <Link
-            to="/categories/electronics"
+            to="/categories"
             className="rounded-xl border border-zinc-200 p-3 shadow-sm hover:shadow-md transition-all duration-300"
           >
             <div className="flex flex-col justify-center items-center gap-2">
@@ -110,7 +110,7 @@ const Homepage = () => {
           </Link>
 
           <Link
-            to="/categories/clothing"
+            to="/categories"
             className="rounded-xl border border-zinc-200 p-3 shadow-sm hover:shadow-md transition-all duration-300"
           >
             <div className="flex flex-col justify-center items-center gap-2">
@@ -120,7 +120,7 @@ const Homepage = () => {
           </Link>
 
           <Link
-            to="/categories/automotive"
+            to="/categories"
             className="rounded-xl border border-zinc-200 p-3 shadow-sm hover:shadow-md transition-all duration-300"
           >
             <div className="flex flex-col justify-center items-center gap-2">
@@ -130,7 +130,7 @@ const Homepage = () => {
           </Link>
 
           <Link
-            to="/categories/services"
+            to="/categories"
             className="rounded-xl border border-zinc-200 p-3 shadow-sm hover:shadow-md transition-all duration-300"
           >
             <div className="flex flex-col justify-center items-center gap-2">

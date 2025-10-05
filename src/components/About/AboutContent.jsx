@@ -11,10 +11,10 @@ export default function AboutContent() {
     ];
 
     const team = [
-        { name: "Nick Vila", role: "CEO & Founder", desc: "10+ years in e-commerce" },
+        { name: "Nick Vila", role: "Web Developer", desc: "10+ years in e-commerce" },
         { name: "Alex Takamizawa", role: "CTO", desc: "Former tech lead at major platforms" },
         { name: "Amador Baggerly", role: "Head of Community", desc: "Expert in user engagement" },
-        { name: "Eduardo Maldonado", role: "Head of Security", desc: "Cybersecurity specialist" },
+        { name: "Eduardo Maldonado", role: "Software Developer", desc: "Design, code and maintain web sites" },
     ];
 
     const values = [
