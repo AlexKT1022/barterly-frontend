@@ -41,7 +41,6 @@ const NewPostModal = ({ setActive, categories }) => {
       }
 
       await res.json();
-      window.location.reload();
     } catch (err) {
       console.error(err);
       throw err;
